@@ -10,6 +10,7 @@ use App\Role;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UsersController extends Controller
@@ -18,7 +19,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::all();
+        $users = User::paginate(1000);
 
         return view('admin.users.index', compact('users'));
     }
