@@ -1,0 +1,33 @@
+@media only screen and (max-width: 1700px) {
+   .WalletOnScroll {
+    left: 19.6%;
+   }
+}
+
+@media only screen and (max-width: 1590px) {
+   .WalletOnScroll {
+    left: 18.6%;
+   }
+}
+
+@media only screen and (max-width: 1457px) {
+   .WalletOnScroll {
+    left: 13%;
+    width: 22%;
+   }
+}
+
+@media only screen and (max-width: 1310px) {
+   .WalletOnScroll {
+    left: 10%;
+    width: 24%;
+   }
+}
+
+@media only screen and (max-width: 1230px) {
+   .WalletOnScroll {
+    left: 8%;
+    width: 25%;
+   }
+}
+

@@ -1,0 +1,926 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Cairo', sans-serif;
+    /*     font-family: 'Noto Sans Arabic', sans-serif; */
+    padding: 0;
+    margin: 0;
+    outline: none !important;
+}
+
+::selection {
+    background: #306a85;
+    color: aliceblue !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    background-color: whitesmoke;
+}
+
+
+.Preloader {
+}
+
+.PreloaderInner {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: whitesmoke;
+    z-index: 9999999999999999;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.PreloaderDiv {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.PreloaderBG {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    opacity: 0.06;
+    z-index: -1;
+}
+
+.PreloaderDiv img {
+    animation: rotation 14s infinite linear;
+    display: block;
+    margin: 0 auto 19px;
+    width: 107px;
+}
+
+.PreloaderDiv p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 19px;
+    color: #3c6a89;
+    font-weight: 600;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+#Header {
+    background: white;
+}
+
+.HeaderLogo {
+    display: block;
+    margin: 0 0;
+    width: fit-content;
+    padding: 20px 0px;
+}
+
+.HeaderLogo img {
+    display: block;
+    margin: 0 0;
+    width: auto;
+    height: 48px;
+    max-width: 100%;
+}
+
+.HeaderTabs {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    height: 100%;
+    margin: 0;
+}
+
+.HeaderTabs li {
+    display: inline-block;
+    vertical-align: top;
+    width: fit-content;
+    padding: 13px 34px;
+    margin: 0px 16px;
+    font-size: 15px;
+    transition: 300ms;
+    position: relative;
+    color: #585858;
+}
+
+.HeaderTabs .TabHov {
+    cursor: pointer;
+}
+
+.HeaderTabs .TabHov:hover div {
+    width: 100%
+}
+
+
+.HeaderTabs li div {
+    width: 0%;
+    transition: 600ms;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background: #417796;
+}
+
+.Banner {
+}
+
+.BannerBG {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    z-index: -1;
+    filter: blur(2px) brightness(52%);
+}
+
+.BannerInner {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.BannerDiv {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    color: aliceblue;
+    text-align: center;
+}
+
+.BannerDiv h2 {
+    display: block;
+    margin: 0 auto 22px;
+    width: 100%;
+    font-weight: bolder;
+    font-size: 64px;
+    text-shadow: -6px -1px 1px #d9951a57;
+}
+
+.BannerDiv p {
+    display: block;
+    margin: 0 auto 58px;
+    width: 100%;
+    font-size: 33px;
+}
+
+.BannerDiv button {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 12px 23px;
+    color: aliceblue;
+    background: #f0f8ff38;
+    border-radius: 100px;
+    border: solid 2px aliceblue;
+    transition: 300ms;
+}
+
+.LangBtn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 8px 22px;
+    position: relative;
+    padding-right: 41px;
+    border: solid 2px #dfdfdf;
+    border-radius: 10px;
+    background: #f1f4f3;
+    color: #585858;
+}
+
+.LangBtn img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 7px;
+}
+
+
+.BannerDiv button:hover {
+    background: #5847a5;
+    border-color: #473791;
+    box-shadow: inset 1px 1px 12px 1px #36277e;
+}
+
+.SecondBannerArt {
+    display: block;
+    margin: 61px auto 37px;
+    width: 101px;
+    filter: drop-shadow(-6px -1px 1px #d9951a57);
+}
+
+.SecondBannerHeader {
+    display: block;
+    margin: 72px auto;
+    width: 65%;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+    color: #306a85;
+    line-height: 1.6;
+}
+
+.SectionHeader {
+    display: block;
+    margin: 54px auto 44px;
+    width: fit-content;
+    position: relative;
+    padding-bottom: 32px;
+    font-weight: bold;
+    color: #306a85;
+    min-width: 360px;
+    text-align: center;
+}
+
+.WhyUsItem {
+    display: block;
+    margin: 30px auto;
+    width: 78%;
+    background: #ffffff;
+    text-align: center;
+    padding: 46px 1px 37px;
+    border-radius: 17px;
+    box-shadow: 1px 1px 1px 1px #a597b745;
+}
+
+.WhyUsItem img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 66px;
+    filter: hue-rotate(-309deg) grayscale(36%) brightness(100%);
+}
+
+.WhyUsItem h3 {
+    display: block;
+    margin: 17px auto 0;
+    width: 85%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #306a85;
+    min-height: 55px;
+}
+
+.SectionHeader div {
+    position: absolute;
+    left: 41%;
+    bottom: 0;
+    width: 20%;
+    background: #dc9a26;
+    height: 4px;
+}
+
+.CertificationsItem {
+    display: block;
+    margin: 23px auto;
+    width: 75%;
+    text-align: left;
+    padding: 11px 33px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: solid 1px #d6e1e7;
+    transition: 300ms;
+    text-align: center;
+    cursor: pointer;
+}
+
+.CertificationsItem h2 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: bold;
+    color: #dc9a26;
+    font-size: 19px;
+}
+
+.CertificationsItem span {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 700;
+    color: #306a85;
+    font-size: 13px;
+}
+
+.CertificationsItem:hover {
+    background: #f3fbff;
+}
+
+.Banner3 {
+}
+
+.Banner3 img {
+    display: block;
+    margin: 84px auto;
+    width: 95%;
+    border: solid 1px #eeebf2;
+}
+
+.TrustedByItem {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    cursor: grab;
+}
+
+.TrustedByItem img {
+    display: block;
+    margin: 0 auto;
+    width: 110px;
+    height: 46px;
+}
+
+#TrustedBySlider {
+}
+
+#TrustedBySlider .slick-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 85px auto 0;
+}
+
+#TrustedBySlider .slick-dots li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 3px 5px;
+}
+
+#TrustedBySlider .slick-dots li div {
+    display: block;
+    margin: 0 auto;
+    width: 20px;
+    height: 9px;
+    background: #f6902a4f;
+    border-radius: 3px;
+    transition: 400ms;
+    cursor: pointer;
+}
+
+#TrustedBySlider .slick-dots .slick-active div {
+    background: #f6902a;
+    width: 35px;
+    pointer-events: none;
+}
+
+#TrustedBy {
+    background: #ffffff;
+    padding-bottom: 49px;
+}
+
+#Request {
+}
+
+#RequestForm {
+}
+
+#RequestForm span {
+    display: block;
+    margin: 6px auto;
+    width: 98%;
+    text-align: left;
+    padding: 9px 7px;
+    background: #ffffff;
+    border-radius: 7px;
+    color: #306a85;
+    font-weight: 600;
+    border: solid 1px #306a8545;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+#RequestForm span input {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 15px;
+    position: relative;
+    bottom: 2px;
+}
+
+
+#RequestForm span:hover {
+    background: #f5fcff;
+}
+
+#RequestForm p {
+    display: block;
+    margin: 0 auto 11px;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    color: #555555;
+}
+
+.FormItem {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 18px 0px;
+}
+
+.FormItem label {
+    display: block;
+    margin: 4px auto;
+    width: 100%;
+    font-size: 17px;
+    color: #306a85;
+}
+
+.FormItem input {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 15px;
+    border: solid 1px #306a8545;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.FormItem select {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 6px 15px;
+    border: solid 1px #306a8545;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.FormItem textarea {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 15px;
+    border: solid 1px #306a8545;
+    border-radius: 4px;
+    font-size: 13px;
+    min-height: 120px;
+}
+
+.FormItem button[type=submit] {
+    display: block;
+    margin: 1px auto;
+    width: 100%;
+    text-align: center;
+    color: aliceblue;
+    background: #306a85;
+    border: none;
+    padding: 10px 0px;
+    border-radius: 5px;
+    transition: 300ms;
+}
+
+.FormItem button[type=submit] i {
+}
+
+
+.FormItem button[type=submit]:hover {
+    background: #dc9a26;
+}
+
+
+.FormItem textarea:focus {
+    border-color: #f6902a;
+}
+
+
+.FormItem input:focus {
+    border-color: #f6902a;
+}
+
+
+.FormItem select:focus {
+    border-color: #f6902a;
+}
+
+.WhyUsItem button {
+    display: block;
+    margin: 6px auto 0;
+    width: fit-content;
+    padding: 7px 27px;
+    border: none;
+    background: #306a85;
+    border-radius: 100px;
+    color: aliceblue;
+    position: relative;
+    overflow: hidden;
+    padding-right: 47px;
+    transition: 300ms;
+}
+
+.WhyUsItem button i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 0px 12px;
+    height: 100%;
+    background: #0000001a;
+}
+
+
+.WhyUsItem button:hover {
+    background: #dc9a26;
+    transform: scale(1.1);
+    box-shadow: -6px -4px 0px 0px #0000001c;
+}
+
+.ReadMorePopUp {
+    display: none;
+}
+
+.ReadMorePopUpInner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ReadMorePopUpFade {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.ReadMorePopUpDiv {
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
+    background: white;
+    padding: 39px;
+    border-radius: 11px;
+    max-height: 85%;
+    overflow-y: auto;
+}
+
+.ReadMorePopUpContent {
+}
+
+.ReadMorePopUpHeader {
+}
+
+.ReadMorePopUpHeader img {
+    filter: hue-rotate(-309deg) grayscale(36%) brightness(100%);
+    display: block;
+    margin: 0 auto;
+    width: 91px;
+}
+
+.ReadMorePopUpHeader h2 {
+    display: block;
+    margin: 23px auto;
+    width: 100%;
+    font-weight: bold;
+    color: #306a85;
+}
+
+.ReadMorePopUpBody {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2px;
+}
+
+.ReadMorePopUpBody p {
+    display: block;
+    margin: 29px auto 57px;
+    width: 89%;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.SideMenuBtn {
+    display: none;
+}
+
+.SideMenuDiv {
+    display: none;
+}
+
+.SecondBannerHeader u {
+    color: #dc9a26;
+    text-decoration: none;
+}
+
+#Footer {
+    padding-top: 70px;
+    padding-bottom: 97px;
+    background: #306a85;
+    color: aliceblue;
+    margin-top: 82px;
+    position: relative;
+}
+
+.OurVision {
+    display: block;
+    margin: 0 0;
+    width: 85%;
+    /* padding-right: 8%; */
+}
+
+.OurVision h3 {
+    display: block;
+    margin: 0 auto 31px;
+    width: 100%;
+    font-weight: bold;
+    color: #e3b159;
+}
+
+.OurVision p {
+    display: block;
+    margin: 0 0;
+    width: 86%;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.FooterList {
+    display: block;
+    margin: 0 auto;
+    width: 85%;
+}
+
+.FooterList h3 {
+    display: block;
+    margin: 0 auto 31px;
+    width: 100%;
+    font-weight: bold;
+    color: #e3b159;
+}
+
+.FooterList ul {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+}
+
+.FooterList ul li {
+    display: block;
+    margin: 9px auto;
+    width: 100%;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.FooterList ul li:hover {
+    text-decoration: underline;
+}
+
+.FooterContactInfo {
+    display: block;
+    margin: 0 auto;
+    width: 85%;
+}
+
+.FooterContactInfo h3 {
+    display: block;
+    margin: 0 auto 31px;
+    width: 100%;
+    font-weight: bold;
+    color: #e3b159;
+}
+
+.FooterContactInfo p {
+    display: block;
+    margin: 30px auto;
+    width: 100%;
+    padding: 2px 3px;
+    position: relative;
+    padding-left: 38px;
+}
+
+.FooterContactInfo p i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 30px;
+    color: #e3b159;
+    text-shadow: 1px 1px 1px #135370;
+}
+
+.FooterCopyRights {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.FooterCopyRights p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px 0px;
+    border-top: solid 1px #ffffff17;
+}
+
+.FooterCopyRights p img {
+    display: inline-block;
+    margin: 0 8px;
+    width: auto;
+    height: 14px;
+    filter: invert(1) brightness(155%);
+    cursor: pointer;
+    position: relative;
+    bottom: 2px;
+    transition: 300ms;
+}
+
+.FooterCopyRights p img:hover {
+    filter: none;
+    transform: scale(1.2);
+}
+
+.ExBanner {
+    display: block;
+    margin: 0 auto 47px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ExBanner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    z-index: -1;
+    filter: blur(2px) brightness(56%);
+}
+
+.ExBannerInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 394px;
+    overflow: hidden;
+}
+
+.ExBannerInner h1 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    color: aliceblue;
+    text-align: center;
+    font-weight: bold;
+}
+
+.SubSubject {
+    display: block;
+    margin: 34px 0;
+    width: 83%;
+    border: solid 2px #306a85;
+    background: #306a85;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.SubSubject img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    filter: brightness(71%);
+}
+
+.SubSubject p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 8% 4%;
+    font-size: 15px;
+}
+
+.ServiceProduction {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    background: #dde8ed;
+    padding: 7% 3%;
+    line-height: 1.65;
+    font-size: 18px;
+    color: #306a85;
+}
+
+.WhyService {
+    display: block;
+    margin: 54px auto;
+    width: 100%;
+}
+
+.WhyService h4 {
+    display: block;
+    margin: 0 auto 27px;
+    width: 100%;
+    font-weight: bold;
+    color: #d48b08;
+}
+
+.WhyService p {
+    display: block;
+    margin: 28px auto;
+    width: 100%;
+    text-align: left;
+    font-size: 17px;
+    position: relative;
+    padding-left: 40px;
+}
+
+.WhyService p i {
+    color: #306a8596;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24px;
+    margin: 2px;
+}
+
+.ServiceAbout {
+    display: block;
+    margin: 42px auto;
+    width: 100%;
+}
+
+.ServiceAbout h4 {
+    display: block;
+    margin: 0 auto 27px;
+    width: 100%;
+    font-weight: bold;
+    color: #d48b08;
+}
+
+.ServiceAbout p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.ServiceAbout img {
+    display: block;
+    margin: 51px auto;
+    width: 100%;
+    /* border: solid 1px #e0e0e0; */
+    filter: brightness(96%);
+}
+
+.CertificationsItem img {
+    display: block;
+    margin: 0 auto 14px;
+    width: 68px;
+}
