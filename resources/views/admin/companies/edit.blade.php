@@ -77,7 +77,7 @@
 @if(isset($company) && $company->logo)
       var file = {!! json_encode($company->logo) !!}
           this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, '{{ $company->logo->getUrl('thumb') }}')
+      this.options.thumbnail.call(this, file, '{{ str_replace('localhost', 'localhost:8000', $company->logo->getUrl()) }}')
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1

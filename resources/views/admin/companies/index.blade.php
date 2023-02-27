@@ -50,8 +50,8 @@
                             </td>
                             <td>
                                 @if($company->logo)
-                                    <a href="{{ $company->logo->getUrl() }}" target="_blank">
-                                        <img src="{{ $company->logo->getUrl('thumb') }}" width="50px" height="50px">
+                                    <a href="{{ str_replace('localhost', 'localhost:8000', $company->logo->getUrl()) }}" target="_blank">
+                                        <img src="{{ str_replace('localhost', 'localhost:8000', $company->logo->getUrl('')) }}" width="50px" height="50px">
                                     </a>
                                 @endif
                             </td>
