@@ -21,6 +21,11 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'name' => [
                 'required',
+                'string',
+            ],
+            'imagePC' => [
+                'nullable',
+                'image',
             ],
         ];
     }

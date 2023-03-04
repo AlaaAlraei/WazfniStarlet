@@ -26,6 +26,14 @@
                             {{ $category->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.category.fields.icon') }}
+                        </th>
+                        <td>
+                            {{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/$category->icon") : str_replace("public", "storage", asset("$category->icon")) }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">

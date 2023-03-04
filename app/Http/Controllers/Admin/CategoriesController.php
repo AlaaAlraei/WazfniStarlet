@@ -31,6 +31,14 @@ class CategoriesController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
+        if ($request->file('iconPC'))
+        {
+            $icon=$request->file('iconPC');
+            $extensioniconDoc = $icon->getClientOriginalExtension();
+            $PathToiconDoc    = $icon->storeAs('public/Category/',uniqid(6).time() . "." . $extensioniconDoc);
+            $request['icon']  = $PathToiconDoc;
+        }
+
         $category = Category::create($request->all());
 
         return redirect()->route('admin.categories.index');
@@ -45,6 +53,14 @@ class CategoriesController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        if ($request->file('iconPC'))
+        {
+            $icon=$request->file('iconPC');
+            $extensioniconDoc = $icon->getClientOriginalExtension();
+            $PathToiconDoc    = $icon->storeAs('public/Category/',uniqid(6).time() . "." . $extensioniconDoc);
+            $request['icon']  = $PathToiconDoc;
+        }
+
         $category->update($request->all());
 
         return redirect()->route('admin.categories.index');

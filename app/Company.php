@@ -25,6 +25,7 @@ class Company extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'created_by_id',
         'name',
         'created_at',
         'updated_at',
@@ -34,6 +35,11 @@ class Company extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
+    }
+
+    public function created_by()
+    {
+        return $this->hasMany(User::class, 'created_by_id', 'id');
     }
 
     public function jobs()

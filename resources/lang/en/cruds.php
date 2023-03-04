@@ -71,6 +71,8 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
+            'icon'              => 'Icon',
+            'icon_helper'       => '',
             'name'              => 'Name',
             'name_helper'       => '',
             'created_at'        => 'Created at',
