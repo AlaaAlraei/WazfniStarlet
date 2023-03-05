@@ -48,6 +48,11 @@ class Job extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function forms()
+    {
+        return $this->hasMany(Form::class, 'job_id', 'id');
+    }
+
     public function scopeSearchResults($query)
     {
         return $query->when(!empty(request()->input('location', 0)), function($query) {

@@ -72,4 +72,29 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class, 'created_by_id');
     }
 
+    public function companies()
+    {
+        return $this->hasMany(Company::class, 'created_by_id', 'id');
+    }
+
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class, 'user_id', 'id');
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'user_id', 'id');
+    }
+
+    public function forms()
+    {
+        return $this->hasMany(Form::class, 'user_id', 'id');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'user_id', 'id');
+    }
+
 }
