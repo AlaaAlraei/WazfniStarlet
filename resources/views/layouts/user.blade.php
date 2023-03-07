@@ -32,6 +32,194 @@
         </div>
     </div>
 </div>
+<div id="Login">
+    <div class="LoginInner">
+        <div class="LoginFade" onclick="$('#Login').fadeOut(600)"></div>
+        <div class="LoginDiv animate__animated animate__zoomIn">
+            <div class="LoginRegisterTabs">
+                <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#LoginForm">
+                    تسجيل الدخول
+                    <div></div>
+                </button>
+                <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#RegisterForm">
+                    إنشاء حساب
+                    <div></div>
+                </button>
+            </div>
+            <form class="LoginForm animate__animated animate__fadeInUp" id="LoginForm" method="POST" action="{{ route('login') }}">
+                <div class="LoginFormRow">
+                    <label>
+                        البريد الاكتروني
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-envelope"></i>
+                        </u>
+                        <input type="text" placeholder="example@wzfni.com" name="email" required>
+                    </div>
+                </div>
+                <div class="LoginFormRow">
+                    <label>
+                        كلمة المرور
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-key"></i>
+                        </u>
+                        <input type="password" placeholder="اكتب هنا : كلمة المرور" name="password" required>
+                        <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <span class="RememberMe">
+                    <input type="checkbox" name="remember">
+                    تذكرني
+                    <a href="{{ route('password.request') }}" target="_blank">
+                        نسيت كلمة السر ؟
+                    </a>
+                </span>
+                <div class="LoginFormRow">
+                    <button type="submit">
+                        تسجيل الدخول
+                    </button>
+                </div>
+                <div class="OtherLoginMethods">
+                    <h3>
+                        أو يمكنك تسجيل الدخول عن طريق
+                    </h3>
+                    <div class="OtherLoginMethodsOptions">
+                        <button type="button" style="background-color: #394e7c">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3128/3128208.png">
+                            فيسبوك
+                        </button>
+                        <button type="button" style="background-color: #e74233">
+                            <img src="https://cdn-icons-png.flaticon.com/128/2991/2991147.png">
+                            جوجل
+                        </button>
+                        <button type="button" style="background-color: #0074b1">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3128/3128219.png">
+                            لينكد إن
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <form class="LoginForm animate__animated animate__fadeInUp" id="RegisterForm" method="POST" action="">
+                <div class="LoginFormRow">
+                    <div class="FormTwoBtns">
+                        <button type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
+                            <input type="radio" name="AuthType">
+                            صاحب عمل
+                        </button>
+                        <button type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
+                            <input type="radio" name="AuthType">
+                            باحث عن وظيفة
+                        </button>
+                    </div>
+                </div>
+                <div class="LoginFormRow" id="RegNAME">
+                    <label>
+
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-user"></i>
+                        </u>
+                        <input type="text" placeholder="" name="name" required>
+                    </div>
+                </div>
+                <div class="LoginFormRow">
+                    <label>
+                        رقم الموبايل
+                    </label>
+                    <div class="InputHolder InputWithSelect">
+                        <u>
+                            <i class="fas fa-mobile"></i>
+                        </u>
+                        <input type="number" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="mobile" required>
+                        <div class="MobileNumberSelectCountry">
+                            <select>
+                                <option>
+                                    الأردن
+                                    (+962)
+                                </option>
+                                <option>
+                                    السعودية
+                                    (+584)
+                                </option>
+                                <option>
+                                    قطر
+                                    (+745)
+                                </option>
+                                <option>
+                                    تركيا
+                                    (+852)
+                                </option>
+                                <option>
+                                    الكويت
+                                    (+125)
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="LoginFormRow">
+                    <label>
+                        البريد الاكتروني
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-envelope"></i>
+                        </u>
+                        <input type="text" placeholder="example@wzfni.com" name="email" required>
+                    </div>
+                </div>
+                <div class="LoginFormRow">
+                    <label>
+                        كلمة المرور
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-key"></i>
+                        </u>
+                        <input type="password" placeholder="اكتب هنا : كلمة المرور" name="password" required>
+                        <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="LoginFormRow">
+                    <label>
+                        تأكيد كلمة المرور
+                    </label>
+                    <div class="InputHolder">
+                        <u>
+                            <i class="fas fa-key"></i>
+                        </u>
+                        <input type="password" placeholder="اكتب هنا : كلمة المرور مرة اخرى" name="password" required>
+                        <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <span class="RememberMe">
+                    <input type="checkbox" name="AcceptTerms" required>
+                    موافق على جميع
+                    <u onclick="$(this).find('a')[0].click()">
+                        <a href="#" target="_blank" class="d-none"></a>
+                        الشروط والأحكام
+                    </u>
+                </span>
+                <div class="LoginFormRow">
+                    <button type="submit">
+                        إنشاء حساب
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @include('partials.footer')
 
 <script src="{{ asset('') }}Wazefni/Requirements/JS/bootstrap.min.js" crossorigin="anonymous"></script>

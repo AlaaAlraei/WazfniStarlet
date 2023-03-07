@@ -1,26 +1,6 @@
 @extends('layouts.user')
 
 @section('content')
-
-    <div class="container-fluid" id="Banner">
-        <div class="row justify-content-center align-content-center">
-            <div class="col-md-10">
-                <div class="BannerParent">
-                    <div class="Banner">
-                        <div class="BannerLogo">
-                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/LogoText.png">
-                        </div>
-                    </div>
-                    <div class="BannerText">
-                        <h4>
-                            موقع الوظائف الأول في الوطن العربي
-                        </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container-fluid" id="MainBanner">
         <div class="row justify-content-center align-content-center">
             <div class="col-md-10">
@@ -229,7 +209,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="container-fluid" id="HomeSections">
         <div class="row justify-content-center align-content-center">
@@ -558,6 +537,7 @@
         </div>
     </div>
 
+    <input type="hidden" id="HomePage">
 @endsection
 
 

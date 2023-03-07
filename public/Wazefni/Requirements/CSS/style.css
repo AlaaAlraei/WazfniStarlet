@@ -1182,3 +1182,386 @@ body {
 .OutSideJobsItemInfo span i {
     margin-left: 4px;
 }
+
+#Login {
+    display: none;
+}
+
+.LoginInner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999999;
+}
+
+.LoginFade {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #220c41;
+    opacity: 0.6;
+}
+
+.LoginDiv {
+    display: block;
+    margin: 0 auto;
+    width: 500px;
+    background: white;
+    padding: 22px;
+    max-height: 90%;
+    overflow-y: auto;
+    min-height: 590px;
+    position: relative;
+    padding-top: 49px;
+}
+
+.LoginForm {
+    display: none;
+    margin: 0 auto;
+    width: 100%;
+    text-align: right;
+}
+
+.LoginFormRow {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.LoginFormRow label {
+    display: block;
+    margin: 19px auto 0;
+    width: 100%;
+    padding: 9px 0px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #502982;
+}
+
+.LoginFormRow .InputHolder {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    position: relative;
+    background: #fdfcff;
+    border: solid 1px #ddd4e9;
+}
+
+.LoginFormRow .InputHolder input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    padding: 0px 15px;
+    font-size: 12px;
+    padding-right: 40px;
+    z-index: 0;
+}
+
+.LoginFormRow .InputHolder u {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #886bc05e;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.LoginFormRow .InputHolder u i {
+}
+
+.RememberMe {
+    display: block;
+    margin: 26px auto 0;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    color: #502982;
+    position: relative;
+}
+
+.RememberMe input {
+    cursor: pointer;
+}
+
+.RememberMe a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #4db748;
+}
+
+.LoginFormRow button[type=submit] {
+    display: block;
+    margin: 27px auto 0;
+    width: 100%;
+    padding: 12px 1px;
+    border: none;
+    background: #4db748;
+    color: aliceblue;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+
+.LoginFormRow button[type=submit]:hover {
+    background: #502982;
+}
+
+.OtherLoginMethods {
+    display: block;
+    margin: 29px auto 0;
+    width: 100%;
+    border-top: solid 1px #eee9f5;
+}
+
+.OtherLoginMethods h3 {
+    display: block;
+    margin: 18px auto;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #502982;
+}
+
+.OtherLoginMethodsOptions {
+    display: flex;
+}
+
+.OtherLoginMethodsOptions button {
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+    margin: 1px 2%;
+    padding: 9px 4px;
+    padding-left: 20px;
+    text-align: center;
+    color: aliceblue;
+    position: relative;
+    border: none;
+    transition: 300ms;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.OtherLoginMethodsOptions button img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    filter: invert(1);
+    padding: 10px;
+    background: #ffffff24;
+}
+
+
+.OtherLoginMethodsOptions button:hover {
+    transform: scale(1.1);
+}
+
+.SeePassword {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    border: none;
+    background: none;
+    z-index: 3;
+    color: #4db748;
+    font-size: 20px;
+    padding: 0px 12px;
+    transition: 300ms;
+}
+
+.SeePassword i {
+}
+
+.SeePassword:hover {
+    background: #00000012;
+}
+
+.PasswordIsVisible {
+    color: #f43a3a;
+}
+
+.LoginRegisterTabs {
+    display: flex;
+    justify-content: center;
+    width: 98.4%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.LoginRegisterTabs button {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 13px 0px;
+    position: relative;
+    border: none;
+    background: none;
+    /* border-bottom: solid 1px #eee9f5; */
+    font-weight: bold;
+    color: #502982;
+    font-size: 13px;
+    transition: 300ms;
+}
+
+.LoginRegisterTabs button div {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    transition: 300ms;
+    height: 100%;
+    background: #4db748;
+    z-index: -1;
+}
+
+.LoginRegisterTabs .ActiveLoginRegTab {
+    color: aliceblue;
+    pointer-events: none;
+}
+
+.LoginRegisterTabs .ActiveLoginRegTab div {
+    width: 100%;
+}
+
+.FormTwoBtns {
+    display: flex;
+    justify-content: center;
+    margin: 31px auto 0;
+}
+
+.FormTwoBtns button {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    margin: 1px 5px;
+    padding: 11px 0px;
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #502982;
+    border: none;
+    transition: 300ms;
+    background: #f3f3f3;
+}
+
+.FormTwoBtns button input {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    width: auto;
+    height: 100%;
+}
+
+.FormTwoBtns .ActiveRegOption {
+    background: #502982;
+    color: aliceblue;
+    pointer-events: none;
+}
+
+.LoginRegisterTabs button:hover {
+    background: #f9f9f9;
+}
+
+.FormTwoBtns button:hover {
+    background: #eaeaea;
+}
+
+.MobileNumberSelectCountry {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.MobileNumberSelectCountry select {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    border-right: solid 1px #d8d8d8;
+    padding: 0px 6px;
+    font-size: 13px;
+    background: #00000008;
+    color: #502982;
+    font-weight: bold;
+}
+
+.LoginFormRow .InputWithSelect input {
+    text-align: left;
+    padding-left: 35%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#RegNAME {
+    display: none;
+}
+
+.RememberMe u {
+    color: #4db748;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.RememberMe u:hover {
+    /* text-decoration: underline; */
+    color: #6c9aea;
+}
+
+
+.LoginDiv::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.LoginDiv {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    if($('#HomePage').length === 1){
+        $('.HeaderFirstRightInner ul li').first().addClass('active-HeaderTab')
+    }
 
     $('.SpecialOffersSlider').slick({
         dots: true,
@@ -57,3 +60,42 @@ $(window).on('resize',function () {
         $('.SpecialOffersSlider .slick-dots li').html('<div></div>')
     }, 500)
 });
+
+function ShowPassword(el){
+    var Target = el.parent().find('input');
+    if(Target.attr('type') === 'password'){
+        Target.attr('type','text')
+        el.addClass('PasswordIsVisible')
+        el.find('i').attr('class','fas fa-eye-slash')
+    }else{
+        Target.attr('type','password')
+        el.removeClass('PasswordIsVisible')
+        el.find('i').attr('class','fas fa-eye')
+    }
+}
+
+function LoginPopUp(el){
+    $(el.attr('rel')).fadeIn(600)
+    $('.LoginRegisterTabs button').first().click()
+}
+
+function SwitchRegSignStatus(el){
+    $('.LoginForm').hide()
+    $(el.attr('rel')).show()
+    el.parent().find('button').removeClass('ActiveLoginRegTab')
+    el.addClass('ActiveLoginRegTab')
+}
+
+function RegOptionsFunc(el){
+    el.find('input').prop('checked','true')
+    el.parent().find('button').removeClass('ActiveRegOption')
+    el.addClass('ActiveRegOption')
+    if (el.attr('rel') === 'Buissnes'){
+        $('#RegNAME label').text('إسم المؤسسة/الشركة')
+        $('#RegNAME input').attr('placeholder','اكتب هنا : إسم المؤسسة/الشركة')
+    }else{
+        $('#RegNAME label').text('الأسم')
+        $('#RegNAME input').attr('placeholder','اكتب هنا : إسمك من مقطعين على الأقل')
+    }
+    $('#RegNAME').slideDown()
+}
