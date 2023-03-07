@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $searchLocations = Location::pluck('name', 'id');
+        $searchLocations  = Location::pluck('name', 'id');
         $searchCategories = Category::all();
         $searchByCategory = Category::withCount('jobs')
             ->orderBy('jobs_count', 'desc')
