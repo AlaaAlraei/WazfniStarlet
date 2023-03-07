@@ -1,3 +1,4 @@
+
 @extends('layouts.user')
 
 @section('content')
@@ -8,3 +9,8 @@
 @section('scripts')
 
 @endsection
+
+@foreach($jobs as $key => $job)
+
+@endforeach
+
