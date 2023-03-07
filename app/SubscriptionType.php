@@ -20,7 +20,6 @@ class SubscriptionType extends Model
 
     protected $fillable = [
         'title',
-        'num_job_post',
         'num_month',
         'amount',
         'created_at',

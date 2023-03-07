@@ -22,7 +22,6 @@ class Subscription extends Model
         'type_id',
         'user_id',
         'start_date',
-        'end_date',
         'created_at',
         'updated_at',
         'deleted_at',
