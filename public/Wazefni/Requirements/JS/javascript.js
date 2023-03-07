@@ -44,13 +44,12 @@ $(document).ready(function () {
 
 
 $(window).on('load',function () {
-    // setTimeout(function(){
-    //     $('.PreloaderInner').addClass('animate__fadeOutUp')
-    // }, 1000)
-    // setTimeout(function(){
-    //     $('.Preloader').remove()
-    // }, 2000)
-    $('.Preloader').remove()
+    setTimeout(function(){
+        $('.PreloaderInner').addClass('animate__fadeOutUp')
+    }, 500)
+    setTimeout(function(){
+        $('.Preloader').remove()
+    }, 1000)
 });
 
 $(window).on('resize',function () {
