@@ -10,6 +10,7 @@ use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CompaniesController extends Controller
@@ -34,6 +35,7 @@ class CompaniesController extends Controller
 
     public function store(StoreCompanyRequest $request)
     {
+        $request['created_by_id'] = Auth::user()->id;
         $company = Company::create($request->all());
 
         if ($request->input('logo', false)) {
