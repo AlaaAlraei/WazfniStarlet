@@ -46,7 +46,8 @@
                     <div></div>
                 </button>
             </div>
-            <form class="LoginForm animate__animated animate__fadeInUp" id="LoginForm" method="POST" action="{{ route('login') }}">
+            <form class="LoginForm animate__animated animate__fadeInUp" id="LoginForm" method="POST" action="{{ route('clientLogin') }}">
+                @csrf
                 <div class="LoginFormRow">
                     <label>
                         البريد الاكتروني
@@ -55,7 +56,7 @@
                         <u>
                             <i class="fas fa-envelope"></i>
                         </u>
-                        <input type="text" placeholder="example@wzfni.com" name="email" required>
+                        <input type="email" placeholder="example@wzfni.com" name="username" required>
                     </div>
                 </div>
                 <div class="LoginFormRow">
@@ -73,7 +74,7 @@
                     </div>
                 </div>
                 <span class="RememberMe">
-                    <input type="checkbox" name="remember">
+                    <input value="{{ csrf_token() }}" type="checkbox" name="remember_token">
                     تذكرني
                     <a href="{{ route('password.request') }}" target="_blank">
                         نسيت كلمة السر ؟
@@ -220,6 +221,9 @@
         </div>
     </div>
 </div>
+<form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
 @include('partials.footer')
 
 <script src="{{ asset('') }}Wazefni/Requirements/JS/bootstrap.min.js" crossorigin="anonymous"></script>

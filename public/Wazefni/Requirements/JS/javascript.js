@@ -99,3 +99,12 @@ function RegOptionsFunc(el){
     }
     $('#RegNAME').slideDown()
 }
+
+function UserOptions(el){
+    if($(el.attr('rel')).is(':visible')){
+        $(el.attr('rel')).slideUp()
+    }else{
+        $(el.attr('rel')).slideDown()
+    }
+}
+

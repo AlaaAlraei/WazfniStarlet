@@ -1,10 +1,14 @@
 <?php
 
 Route::redirect('/home', '/admin');
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin');
 Route::get('search', 'HomeController@search')->name('search');
+Route::get('GetAllJobs', 'JobController@GetAllJobs')->name('GetAllJobs');
+Route::get('GetByCategoriesJobs/{category}', 'JobController@GetByCategoriesJobs')->name('GetByCategoriesJobs');
 Route::resource('jobs', 'JobController')->only(['index', 'show']);
 Route::get('category/{category}', 'CategoryController@show')->name('categories.show');
 Route::get('location/{location}', 'LocationController@show')->name('locations.show');

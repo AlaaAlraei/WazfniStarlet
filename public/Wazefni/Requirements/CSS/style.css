@@ -1565,3 +1565,55 @@ input[type=number] {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+.UserOptions {
+    position: absolute;
+    left: 27%;
+    top: 60px;
+    z-index: 9999999999999;
+    background: #f3f3f3;
+    width: 16%;
+    padding: 3px 0px;
+    border: solid 1px #e1e1e1;
+    box-shadow: 0px 1px 6px -3px #00000012;
+    display: none;
+}
+
+.UserOptions ul {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+}
+
+.UserOptions ul li {
+    display: block;
+    margin: 15px auto;
+    width: 92%;
+    padding: 10px 13px;
+    background: #dddddd;
+    cursor: pointer;
+    transition: 300ms;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #391364;
+    padding-left: 40px;
+    position: relative;
+}
+
+.UserOptions ul li:hover {
+    background: #cbcbcb;
+    transform: scale(1.04);
+}
+
+.UserOptions ul li i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

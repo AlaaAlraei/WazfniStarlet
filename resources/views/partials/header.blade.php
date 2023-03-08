@@ -33,10 +33,10 @@
                         <div class="HeaderUserIndicator">
                             <h2>
                                 @auth
-                                <u>
+                                <u onclick="UserOptions($(this))" rel=".UserOptions">
                                     <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.png">
                                     <span>
-                                        محمد الترك
+                                        {{ Auth::user()->name }}
                                     </span>
                                     <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </u>
@@ -76,6 +76,28 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="UserOptions">
+    <ul>
+        @auth('user_management_access')
+            <li onclick="$(this).find('a')[0].click()">
+                <a href="{{ route('admin') }}" class="d-none"></a>
+                <i class="fas fa-user"></i>
+                Cpanel
+            </li>
+        @else
+            <li onclick="$(this).find('a')[0].click()">
+                <a href="{{ route('profile') }}" class="d-none"></a>
+                <i class="fas fa-user"></i>
+                Profile
+            </li>
+        @endauth
+        <li onclick="$('#logoutform').submit()">
+            <i class="fas fa-sign-out-alt"></i>
+            LogOut
+        </li>
+    </ul>
 </div>
 
 <div class="container-fluid" id="Banner">
