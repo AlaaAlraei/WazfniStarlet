@@ -281,7 +281,7 @@
                                             <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
                                         </div>
                                         <div class="LatestJobsItemInfo">
-                                            <h5 title="{{ $job->company->created_by->email_verified_at ? 'حساب موثق' : '' }}">
+                                            <h5 title="{{ isset($job->company->created_by->email_verified_at) ? 'حساب موثق' : '' }}">
                                                 <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
                                                 {{ $job->company->name ?? '' }}
                                                 <u>

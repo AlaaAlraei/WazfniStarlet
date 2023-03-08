@@ -39,7 +39,7 @@ class Company extends Model implements HasMedia
 
     public function created_by()
     {
-        return $this->hasMany(User::class, 'created_by_id', 'id');
+        return $this->belongsTo(User::class, 'created_by_id');
     }
 
     public function jobs()
