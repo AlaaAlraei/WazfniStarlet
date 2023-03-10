@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    if($('.ActiveCategory').length === 1){
+        $('.ActiveCategory').parent().click()
+    }
+
     if($('#HomePage').length === 1){
         $('.HeaderFirstRightInner ul li').first().addClass('active-HeaderTab')
     }
@@ -53,6 +57,8 @@ $(window).on('load',function () {
     setTimeout(function(){
         $('.Preloader').remove()
     }, 1000)
+
+    $('html').animate({ scrollTop: 0 }, 'slow'); return true;
 });
 
 $(window).on('resize',function () {

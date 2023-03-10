@@ -67,70 +67,21 @@
                                         </div>
                                     </h10>
                                 </div>
-                                <div class="LatestJobsItemsGH">
-                                    @foreach($jobs as $key => $job)
-                                        <div class="LatestJobsItem">
-                                            <div class="LatestJobsItemImage">
-                                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                            </div>
-                                            <div class="LatestJobsItemInfo">
-                                                <h5 title="{{ isset($job->company->created_by->email_verified_at) ? 'حساب موثق' : '' }}">
-                                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                         class="SpecialSliderUser">
-                                                    {{ $job->company->name ?? '' }}
-                                                    <u>
-                                                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                                    </u>
-                                                </h5>
-                                                <h3>
-                                                    {{ $job->short_description ?? '' }}
-                                                </h3>
-                                                <span>
-                                                <i class="fas fa-clock"></i>
-                                                {{ $job->created_at->format('l jS \o\f F Y h:i:s A') ?? '' }}
-                                            </span>
-                                                @if($job->promoted == 1)
-                                                    <h12 title="إعلان مميز">
-                                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
-                                                    </h12>
-                                                @endif
-                                            </div>
+                                <div class="JobsCardLoader">
+                                    <div class="JobsCardLoaderInner">
+                                        <div class="JobsCardLoaderDiv">
+                                            <img src="{{asset("")}}Wazefni/Requirements/IMG/Loader.gif">
                                         </div>
-                                    @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="LatestJobsItemsGH">
+
                                 </div>
 
                                 <div class="LatestJobsPagination">
                                     <div class="LatestJobsPaginationInner">
-                                        <button type="button" class="ActivePagination">
-                                            1
-                                        </button>
-                                        <button type="button">
-                                            2
-                                        </button>
-                                        <button type="button">
-                                            3
-                                        </button>
-                                        <button type="button">
-                                            4
-                                        </button>
-                                        <button type="button">
-                                            5
-                                        </button>
-                                        <button type="button">
-                                            6
-                                        </button>
-                                        <button type="button">
-                                            7
-                                        </button>
-                                        <button type="button">
-                                            8
-                                        </button>
-                                        <button type="button">
-                                            9
-                                        </button>
-                                        <button type="button">
-                                            10
-                                        </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -350,6 +301,14 @@
             $('.JobCategoryItemDiv').removeClass('ActiveCategory')
             el.find('.JobCategoryItemDiv').addClass('ActiveCategory')
             $('.LatestJobsGH .SectionHeader h10 u').text(el.find('span').text())
+            $('.LatestJobsItemsGH').html('')
+            $('.LatestJobsPaginationInner').html('')
+            $('.LatestJobsItem').hide()
+            $('.LatestJobsPagination').hide()
+            $('.JobsCardLoader').show()
+            $('html, body').animate({
+                scrollTop: $(".LatestJobsItemsGH").offset().top
+            }, 2000);
 
             $.ajax({
                 url: el.attr('url'),
@@ -357,34 +316,57 @@
                 dataType: 'json',
                 complete: function (){
                     setTimeout(function (){
-                        alert('Completed')
+                        $('.JobsCardLoader').hide()
+                        $('.LatestJobsItem').show()
+                        $('.LatestJobsPagination').show()
                     }, 1000)
                 },
                 success: function (data) {
-                    alert('phase02')
-                    $('.LatestJobsItemsGH').html('')
                     $.each(data.jobs['data'], function (k, v) {
-                        $(".LatestJobsItemsGH").append('<div class="LatestJobsItem">' +
+                        var d = new Date(v['created_at']);
+                        var month = d.toLocaleString('default', {month: 'long'});
+                        var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
+
+
+                        var date = new Date(strDate);
+                        var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                            "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+                        ];
+                        var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+                        var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+
+                        console.log(delDateString); // Outputs اﻷحد, 4 ديسمبر, 2016
+
+
+
+                        var Name    = v['company']['logo']['thumbnail'];
+                        var NewName = Name.replace('localhost','localhost:8000')
+                        $(".LatestJobsItemsGH").append('<div class="LatestJobsItem animate__animated animate__fadeIn" style="display: none">' +
                             '<div class="LatestJobsItemImage">' +
                             '<img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Job.webp">' +
                             '</div>' +
                             '<div class="LatestJobsItemInfo">' +
-                            '<h5 title="">' +
-                            '<img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">' +
-                            ' Starlet IT Company' +
+                            '<h5 title="'+v['company']['name']+'">' +
+                            '<img src="'+NewName+'" class="SpecialSliderUser">' +
+                             v['company']['name']+
                             '<u>' +
                             ' <i class="fa fa-check-circle" aria-hidden="true"></i>' +
                             '</u>' +
                             '</h5>' +
                             '<h3>' +
-                            ' Description  Description  Description  Description  Description  ' +
+                             v['title'] +
                             '</h3>' +
+                             '<p title="'+v['full_description']+'">' +
+                             v['full_description'] +
+                            '</p>'+
                             '<span>' +
                             '<i class="fas fa-clock"></i>' +
-                            ' Wednesday 8th of March 2023 06:00:29 PM' +
+                            delDateString +
                             '</span>' +
                             '</div>' +
                             '</div>');
+
+
                     });
 
                     console.log('im here');
@@ -393,9 +375,7 @@
                         console.log('No More');
                     } else
                     {
-
                         // $("#MoreOtherExperiences").attr('rel', data.jobs['next_page_url']);
-                        $('.LatestJobsPaginationInner').html('')
                         $.each(data.jobs['links'], function (k, v) {
                             var urlWithPaginationNumber = v['url'];
                             console.log(v['url']);

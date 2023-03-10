@@ -228,6 +228,7 @@
 
 <script src="{{ asset('') }}Wazefni/Requirements/JS/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/aos.js"></script>
+<script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/numscroller-1.0.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/slick.min.js"></script>

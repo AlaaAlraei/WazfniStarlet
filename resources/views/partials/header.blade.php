@@ -80,9 +80,9 @@
 
 <div class="UserOptions">
     <ul>
-        @auth('user_management_access')
+        @can('user_management_access')
             <li onclick="$(this).find('a')[0].click()">
-                <a href="{{ route('admin') }}" class="d-none"></a>
+                <a href="{{ route('admin.home') }}" class="d-none"></a>
                 <i class="fas fa-user"></i>
                 Cpanel
             </li>
@@ -92,7 +92,7 @@
                 <i class="fas fa-user"></i>
                 Profile
             </li>
-        @endauth
+        @endcan
         <li onclick="$('#logoutform').submit()">
             <i class="fas fa-sign-out-alt"></i>
             LogOut

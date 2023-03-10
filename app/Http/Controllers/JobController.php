@@ -21,7 +21,7 @@ class JobController extends Controller
 
     public function GetAllJobs()
     {
-        $jobs = Job::with('company')
+        $jobs = Job::with('company.jobs.company.created_by')
             ->paginate(7);
 
         return response()->json(array(
@@ -33,7 +33,7 @@ class JobController extends Controller
 
     public function GetByCategoriesJobs(Category $category)
     {
-        $jobs = Job::with('company')
+        $jobs = Job::with('company.jobs.company.created_by')
             ->whereHas('categories', function($query) use($category) {
                 $query->whereId($category->id);
             })
