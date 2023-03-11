@@ -421,7 +421,7 @@ body {
     position: relative;
 }
 
-#HomeSections .OutSideJobsGH .OutSideJobsItem:nth-last-child(2) .OutSideJobsItemInfo {
+.OutSideJobsGH .OutSideJobsItem:nth-last-child(2) .OutSideJobsItemInfo {
     border-bottom: none;
 }
 
@@ -1752,4 +1752,337 @@ input[type=number] {
 
 .SpecialOfferIndicator .JobDetails {
     left: 42px;
+}
+
+.InteractWithJob {
+    display: block;
+    margin: 0 0;
+    width: 90%;
+}
+
+
+.InteractWithJob button {
+    display: block;
+    margin: 22px auto;
+    width: fit-content;
+    padding: 17px 45px;
+    font-weight: bold;
+    color: aliceblue;
+    border: none;
+    background: #51b749;
+    font-size: 19px;
+    border-radius: 4px;
+    transition: 300ms;
+}
+
+.InterActWithJobNotes {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: right;
+    color: #686868;
+}
+
+.InteractWithJobInner {
+    display: block;
+    margin: 47px auto;
+    width: 100%;
+    background: white;
+    padding: 16px;
+}
+
+.InterActWithJobNotes h1 {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.InterActWithJobNotes p {
+    display: block;
+    margin: 2px auto;
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    padding-right: 17px;
+}
+
+.InterActWithJobNotes p i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    height: 100%;
+}
+
+.InteractWithJob button:hover {
+    background: #391364;
+}
+
+.PublishedBy {
+    display: block;
+    margin: 0 0;
+    width: 90%;
+}
+
+.PublishedByInner {
+    display: block;
+    margin: 42px auto;
+    width: 100%;
+    background: white;
+    position: relative;
+    padding: 10px 10px;
+    padding-right: 119px;
+    text-align: right;
+}
+
+.PublishedByInner h1 {
+    display: block;
+    margin: 9px auto 15px;
+    width: 100%;
+    font-weight: bold;
+    color: #391364;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.PublishedByInner p {
+    display: block;
+    margin: 11px auto;
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    padding-right: 18px;
+    color: #505050;
+}
+
+.PublishedByInner p u {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0px 9px;
+}
+
+.PublishedByInner p i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+}
+
+.PublishedByImgHolder {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    margin: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.PublishedByImgHolder img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    filter: brightness(90%);
+}
+
+.PublishedByInner h1:hover {
+    color: #51b749;
+    text-decoration: underline;
+}
+
+.JobShowPaper {
+    display: block;
+    margin: 47px auto;
+    width: 100%;
+    background: white;
+    padding: 1px 0px;
+}
+
+.JobShowPaperImgHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 416px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.JobShowPaperImgHolderInner {
+}
+
+.JobShowPaperImgHolderInner img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 80%;
+    max-width: 100%;
+    filter: brightness(90%);
+}
+
+.JobPaperInfo {
+    display: block;
+    margin: 20px auto;
+    width: 92%;
+    text-align: right;
+    position: relative;
+    padding-left: 26%;
+}
+
+.JobPaperInfo h1 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #391364;
+}
+
+.JobPaperInfo span {
+    display: table;
+    margin: 24px 0;
+    width: fit-content;
+    background: whitesmoke;
+    padding: 4px 9px;
+    border-radius: 8px;
+    color: #636363;
+    font-size: 12px;
+}
+
+.JobPaperInfo span i {
+    margin-left: 5px;
+}
+
+.JobPaperOptions {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 23%;
+}
+
+.JobPaperOptionsInner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.JobPaperOptionsInner button {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    margin: 0px 5px;
+    position: relative;
+    padding: 7px 3px;
+    padding-right: 30px;
+    border: solid 3px #391364;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #391364;
+    background: whitesmoke;
+    transition: 300ms;
+}
+
+.JobPaperOptionsInner button img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    /* max-width: 30px; */
+    padding: 9px;
+    transition: 300ms;
+}
+
+.JobPaperOptionsInner button:hover {
+    background: #391364;
+    color: aliceblue;
+}
+
+.JobPaperOptionsInner button:hover img {
+    filter: invert(1) brightness(2.5);
+}
+
+.JobPaperDetails {
+    display: block;
+    margin: 32px auto;
+    width: 92%;
+    background: #f3f3f3;
+    text-align: right;
+}
+
+.JobPaperDetails h1 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 21px;
+    font-weight: bold;
+    padding: 11px 22px 22px;
+    background: #ffffff;
+    color: #391364;
+}
+
+.JobPaperDetails p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px 26px;
+    border-bottom: solid 1px #ededed;
+    font-weight: bold;
+    color: #616161;
+    font-size: 14px;
+}
+
+.JobPaperDetails p u {
+    float: left;
+    text-decoration: none;
+}
+
+.JobPaperDetails p u i {
+    margin-left: 5px;
+}
+
+.PublishedByInner h1 i {
+    font-size: 14px;
+    color: #51b749;
+}
+
+.JobPaperMoreDetails {
+    display: block;
+    margin: 0 auto 71px;
+    width: 92%;
+    text-align: right;
+}
+
+.JobPaperMoreDetails h1 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 21px;
+    font-weight: bold;
+    padding: 11px 22px;
+    color: #391364;
+}
+
+.JobPaperMoreDetails p {
+    display: block;
+    margin: 14px auto;
+    width: 96%;
+    font-size: 20px;
 }
