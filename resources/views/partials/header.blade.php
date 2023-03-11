@@ -79,23 +79,24 @@
 </div>
 
 <div class="UserOptions">
+    <div class="UserOptionsEdge"></div>
     <ul>
         @can('user_management_access')
             <li onclick="$(this).find('a')[0].click()">
                 <a href="{{ route('admin.home') }}" class="d-none"></a>
                 <i class="fas fa-user"></i>
-                Cpanel
+                شاشة التحكم
             </li>
         @else
             <li onclick="$(this).find('a')[0].click()">
                 <a href="{{ route('profile') }}" class="d-none"></a>
                 <i class="fas fa-user"></i>
-                Profile
+                الملف الشخصي
             </li>
         @endcan
         <li onclick="$('#logoutform').submit()">
             <i class="fas fa-sign-out-alt"></i>
-            LogOut
+            تسجيل الخروج
         </li>
     </ul>
 </div>

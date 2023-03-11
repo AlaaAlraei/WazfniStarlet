@@ -222,24 +222,25 @@
                                 </p>
                             </div>
                             <div class="col-md-2 col-sm-4">
-                                <div class="JobCategoryItem">
+                                <div class="JobCategoryItem" onclick="SelectThisCategory($(this))" url="{{ route('GetAllJobs') }}">
                                     <div class="JobCategoryItemDiv ActiveCategory">
                                         <div class="JobCategoryItemInner">
-                                            <img src="https://cdn-icons-png.flaticon.com/128/3388/3388617.png" style="padding: 15px;">
+                                            <img src="https://cdn-icons-png.flaticon.com/128/3388/3388617.png"
+                                                 style="padding: 15px;">
                                         </div>
                                         <span>
-                                       الكل
-                                    </span>
+                                           الكل
+                                       </span>
                                     </div>
                                 </div>
                             </div>
                             @foreach($searchCategories as $key => $searchCategory)
-
                                 <div class="col-md-2 col-sm-4">
-                                    <div class="JobCategoryItem">
+                                    <div class="JobCategoryItem" onclick="SelectThisCategory($(this))" url="{{ route('GetByCategoriesJobs', [$searchCategory->id]) }}">
                                         <div class="JobCategoryItemDiv">
                                             <div class="JobCategoryItemInner">
-                                                <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/$searchCategory->icon") : str_replace("public", "storage", asset("$searchCategory->icon")) }}">
+                                                <img
+                                                    src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/$searchCategory->icon") : str_replace("public", "storage", asset("$searchCategory->icon")) }}">
                                             </div>
                                             <span rel="{{ $searchCategory->id ?? '' }}">
                                                 {{ $searchCategory->name ?? '' }}
@@ -247,7 +248,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             @endforeach
 
 
@@ -268,73 +268,28 @@
                                             الكل
                                         </u>
                                         <div class="Reload">
-                                            <button type="button">
+                                            <button type="button" onclick="$('.ActiveCategory').parent().click()">
                                                 <img src="{{ asset('') }}Wazefni/Requirements/IMG/Reload.png">
                                                 تحديث
                                             </button>
                                         </div>
                                     </h10>
                                 </div>
-                                @foreach($jobs as $key => $job)
-                                    <div class="LatestJobsItem">
-                                        <div class="LatestJobsItemImage">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                        </div>
-                                        <div class="LatestJobsItemInfo">
-                                            <h5 title="{{ isset($job->company->created_by->email_verified_at) ? 'حساب موثق' : '' }}">
-                                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                                {{ $job->company->name ?? '' }}
-                                                <u>
-                                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                                </u>
-                                            </h5>
-                                            <h3>
-                                                {{ $job->short_description ?? '' }}
-                                            </h3>
-                                            <span>
-                                                <i class="fas fa-clock"></i>
-                                                {{ $job->created_at->format('l jS \o\f F Y h:i:s A') ?? '' }}
-                                            </span>
-                                            @if($job->promoted == 1)
-                                                <h12 title="إعلان مميز">
-                                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
-                                                </h12>
-                                            @endif
+                                <div class="JobsCardLoader">
+                                    <div class="JobsCardLoaderInner">
+                                        <div class="JobsCardLoaderDiv">
+                                            <img src="{{asset("")}}Wazefni/Requirements/IMG/Loader.gif">
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+
+                                <div class="LatestJobsItemsGH">
+
+                                </div>
+
                                 <div class="LatestJobsPagination">
                                     <div class="LatestJobsPaginationInner">
-                                        <button type="button" class="ActivePagination">
-                                            1
-                                        </button>
-                                        <button type="button">
-                                            2
-                                        </button>
-                                        <button type="button">
-                                            3
-                                        </button>
-                                        <button type="button">
-                                            4
-                                        </button>
-                                        <button type="button">
-                                            5
-                                        </button>
-                                        <button type="button">
-                                            6
-                                        </button>
-                                        <button type="button">
-                                            7
-                                        </button>
-                                        <button type="button">
-                                            8
-                                        </button>
-                                        <button type="button">
-                                            9
-                                        </button>
-                                        <button type="button">
-                                            10
-                                        </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -353,7 +308,8 @@
                             </div>
                             <form class="OutSideJobsForm">
                                 <p>
-                                    أدخل بريدك الإلكتروني للإشتراك في هذا الموقع لتستقبل أحدث المواضيع من خلال البريد الإلكتروني.
+                                    أدخل بريدك الإلكتروني للإشتراك في هذا الموقع لتستقبل أحدث المواضيع من خلال البريد
+                                    الإلكتروني.
                                 </p>
                                 <input type="text" placeholder="اكتب هنا : بريدك الإلكتروني">
                                 <input type="submit" value="إشترك">
@@ -364,12 +320,6 @@
                             <div class="SectionHeader">
                                 <h10>
                                     وظائف خارج الأردن
-                                    <div class="Reload">
-                                        <button type="button">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Reload.png">
-                                            تحديث
-                                        </button>
-                                    </div>
                                 </h10>
                             </div>
                             <div class="OutSideJobsGH">
@@ -379,7 +329,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -404,7 +355,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -429,7 +381,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -454,7 +407,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -473,7 +427,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -492,7 +447,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -511,7 +467,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>

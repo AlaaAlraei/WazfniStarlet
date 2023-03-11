@@ -21,8 +21,8 @@
                                                  style="padding: 15px;">
                                         </div>
                                         <span>
-                                       الكل
-                                    </span>
+                                           الكل
+                                       </span>
                                     </div>
                                 </div>
                             </div>
@@ -296,108 +296,7 @@
 
 @section('scripts')
 
-    <script>
-        function SelectThisCategory(el) {
-            $('.JobCategoryItemDiv').removeClass('ActiveCategory')
-            el.find('.JobCategoryItemDiv').addClass('ActiveCategory')
-            $('.LatestJobsGH .SectionHeader h10 u').text(el.find('span').text())
-            $('.LatestJobsItemsGH').html('')
-            $('.LatestJobsPaginationInner').html('')
-            $('.LatestJobsItem').hide()
-            $('.LatestJobsPagination').hide()
-            $('.JobsCardLoader').show()
-            $('html, body').animate({
-                scrollTop: $(".LatestJobsItemsGH").offset().top
-            }, 2000);
 
-            $.ajax({
-                url: el.attr('url'),
-                type: "GET",
-                dataType: 'json',
-                complete: function (){
-                    setTimeout(function (){
-                        $('.JobsCardLoader').hide()
-                        $('.LatestJobsItem').show()
-                        $('.LatestJobsPagination').show()
-                    }, 1000)
-                },
-                success: function (data) {
-                    $.each(data.jobs['data'], function (k, v) {
-                        var d = new Date(v['created_at']);
-                        var month = d.toLocaleString('default', {month: 'long'});
-                        var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
-
-
-                        var date = new Date(strDate);
-                        var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
-                            "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
-                        ];
-                        var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
-                        var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
-
-                        console.log(delDateString); // Outputs اﻷحد, 4 ديسمبر, 2016
-
-
-
-                        var Name    = v['company']['logo']['thumbnail'];
-                        var NewName = Name.replace('localhost','localhost:8000')
-                        $(".LatestJobsItemsGH").append('<div class="LatestJobsItem animate__animated animate__fadeIn" style="display: none">' +
-                            '<div class="LatestJobsItemImage">' +
-                            '<img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Job.webp">' +
-                            '</div>' +
-                            '<div class="LatestJobsItemInfo">' +
-                            '<h5 title="'+v['company']['name']+'">' +
-                            '<img src="'+NewName+'" class="SpecialSliderUser">' +
-                             v['company']['name']+
-                            '<u>' +
-                            ' <i class="fa fa-check-circle" aria-hidden="true"></i>' +
-                            '</u>' +
-                            '</h5>' +
-                            '<h3>' +
-                             v['title'] +
-                            '</h3>' +
-                             '<p title="'+v['full_description']+'">' +
-                             v['full_description'] +
-                            '</p>'+
-                            '<span>' +
-                            '<i class="fas fa-clock"></i>' +
-                            delDateString +
-                            '</span>' +
-                            '</div>' +
-                            '</div>');
-
-
-                    });
-
-                    console.log('im here');
-                    if (data.jobs['next_page_url'] == null)
-                    {
-                        console.log('No More');
-                    } else
-                    {
-                        // $("#MoreOtherExperiences").attr('rel', data.jobs['next_page_url']);
-                        $.each(data.jobs['links'], function (k, v) {
-                            var urlWithPaginationNumber = v['url'];
-                            console.log(v['url']);
-                            console.log(v['label']);
-                            $('.LatestJobsPaginationInner').append('<button type="button" onclick="SelectThisCategory($(this))" url="'+urlWithPaginationNumber+'">'
-                            +v['label']+
-                            '</button>')
-                        });
-
-                    }
-                },
-                error: function (xhr, ajaxOptions, thrownError, data) {
-                    console.log(xhr);
-                    console.log(ajaxOptions);
-                    console.log(thrownError);
-                    console.log(data);
-                }
-
-            });
-        }
-
-    </script>
 
 @endsection
 

@@ -233,6 +233,121 @@
 <script src="{{ asset('') }}Wazefni/Requirements/JS/numscroller-1.0.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/slick.min.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/javascript.js"></script>
+
+<script>
+    function SelectThisCategory(el) {
+        if($('.JobCategoryItem').hasClass('scrollonclick')){
+            $('html, body').animate({
+                scrollTop: $(".LatestJobsItemsGH").offset().top
+            }, 2000);
+        }
+
+        if(el.parent().hasClass('LatestJobsPaginationInner')){
+            el.parent().find('button').removeClass('ActivePagination')
+            el.addClass('ActivePagination')
+        }else{
+            $('.JobCategoryItemDiv').removeClass('ActiveCategory')
+            el.find('.JobCategoryItemDiv').addClass('ActiveCategory')
+            $('.LatestJobsGH .SectionHeader h10 u').text(el.find('span').text())
+            $('.LatestJobsPaginationInner').html('')
+        }
+        $('.LatestJobsItemsGH').html('')
+        $('.LatestJobsItem').hide()
+        $('.LatestJobsPagination').hide()
+        $('.JobsCardLoader').show()
+
+        $.ajax({
+            url: el.attr('url'),
+            type: "GET",
+            dataType: 'json',
+            complete: function (){
+                setTimeout(function (){
+                    $('.JobsCardLoader').hide()
+                    $('.LatestJobsItem').show()
+                    $('.LatestJobsPagination').show()
+                    $('.JobCategoryItem').addClass('scrollonclick')
+                }, 1000)
+            },
+            success: function (data) {
+                $.each(data.jobs['data'], function (k, v) {
+                    var d = new Date(v['created_at']);
+                    var month = d.toLocaleString('default', {month: 'long'});
+                    var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
+
+
+                    var date = new Date(strDate);
+                    var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                        "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+                    ];
+                    var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+                    var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+
+                    console.log(delDateString); // Outputs اﻷحد, 4 ديسمبر, 2016
+
+
+
+                    var Name    = v['company']['logo']['thumbnail'];
+                    var NewName = Name.replace('localhost','localhost:8000')
+                    $(".LatestJobsItemsGH").append('<div class="LatestJobsItem animate__animated animate__fadeIn" style="display: none">' +
+                        '<div class="LatestJobsItemImage">' +
+                        '<img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Job.webp">' +
+                        '</div>' +
+                        '<div class="LatestJobsItemInfo">' +
+                        '<h5 title="'+v['company']['name']+'">' +
+                        '<img src="'+NewName+'" class="SpecialSliderUser">' +
+                        v['company']['name']+
+                        '<u>' +
+                        ' <i class="fa fa-check-circle" aria-hidden="true"></i>' +
+                        '</u>' +
+                        '</h5>' +
+                        '<h3>' +
+                        v['title'] +
+                        '</h3>' +
+                        '<p title="'+v['full_description']+'">' +
+                        v['full_description'] +
+                        '</p>'+
+                        '<span>' +
+                        '<i class="fas fa-clock"></i>' +
+                        delDateString +
+                        '</span>' +
+                        '<input type="hidden" class="IsRated'+v['top_rated']+'" rel="'+v['location_id']+'">' +
+                        '</div>' +
+                        '</div>');
+                });
+
+                $('.IsRated1').parent().append('<h12 title="إعلان مميز"><img src="{{asset("")}}Wazefni/Requirements/IMG/Promoted.png"></h12>')
+
+                console.log('im here');
+                if (data.jobs['next_page_url'] == null)
+                {
+                    console.log('No More');
+                } else
+                {
+                    $('.LatestJobsPaginationInner').html('')
+                    // $("#MoreOtherExperiences").attr('rel', data.jobs['next_page_url']);
+                        $.each(data.jobs['links'], function (k, v) {
+                            var urlWithPaginationNumber = v['url'];
+                            console.log(v['url']);
+                            console.log(v['label']);
+                            $('.LatestJobsPaginationInner').append('<button type="button" onclick="SelectThisCategory($(this))" url="'+urlWithPaginationNumber+'">'
+                                +v['label']+
+                                '</button>')
+                        });
+                        $('.LatestJobsPaginationInner button').first().addClass('ActivePagination')
+
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError, data) {
+                console.log(xhr);
+                console.log(ajaxOptions);
+                console.log(thrownError);
+                console.log(data);
+            }
+
+        });
+    }
+
+</script>
 @yield('scripts')
 </body>
 </html>

@@ -3,6 +3,17 @@ $(document).ready(function () {
         $('.ActiveCategory').parent().click()
     }
 
+    $(document).mouseup(function(e)
+    {
+        var container = $(".UserOptions");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+            container.hide();
+        }
+    });
+
     if($('#HomePage').length === 1){
         $('.HeaderFirstRightInner ul li').first().addClass('active-HeaderTab')
     }
@@ -51,14 +62,16 @@ $(document).ready(function () {
 
 
 $(window).on('load',function () {
+    setTimeout(function (){
+        var HomeJobsHeight = $('.LatestJobsItemsGH').height();
+        $('.LatestJobsItemsGH').css('min-height',HomeJobsHeight)
+    }, 2000)
     setTimeout(function(){
         $('.PreloaderInner').addClass('animate__fadeOutUp')
     }, 500)
     setTimeout(function(){
         $('.Preloader').remove()
     }, 1000)
-
-    $('html').animate({ scrollTop: 0 }, 'slow'); return true;
 });
 
 $(window).on('resize',function () {

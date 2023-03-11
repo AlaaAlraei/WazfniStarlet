@@ -350,7 +350,7 @@ body {
     display: block;
     margin: 14px 0 0;
     width: fit-content;
-    background: #ebebeb;
+    background: #f5f5f5;
     padding: 4px 6px 4px 13px;
     font-size: 11px;
     border-radius: 1000px;
@@ -501,7 +501,7 @@ body {
     display: block;
     margin: 20px 0 10px;
     width: fit-content;
-    background: #ebebeb;
+    background: #f5f5f5;
     padding: 3px 6px 3px 15px;
     font-size: 11px;
     border-radius: 1000px;
@@ -595,7 +595,7 @@ body {
     display: block;
     margin: 37px auto;
     width: 100%;
-    padding: 58px 8px;
+    padding: 40px 8px;
     position: relative;
     padding-right: 22%;
     background: white;
@@ -618,7 +618,8 @@ body {
     width: 71%;
     height: auto;
     max-height: 100%;
-    filter: brightness(75%);
+    filter: brightness(90%);
+    border: solid 1px #c9c9c9;
 }
 
 .LatestJobsItem .LatestJobsItemInfo {
@@ -631,11 +632,11 @@ body {
     width: fit-content;
     z-index: 2;
     padding: 5px 11px;
-    padding-right: 26px;
+    padding-right: 31px;
     background: #51b749;
     color: aliceblue;
     border-radius: 1000px;
-    font-size: 9px;
+    font-size: 12px;
     margin: 8px 14px;
     cursor: pointer;
     transition: 300ms;
@@ -644,17 +645,17 @@ body {
 
 .LatestJobsItem .LatestJobsItemInfo h5 img {
     position: absolute;
-    right: 3px;
-    top: 2px;
-    width: 17px;
-    height: 17px;
+    right: 6px;
+    top: 12%;
+    height: 76%;
+    aspect-ratio: 1/1;
     border-radius: 1000px;
 }
 
 .LatestJobsItem .LatestJobsItemInfo h3 {
-    margin: 0 auto;
-    width: 100%;
-    font-size: 14px;
+    margin: 0 0;
+    width: 78%;
+    font-size: 17px;
     font-weight: bold;
     color: #391364;
     text-align: right;
@@ -672,7 +673,7 @@ body {
     display: block;
     margin: 10px 0 0;
     width: fit-content;
-    background: #ebebeb;
+    background: #f5f5f5;
     padding: 3px 6px 3px 15px;
     font-size: 11px;
     border-radius: 1000px;
@@ -793,7 +794,7 @@ body {
 }
 
 .SeeAllCATEGORIES button:hover {
-    background: #b4b4b4;
+    background: #52b74a;
     color: aliceblue;
 }
 
@@ -873,7 +874,7 @@ body {
     background: #55b449;
     color: aliceblue;
     text-align: right;
-    padding: 43px;
+    padding: 43px 43px 20px;
     cursor: pointer;
     transition: 300ms;
 }
@@ -906,6 +907,7 @@ body {
     margin: 18px auto 0;
     width: 100%;
     font-size: 15px;
+    min-height: 95px;
 }
 
 .MainBannerItem:hover {
@@ -952,6 +954,8 @@ body {
     text-align: right;
     cursor: pointer;
     transition: 300ms;
+    background: #462071;
+    border-radius: 6px;
 }
 
 .HeaderUserIndicator h2 u i {
@@ -1005,6 +1009,7 @@ body {
 .LatestJobsPaginationInner .ActivePagination {
     background: #391364;
     color: aliceblue;
+    pointer-events: none;
 }
 
 .LatestJobsPaginationInner button:hover {
@@ -1569,7 +1574,7 @@ input[type=number] {
 
 .UserOptions {
     position: absolute;
-    left: 27%;
+    left: 20%;
     top: 60px;
     z-index: 9999999999999;
     background: #f3f3f3;
@@ -1596,11 +1601,12 @@ input[type=number] {
     cursor: pointer;
     transition: 300ms;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     color: #391364;
-    padding-left: 40px;
+    padding-right: 40px;
     position: relative;
+    text-align: right;
 }
 
 .UserOptions ul li:hover {
@@ -1610,19 +1616,19 @@ input[type=number] {
 
 .UserOptions ul li i {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
-    width: 30px;
+    width: 40px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #55b449;
 }
 
 .LatestJobsItemsGH {
     display: block;
     margin: 0 auto;
-    min-height: 400px;
     position: relative;
 }
 
@@ -1635,7 +1641,7 @@ input[type=number] {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1652,7 +1658,7 @@ input[type=number] {
 .JobsCardLoaderDiv img {
     display: block;
     margin: 0 auto;
-    width: 120px;
+    width: 48px;
     filter: hue-rotate(-100deg) grayscale(42%);
 }
 
@@ -1664,8 +1670,22 @@ input[type=number] {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     text-align: right;
-    margin: 11px auto 18px;
-    width: 100%;
+    margin: 11px 0 18px;
+    width: 95%;
     font-size: 13px;
     color: #616161;
+}
+
+.UserOptions ul li:last-child i {
+    color: #d45757;
+}
+
+.UserOptionsEdge {
+    position: absolute;
+    right: 30px;
+    top: -6px;
+    width: 15px;
+    height: 15px;
+    background: #f3f3f3;
+    transform: rotate(45deg);
 }
