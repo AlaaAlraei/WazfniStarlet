@@ -127,3 +127,7 @@ function UserOptions(el){
     }
 }
 
+function EditProfilePop(el){
+    $('.LoginRegisterTabs button').first().click()
+    $(el.attr('rel')).show()
+}

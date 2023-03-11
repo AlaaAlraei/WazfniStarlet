@@ -84,7 +84,7 @@
         @can('user_management_access')
             <li onclick="$(this).find('a')[0].click()">
                 <a href="{{ route('admin.home') }}" class="d-none"></a>
-                <i class="fas fa-user"></i>
+                <i class="fa fa-cog" aria-hidden="true"></i>
                 شاشة التحكم
             </li>
         @else
@@ -94,6 +94,14 @@
                 الملف الشخصي
             </li>
         @endcan
+        <li>
+            <i class="fas fa-crown"></i>
+            ترقية حسابي
+        </li>
+        <li onclick="EditProfilePop($(this))" rel="#EditInformation">
+            <i class="fas fa-pen"></i>
+            تعديل معلوماتي
+        </li>
         <li onclick="$('#logoutform').submit()">
             <i class="fas fa-sign-out-alt"></i>
             تسجيل الخروج

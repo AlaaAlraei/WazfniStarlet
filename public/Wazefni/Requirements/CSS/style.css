@@ -421,25 +421,30 @@ body {
     position: relative;
 }
 
-.OutSideJobsGH .OutSideJobsItem:nth-last-child .OutSideJobsItemInfo {
+#HomeSections .OutSideJobsGH .OutSideJobsItem:nth-last-child(2) .OutSideJobsItemInfo {
+    border-bottom: none;
 }
 
 .OutSideJobsItemImg {
     position: absolute;
-    right: 0;
+    right: 2%;
     top: 0;
     width: 20%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .OutSideJobsItemImg img {
-    display: block;
-    margin: 0 auto;
-    width: 66%;
-    height: auto;
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: auto;
+    height: 80%;
+    min-width: 100%;
+    filter: brightness(90%);
 }
 
 .OutSideJobsItemInfo {
@@ -447,7 +452,7 @@ body {
     margin: 0 auto;
     width: 100%;
     padding: 40px 12px 7px;
-    padding-right: 25%;
+    padding-right: 26%;
     border-bottom: solid 1px #eeeeee;
     direction: rtl;
 }
@@ -481,9 +486,9 @@ body {
 
 .OutSideJobsItemInfo h3 {
     display: block;
-    margin: 0 auto;
-    width: 100%;
-    font-size: 12px;
+    margin: 0 0;
+    width: 94%;
+    font-size: 14px;
     font-weight: bold;
     color: #391364;
     text-align: right;
@@ -597,7 +602,7 @@ body {
     width: 100%;
     padding: 40px 8px;
     position: relative;
-    padding-right: 22%;
+    padding-right: 25%;
     background: white;
 }
 
@@ -610,16 +615,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .LatestJobsItemImage img {
     display: block;
     margin: 0 auto;
-    width: 71%;
-    height: auto;
-    max-height: 100%;
+    width: auto;
+    height: 100%;
     filter: brightness(90%);
-    border: solid 1px #c9c9c9;
+    position: absolute;
+    min-width: 100%;
 }
 
 .LatestJobsItem .LatestJobsItemInfo {
@@ -678,6 +684,7 @@ body {
     font-size: 11px;
     border-radius: 1000px;
     color: #636363;
+    cursor: context-menu;
 }
 
 .LatestJobsItem .LatestJobsItemInfo span img {
@@ -736,15 +743,15 @@ body {
 .LatestJobsItemInfo h12 {
     position: absolute;
     left: 5px;
-    bottom: 0;
+    bottom: 0px;
     background: #ce4040;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 30px;
     height: 30px;
-    margin: 11px;
-    border-radius: 7px;
+    margin: 12px;
+    border-radius: 4px;
 }
 
 .LatestJobsItemInfo h12 img {
@@ -1123,7 +1130,7 @@ body {
     display: block;
     margin: 22px 0 0;
     width: fit-content;
-    padding: 7px 49px;
+    padding: 10px 49px;
     background: #55b449;
     border: none;
     color: aliceblue;
@@ -1150,7 +1157,7 @@ body {
     font-size: 19px;
     padding: 31px 25px;
     font-weight: bold;
-    border-right: dashed 1px #3a1c5e38;
+    border-right: solid 1px #3a1c5e17;
     margin-right: 24px;
 }
 
@@ -1574,7 +1581,7 @@ input[type=number] {
 
 .UserOptions {
     position: absolute;
-    left: 20%;
+    left: 17%;
     top: 60px;
     z-index: 9999999999999;
     background: #f3f3f3;
@@ -1597,7 +1604,7 @@ input[type=number] {
     margin: 15px auto;
     width: 92%;
     padding: 10px 13px;
-    background: #dddddd;
+    background: #e4e4e4;
     cursor: pointer;
     transition: 300ms;
     border-radius: 5px;
@@ -1610,7 +1617,7 @@ input[type=number] {
 }
 
 .UserOptions ul li:hover {
-    background: #cbcbcb;
+    background: #dfdfdf;
     transform: scale(1.04);
 }
 
@@ -1623,7 +1630,7 @@ input[type=number] {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #55b449;
+    color: #55b449bd;
 }
 
 .LatestJobsItemsGH {
@@ -1677,7 +1684,7 @@ input[type=number] {
 }
 
 .UserOptions ul li:last-child i {
-    color: #d45757;
+    color: #ffffffc4;
 }
 
 .UserOptionsEdge {
@@ -1688,4 +1695,61 @@ input[type=number] {
     height: 15px;
     background: #f3f3f3;
     transform: rotate(45deg);
+}
+
+#EditInformation {
+    display: none;
+}
+
+
+.UserOptions ul li:last-child {
+    background: #cc4343 !important;
+    color: aliceblue;
+}
+
+.LatestJobsItem h15 {
+    display: inline-block;
+    width: fit-content;
+    background: #6382a8;
+    padding: 5px 10px;
+    padding-left: 32px;
+    border-radius: 4px;
+    color: aliceblue;
+    position: relative;
+    font-size: 15px;
+    margin: 0 4px;
+    cursor: context-menu;
+}
+
+.LatestJobsItem h15 img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    filter: invert(1);
+    padding: 7px;
+}
+
+.LatestJobsItem .NoImgJobDetail {
+    padding: 5px 10px;
+}
+
+.LatestJobsItem h15 u {
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.JobDetails {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+
+.SpecialOfferIndicator .JobDetails {
+    left: 42px;
 }

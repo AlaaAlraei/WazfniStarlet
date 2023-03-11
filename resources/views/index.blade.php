@@ -221,7 +221,7 @@
                                     لضمان نتيجة افضل , قم بإختيار الفئة المناسبة لتخصص عملك
                                 </p>
                             </div>
-                            <div class="col-md-2 col-sm-4">
+                            <div class="col-lg-2 col-md-4 col-sm-6">
                                 <div class="JobCategoryItem" onclick="SelectThisCategory($(this))" url="{{ route('GetAllJobs') }}">
                                     <div class="JobCategoryItemDiv ActiveCategory">
                                         <div class="JobCategoryItemInner">
@@ -235,7 +235,7 @@
                                 </div>
                             </div>
                             @foreach($searchCategories as $key => $searchCategory)
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-lg-2 col-md-4 col-sm-6">
                                     <div class="JobCategoryItem" onclick="SelectThisCategory($(this))" url="{{ route('GetByCategoriesJobs', [$searchCategory->id]) }}">
                                         <div class="JobCategoryItemDiv">
                                             <div class="JobCategoryItemInner">
