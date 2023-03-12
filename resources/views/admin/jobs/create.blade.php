@@ -72,7 +72,11 @@
             </div>
             <div class="form-group {{ $errors->has('job_nature') ? 'has-error' : '' }}">
                 <label for="job_nature">{{ trans('cruds.job.fields.job_nature') }}</label>
-                <input type="text" id="job_nature" name="job_nature" class="form-control" value="{{ old('job_nature', isset($job) ? $job->job_nature : 'Full-time') }}">
+                <select id="job_nature" name="job_nature" class="form-control">
+                    <option value="Full-Time" {{ old('job_nature', isset($job) && $job->job_nature == 'Full-Time' ? 'selected' : '') }}>Full-Time</option>
+                    <option value="Part-Time" {{ old('job_nature', isset($job) && $job->job_nature == 'Part-Time' ? 'selected' : '') }}>Part-Time</option>
+                    <option value="Casual" {{ old('job_nature', isset($job) && $job->job_nature == 'Casual' ? 'selected' : '') }}>Casual</option>
+                </select>
                 @if($errors->has('job_nature'))
                     <em class="invalid-feedback">
                         {{ $errors->first('job_nature') }}
@@ -108,10 +112,8 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('categories') ? 'has-error' : '' }}">
-                <label for="categories">{{ trans('cruds.job.fields.categories') }}
-                    <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all">{{ trans('global.deselect_all') }}</span></label>
-                <select name="categories[]" id="categories" class="form-control select2" multiple="multiple">
+                <label for="categories">{{ trans('cruds.job.fields.categories') }}</label>
+                <select name="categories[]" id="categories" class="form-control select2">
                     @foreach($categories as $id => $categories)
                         <option value="{{ $id }}" {{ (in_array($id, old('categories', [])) || isset($job) && $job->categories->contains($id)) ? 'selected' : '' }}>{{ $categories }}</option>
                     @endforeach

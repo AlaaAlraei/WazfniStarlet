@@ -642,9 +642,13 @@
                         var urlWithPaginationNumber = v['url'];
                         console.log(v['url']);
                         console.log(v['label']);
-                        $('.LatestJobsPaginationInner').append('<button type="button" onclick="SelectThisCategory($(this))" url="' + urlWithPaginationNumber + '">'
-                            + v['label'] +
-                            '</button>')
+                        if(v['label'] != "&laquo; Previous" && v['label'] != "Next &raquo;")
+                        {
+                            $('.LatestJobsPaginationInner').append('<button type="button" onclick="SelectThisCategory($(this))" url="' + urlWithPaginationNumber + '">'
+                                + v['label'] +
+                                '</button>')
+                        }
+
                     });
                     $('.LatestJobsPaginationInner button').first().addClass('ActivePagination')
 

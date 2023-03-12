@@ -4,12 +4,17 @@ Route::redirect('/home', '/admin');
 Auth::routes(['register' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/promote', 'PromoteController@index')->name('promote');
+Route::get('/term', 'TermController@index')->name('term');
+Route::get('/my-profile', 'ProfileController@MyProfile')->name('MyProfile');
+Route::get('/company-profile', 'ProfileController@CompanyProfile')->name('CompanyProfile');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin');
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('GetAllJobs', 'JobController@GetAllJobs')->name('GetAllJobs');
 Route::get('GetByCategoriesJobs/{category}', 'JobController@GetByCategoriesJobs')->name('GetByCategoriesJobs');
-Route::resource('jobs', 'JobController')->only(['index', 'show']);
+Route::resource('jobs', 'JobController');
 Route::get('category/{category}', 'CategoryController@show')->name('categories.show');
 Route::get('location/{location}', 'LocationController@show')->name('locations.show');
 

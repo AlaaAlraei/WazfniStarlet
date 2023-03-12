@@ -10,11 +10,11 @@
                                 <div></div>
                             </li>
                             <li>
-                                عن وظفني
+                                <a href="{{ route('about') }}">عن وظفني</a>
                                 <div></div>
                             </li>
                             <li>
-                                اعلن عن وظيفة
+                                <a href="{{ route('promote') }}">اعلن عن وظيفة</a>
                                 <div></div>
                             </li>
                             <li>
