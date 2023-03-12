@@ -51,62 +51,191 @@
                 <form class="LoginForm animate__animated animate__fadeInUp" id="UserInfoForm" method="POST"
                       action="{{ route('clientLogin') }}">
                     @csrf
-                    <div class="LoginFormRow">
-                        <label>
-                            الاسم
-                        </label>
-                        <div class="InputHolder">
-                            <u>
-                                <i class="fas fa-user"></i>
-                            </u>
-                            <input type="email" placeholder="اكتب هنا : اسمك من مقطعين على الاقل"
-                                   value="{{ Auth::user()->name }}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <label>
+                                    الاسم الاول
+                                </label>
+                                <div class="InputHolder">
+                                    <u>
+                                        <i class="fas fa-user"></i>
+                                    </u>
+                                    <input type="text" placeholder="اكتب هنا : اسمك الاول"
+                                           value="{{ Auth::user()->name }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <label>
+                                    الاسم الثاني
+                                </label>
+                                <div class="InputHolder">
+                                    <u>
+                                        <i class="fas fa-user"></i>
+                                    </u>
+                                    <input type="text" placeholder="اكتب هنا : اسمك الثاني"
+                                           value="{{ Auth::user()->name }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="LoginFormRow">
                         <label>
-                            كلمة المرور
+                            رقم الموبايل
+                        </label>
+                        <div class="InputHolder InputWithSelect">
+                            <u>
+                                <i class="fas fa-mobile"></i>
+                            </u>
+                            <input type="number" value="{{ Auth::user()->number }}"
+                                   placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="mobile" required="">
+                            <div class="MobileNumberSelectCountry">
+                                <select>
+                                    <option>
+                                        الأردن
+                                        (+962)
+                                    </option>
+                                    <option>
+                                        السعودية
+                                        (+584)
+                                    </option>
+                                    <option>
+                                        قطر
+                                        (+745)
+                                    </option>
+                                    <option>
+                                        تركيا
+                                        (+852)
+                                    </option>
+                                    <option>
+                                        الكويت
+                                        (+125)
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="LoginFormRow SelectAuthCategoryParent">
+                        <label>
+                            فئة العمل
+                            (إختياري)
                         </label>
                         <div class="InputHolder">
-                            <u>
-                                <i class="fas fa-key"></i>
-                            </u>
-                            <input type="password" placeholder="اكتب هنا : كلمة المرور" name="password" required>
-                            <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
-                                <i class="fas fa-eye"></i>
+                            <button type="button" class="AuthCtegorySelect">
+                                <g onclick="$('.SelectAuthCategoryList').show()">اختيار فئة العمل</g>
+                                <i class="fas fa-angle-down" onclick="ClearAuthCategory()" title="حذف الفئة"></i>
                             </button>
                         </div>
+                        <div class="SelectAuthCategoryList">
+                            <div class="SelectAuthCategoryListInner">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="1" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 1 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="2" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 2 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="3" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 3 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="4" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 4 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="5" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 5 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="6" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 6 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="7" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 7 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="8" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 8 </span>
+                                </div>
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="9" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 9 </span>
+                                </div>
+
+
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
+                                    <input type="radio" name="AuthCategory" value="10" class="d-none">
+                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                    <span> فئة 10 </span>
+                                </div>
+                            </div>
+                        </div>
+                        <h15>
+                            (ينصح به) ,
+                            يقوم نظامنا الذكي بحصر المعلومات عند اختيارك فئة العمل المناسبة لك مما يسهل عملية البحث
+                            ويساعد في عرض الوظائف المنسبة لنخصصك .
+                        </h15>
                     </div>
-                    <span class="RememberMe">
-                    <input value="{{ csrf_token() }}" type="checkbox" name="remember_token">
-                    تذكرني
-                    <a href="{{ route('password.request') }}" target="_blank">
-                        نسيت كلمة السر ؟
-                    </a>
-                </span>
+
+                    <div class="LoginFormRow">
+                        <label>
+                            الدولة
+                        </label>
+                        <div class="InputHolder">
+                            <u>
+                                <i class="fas fa-globe"></i>
+                            </u>
+                            <select class="FullSelect">
+                                <option selected>
+                                    الأردن
+                                </option>
+                                <option>
+                                    السعودية
+                                </option>
+                                <option>
+                                    قطر
+                                </option>
+                                <option>
+                                    تركيا
+                                </option>
+                                <option>
+                                    الكويت
+                                </option>
+                            </select>
+                            <sa>
+                                <i class="fas fa-angle-down"></i>
+                            </sa>
+                        </div>
+                    </div>
+
                     <div class="LoginFormRow">
                         <button type="submit">
-                            تسجيل الدخول
+                            حفظ المعلومات
                         </button>
-                    </div>
-                    <div class="OtherLoginMethods">
-                        <h3>
-                            أو يمكنك تسجيل الدخول عن طريق
-                        </h3>
-                        <div class="OtherLoginMethodsOptions">
-                            <button type="button" style="background-color: #394e7c">
-                                <img src="https://cdn-icons-png.flaticon.com/128/3128/3128208.png">
-                                فيسبوك
-                            </button>
-                            <button type="button" style="background-color: #e74233">
-                                <img src="https://cdn-icons-png.flaticon.com/128/2991/2991147.png">
-                                جوجل
-                            </button>
-                            <button type="button" style="background-color: #0074b1">
-                                <img src="https://cdn-icons-png.flaticon.com/128/3128/3128219.png">
-                                لينكد إن
-                            </button>
-                        </div>
                     </div>
                 </form>
 
@@ -115,60 +244,52 @@
                     @csrf
                     <div class="LoginFormRow">
                         <label>
-                            الاسم
+                            كلمة السر الحالية
                         </label>
                         <div class="InputHolder">
                             <u>
                                 <i class="fas fa-user"></i>
                             </u>
-                            <input type="email" placeholder="اكتب هنا : اسمك من مقطعين على الاقل"
-                                   value="{{ Auth::user()->name }}">
-                        </div>
-                    </div>
-                    <div class="LoginFormRow">
-                        <label>
-                            كلمة المرور
-                        </label>
-                        <div class="InputHolder">
-                            <u>
-                                <i class="fas fa-key"></i>
-                            </u>
-                            <input type="password" placeholder="اكتب هنا : كلمة المرور" name="password" required>
+                            <input type="password" placeholder="اكتب هنا : كلمة السر الحالية">
                             <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
-                    <span class="RememberMe">
-                    <input value="{{ csrf_token() }}" type="checkbox" name="remember_token">
-                    تذكرني
-                    <a href="{{ route('password.request') }}" target="_blank">
-                        نسيت كلمة السر ؟
-                    </a>
-                </span>
+
                     <div class="LoginFormRow">
-                        <button type="submit">
-                            تسجيل الدخول
-                        </button>
-                    </div>
-                    <div class="OtherLoginMethods">
-                        <h3>
-                            أو يمكنك تسجيل الدخول عن طريق
-                        </h3>
-                        <div class="OtherLoginMethodsOptions">
-                            <button type="button" style="background-color: #394e7c">
-                                <img src="https://cdn-icons-png.flaticon.com/128/3128/3128208.png">
-                                فيسبوك
-                            </button>
-                            <button type="button" style="background-color: #e74233">
-                                <img src="https://cdn-icons-png.flaticon.com/128/2991/2991147.png">
-                                جوجل
-                            </button>
-                            <button type="button" style="background-color: #0074b1">
-                                <img src="https://cdn-icons-png.flaticon.com/128/3128/3128219.png">
-                                لينكد إن
+                        <label>
+                            كلمة السر الجديدة
+                        </label>
+                        <div class="InputHolder">
+                            <u>
+                                <i class="fas fa-user"></i>
+                            </u>
+                            <input type="password" placeholder="اكتب هنا : كلمة السر الجديدة">
+                            <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
+                    </div>
+                    <div class="LoginFormRow">
+                        <label>
+                            تأكيد كلمة السر الجديدة
+                        </label>
+                        <div class="InputHolder">
+                            <u>
+                                <i class="fas fa-user"></i>
+                            </u>
+                            <input type="password" placeholder="اكتب هنا : كلمة السر الجديدة مرة اخرى">
+                            <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="LoginFormRow">
+                        <button type="submit">
+                            حفظ لكة المرور
+                        </button>
                     </div>
                 </form>
             </div>
@@ -253,27 +374,58 @@
                 <form class="LoginForm animate__animated animate__fadeInUp" id="RegisterForm" method="POST" action="">
                     <div class="LoginFormRow">
                         <div class="FormTwoBtns">
-                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
+                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
                                 <input type="radio" name="AuthType">
                                 صاحب عمل
                             </button>
-                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
+                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
                                 <input type="radio" name="AuthType">
                                 باحث عن وظيفة
                             </button>
                         </div>
                     </div>
-                    <div class="LoginFormRow" id="RegNAME">
-                        <label>
 
+                    <div class="row AuthSelector" id="RegPersonal">
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <label>
+                                    الاسم الاول
+                                </label>
+                                <div class="InputHolder">
+                                    <u>
+                                        <i class="fas fa-user"></i>
+                                    </u>
+                                    <input type="text" placeholder="اكتب هنا : اسمك الاول">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <label>
+                                    الاسم الثاني
+                                </label>
+                                <div class="InputHolder">
+                                    <u>
+                                        <i class="fas fa-user"></i>
+                                    </u>
+                                    <input type="text" placeholder="اكتب هنا : اسمك الثاني">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="LoginFormRow AuthSelector" id="RegBuissnes">
+                        <label>
+                            اسم الشركة المؤسسة/الشركة
                         </label>
                         <div class="InputHolder">
                             <u>
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-building"></i>
                             </u>
-                            <input type="text" placeholder="" name="name" required>
+                            <input type="text" placeholder="اكتب هنا : اسم الشركة المؤسسة/الشركة">
                         </div>
                     </div>
+
                     <div class="LoginFormRow">
                         <label>
                             رقم الموبايل
@@ -441,7 +593,7 @@
                         '</div>' +
                         '<div class="LatestJobsItemInfo">' +
                         '<h5 title="' + v['company']['name'] + '" onclick="$(this).find(\'a\')[0].click()">' +
-                        '<a href="{{asset("")}}Company/'+v['company']['id']+'" class="d-none"></a>' +
+                        '<a href="{{asset("")}}Company/' + v['company']['id'] + '" class="d-none"></a>' +
                         '<img src="' + NewName + '" class="SpecialSliderUser">' +
                         v['company']['name'] +
                         '<u>' +
@@ -449,7 +601,7 @@
                         '</u>' +
                         '</h5>' +
                         '<h3 onclick="$(this).find(\'a\')[0].click()">' +
-                        '<a href="{{asset("")}}jobs/'+v['id']+'" class="d-none"></a>' +
+                        '<a href="{{asset("")}}jobs/' + v['id'] + '" class="d-none"></a>' +
                         v['title'] +
                         '</h3>' +
                         '<p>' +
@@ -462,16 +614,16 @@
                         '<div class="JobDetails">' +
                         '<h15 title="مكان الوظيفة" style="background: #a14444;">' +
                         '<img src="{{asset("")}}Wazefni/Requirements/IMG/Location.png">' +
-                        v['address']+
+                        v['address'] +
                         '</h15>' +
                         '<h15 title="الراتب">' +
                         '<img src="{{asset("")}}Wazefni/Requirements/IMG/Salary.png">' +
-                        v['salary']+'<u> دينار </u>' +
+                        v['salary'] + '<u> دينار </u>' +
                         '</h15>' +
                         '<h15 style="background: #616161" class="NoImgJobDetail" title="نوع الوظيفة">' +
-                        v['job_nature']+
+                        v['job_nature'] +
                         '</h15>' +
-                        '</div>'+
+                        '</div>' +
                         '<input type="hidden" class="IsRated' + v['top_rated'] + '" rel="' + v['location_id'] + '">' +
                         '</div>' +
                         '</div>');

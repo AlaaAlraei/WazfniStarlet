@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $(document).mouseup(function(e)
     {
-        var container = $(".UserOptions");
+        var container = $(".UserOptions,.SelectAuthCategoryList");
 
         // if the target of the click isn't the container nor a descendant of the container
         if (!container.is(e.target) && container.has(e.target).length === 0)
@@ -110,13 +110,12 @@ function RegOptionsFunc(el){
     el.parent().find('button').removeClass('ActiveRegOption')
     el.addClass('ActiveRegOption')
     if (el.attr('rel') === 'Buissnes'){
-        $('#RegNAME label').text('إسم المؤسسة/الشركة')
-        $('#RegNAME input').attr('placeholder','اكتب هنا : إسم المؤسسة/الشركة')
+        $('#RegPersonal').hide()
+        $('#RegBuissnes').show()
     }else{
-        $('#RegNAME label').text('الأسم')
-        $('#RegNAME input').attr('placeholder','اكتب هنا : إسمك من مقطعين على الأقل')
+        $('#RegBuissnes').hide()
+        $('#RegPersonal').css('display','flex')
     }
-    $('#RegNAME').slideDown()
 }
 
 function UserOptions(el){
@@ -130,4 +129,18 @@ function UserOptions(el){
 function EditProfilePop(el){
     $('.LoginRegisterTabs button').first().click()
     $(el.attr('rel')).show()
+}
+
+function SelectThisAuthCategory(el){
+    el.find('input').attr('checked', true)
+    $('.AuthCtegorySelect g').text(el.find('span').text())
+    $('.AuthCtegorySelect i').attr('class','fas fa-times')
+    $('.SelectAuthCategoryList').slideUp()
+}
+
+
+function ClearAuthCategory(){
+    $('.SelectAuthCategoryListItem input').attr('checked', false)
+    $('.AuthCtegorySelect g').text('اختيار فئة العمل')
+    $('.AuthCtegorySelect i').attr('class','fas fa-angle-down')
 }

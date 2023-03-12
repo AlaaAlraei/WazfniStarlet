@@ -310,9 +310,6 @@
 
 @endsection
 
-
-{{ $job->id }}
-
 {{--'title',--}}
 {{--'salary',--}}
 {{--'address',--}}
