@@ -8,6 +8,7 @@ Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/promote', 'PromoteController@index')->name('promote');
 Route::get('/term', 'TermController@index')->name('term');
 Route::get('/my-profile', 'ProfileController@MyProfile')->name('MyProfile');
+Route::post('/Register', 'ProfileController@Register')->name('Register');
 Route::get('/company-profile', 'ProfileController@CompanyProfile')->name('CompanyProfile');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin');
@@ -47,5 +48,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Jobs
     Route::delete('jobs/destroy', 'JobsController@massDestroy')->name('jobs.massDestroy');
+    Route::post('jobs/media', 'JobsController@storeMedia')->name('jobs.storeMedia');
     Route::resource('jobs', 'JobsController');
+
+    // Country
+    Route::delete('countries/destroy', 'CountryController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountryController');
+
 });

@@ -72,6 +72,16 @@
                     </a>
                 </li>
             @endcan
+            @can('country_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.countries.index") }}" class="nav-link {{ request()->is('admin/countries') || request()->is('admin/countries/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-globe nav-icon">
+
+                        </i>
+                        {{ trans('cruds.country.title') }}
+                    </a>
+                </li>
+            @endcan
             @can('company_access')
                 <li class="nav-item">
                     <a href="{{ route("admin.companies.index") }}" class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">

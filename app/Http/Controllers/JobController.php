@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Company;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreJobByCompanyRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Job;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JobController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         $jobs = Job::with('company')
@@ -68,6 +71,10 @@ class JobController extends Controller
         $job = Job::create($request->all());
         $job->categories()->sync($request->input('categories', []));
 
+        if ($request->input('photo', false)) {
+            $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        }
+
         return view('jobs.show', compact('job'));
     }
 
@@ -86,6 +93,14 @@ class JobController extends Controller
     {
         $job->update($request->all());
         $job->categories()->sync($request->input('categories', []));
+
+        if ($request->input('photo', false)) {
+            if (!$job->photo || $request->input('photo') !== $job->photo->file_name) {
+                $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            }
+        } elseif ($job->photo) {
+            $job->photo->delete();
+        }
 
         return view('jobs.show', compact('job'));
     }

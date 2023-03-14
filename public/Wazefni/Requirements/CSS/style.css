@@ -2265,3 +2265,46 @@ input[type=number] {
     color: #757575;
     font-weight: bold;
 }
+
+.AboutPaperGH {
+    display: block;
+    margin: 35px auto;
+    width: 100%;
+    background: white;
+    padding: 75px 0px;
+}
+
+.AboutPaperItem {
+    display: block;
+    margin: -14px auto;
+    width: 100%;
+    text-align: right;
+    padding: 38px;
+}
+
+.AboutPaperItem h1 {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 26px;
+    color: #391364;
+}
+
+.AboutPaperItem p {
+    display: block;
+    margin: 30px auto;
+    width: 100%;
+    font-size: 19px;
+    color: #5d5763;
+}
+
+.AboutPaperGH img {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
+.AboutPaperItem p a {
+    color: #50b64d;
+}

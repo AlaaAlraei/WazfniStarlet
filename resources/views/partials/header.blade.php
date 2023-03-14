@@ -5,23 +5,34 @@
                 <div class="HeaderFirstRight">
                     <div class="HeaderFirstRightInner">
                         <ul>
-                            <li>
+                            <li onclick="$(this).find('a')[0].click()">
+                                <a class="d-none" href="{{ route('home') }}"></a>
                                 الرئيسية
                                 <div></div>
                             </li>
-                            <li>
-                                <a href="{{ route('about') }}">عن وظفني</a>
+                            <li onclick="$(this).find('a')[0].click()" id="AboutHeaderBtn">
+                                <a class="d-none" href="{{ route('about') }}"></a>
+                                عن وظفني
                                 <div></div>
                             </li>
-                            <li>
-                                <a href="{{ route('promote') }}">اعلن عن وظيفة</a>
-                                <div></div>
-                            </li>
+                            @auth
+                                <li onclick="$(this).find('a')[0].click()" id="CreateJobUserHeaderBtn">
+                                    <a class="d-none" href="{{ route('jobs.create') }}"></a>
+                                    اعلن عن وظيفة
+                                    <div></div>
+                                </li>
+                            @else
+                                <li onclick="$('#HeaderLoginBtn').click()" id="CreateJobUserHeaderBtn">
+                                    اعلن عن وظيفة
+                                    <div></div>
+                                </li>
+                            @endauth
                             <li>
                                 اتصل بنا
                                 <div></div>
                             </li>
-                            <li>
+                            <li id="TermsPageHeaderBtn" onclick="$(this).find('a')[0].click()" id="CreateJobUserHeaderBtn">
+                                <a class="d-none" href="{{ route('term') }}"></a>
                                 شروط الإستخدام
                                 <div></div>
                             </li>
@@ -114,7 +125,8 @@
         <div class="col-md-10">
             <div class="BannerParent">
                 <div class="Banner">
-                    <div class="BannerLogo">
+                    <div class="BannerLogo" onclick="$(this).find('a')[0].click()">
+                        <a class="d-none" href="{{ route('home') }}"></a>
                         <img src="{{ asset('') }}Wazefni/Requirements/IMG/LogoText.png">
                     </div>
                 </div>

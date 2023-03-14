@@ -20,6 +20,18 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.job.fields.photo') }}
+                        </th>
+                        <td>
+                            @if($job->photo)
+                                <a href="{{ str_replace('localhost', 'localhost:8000', $job->photo->getUrl()) }}" target="_blank">
+                                    <img src="{{ str_replace('localhost', 'localhost:8000', $job->photo->getUrl('thumb')) }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.job.fields.title') }}
                         </th>
                         <td>

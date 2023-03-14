@@ -30,7 +30,10 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
+        'country_id',
+        'privacy',
         'name',
+        'last_name',
         'email',
         'password',
         'created_at',
@@ -95,6 +98,11 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'user_id', 'id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
 }

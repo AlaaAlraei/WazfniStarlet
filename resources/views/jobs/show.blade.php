@@ -1,26 +1,29 @@
-
 @extends('layouts.user')
 
 @section('content')
+
     <div class="container-fluid" id="JobShowContainer">
         <div class="row justify-content-center align-content-center">
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="JobShowPaper">
-                            <div class="JobShowPaperImgHolder">
-                                <div class="JobShowPaperImgHolderInner">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/Job.webp">
+                            @if($job->photo)
+                                <div class="JobShowPaperImgHolder">
+                                    <div class="JobShowPaperImgHolderInner">
+                                        <img
+                                            src="{{ str_replace('localhost', 'localhost:8000', $job->photo->getUrl()) }}">
+                                    </div>
                                 </div>
-                            </div>
-
+                            @endif
                             <div class="JobPaperInfo">
                                 <h1>
                                     {{ $job->title }}
                                 </h1>
                                 <span title="تاريخ نشر الوظيفة">
                                     <i class="fas fa-calendar"></i>
-                                    اﻷربعاء 8 مارس 2023
+                                    <g id="CreatedAtFormed"></g>
+                                    {{--اﻷربعاء 8 مارس 2023--}}
                                 </span>
                                 <div class="JobPaperOptions">
                                     <div class="JobPaperOptionsInner">
@@ -148,7 +151,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -173,7 +177,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -198,7 +203,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5 title="حساب موثق">
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                             <u>
@@ -223,7 +229,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -242,7 +249,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -261,7 +269,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -280,7 +289,8 @@
                                     </div>
                                     <div class="OutSideJobsItemInfo">
                                         <h5>
-                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
+                                            <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/User.jpg"
+                                                 class="SpecialSliderUser">
                                             ابو غلوس
                                             - قطر
                                         </h5>
@@ -305,22 +315,29 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('scripts')
+    <script>
+        $(document).ready(function () {
+            var d = new Date("{{ $job->created_at }}");
+            var month = d.toLocaleString('default', {month: 'long'});
+            var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
 
+
+            var date = new Date(strDate);
+            var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+            ];
+            var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+            var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+            $('#CreatedAtFormed').text(delDateString)
+
+            if($('#AuthStatus').val() === '0'){
+                window.location.replace("{{ route('home') }}")
+            }
+        });
+    </script>
 @endsection
 
-{{--'title',--}}
-{{--'salary',--}}
-{{--'address',--}}
-{{--'top_rated',--}}
-{{--'company_id',--}}
-{{--'job_nature',--}}
-{{--'created_at',--}}
-{{--'updated_at',--}}
-{{--'deleted_at',--}}
-{{--'location_id',--}}
-{{--'requirements',--}}
-{{--'full_description',--}}
-{{--'short_description',--}}
 

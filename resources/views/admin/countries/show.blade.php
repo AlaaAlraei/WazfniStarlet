@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.company.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.country.title') }}
     </div>
 
     <div class="card-body">
@@ -12,30 +12,34 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.company.fields.id') }}
+                            {{ trans('cruds.country.fields.id') }}
                         </th>
                         <td>
-                            {{ $company->id }}
+                            {{ $country->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.company.fields.name') }}
+                            {{ trans('cruds.country.fields.name') }}
                         </th>
                         <td>
-                            {{ $company->name }}
+                            {{ $country->name }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.company.fields.logo') }}
+                            {{ trans('cruds.country.fields.code') }}
                         </th>
                         <td>
-                            @if($company->logo)
-                                <a href="{{ str_replace('localhost', 'localhost:8000', $company->logo->getUrl()) }}" target="_blank">
-                                    <img src="{{ str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}" width="50px" height="50px">
-                                </a>
-                            @endif
+                            {{ $country->code }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.country.fields.country_key') }}
+                        </th>
+                        <td>
+                            {{ $country->country_key }}
                         </td>
                     </tr>
                 </tbody>

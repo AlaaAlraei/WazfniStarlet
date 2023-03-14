@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyJobRequest;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
@@ -16,6 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JobsController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('job_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -43,6 +46,10 @@ class JobsController extends Controller
         $job = Job::create($request->all());
         $job->categories()->sync($request->input('categories', []));
 
+        if ($request->input('photo', false)) {
+            $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        }
+
         return redirect()->route('admin.jobs.index');
     }
 
@@ -65,6 +72,14 @@ class JobsController extends Controller
     {
         $job->update($request->all());
         $job->categories()->sync($request->input('categories', []));
+
+        if ($request->input('photo', false)) {
+            if (!$job->photo || $request->input('photo') !== $job->photo->file_name) {
+                $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            }
+        } elseif ($job->photo) {
+            $job->photo->delete();
+        }
 
         return redirect()->route('admin.jobs.index');
     }

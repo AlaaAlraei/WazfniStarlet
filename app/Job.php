@@ -4,12 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Job extends Model
+class Job extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use SoftDeletes, InteractsWithMedia;
 
     public $table = 'jobs';
+
+    protected $appends = [
+        'photo',
+    ];
 
     protected $dates = [
         'created_at',
@@ -33,6 +40,12 @@ class Job extends Model
         'short_description',
     ];
 
+    public function registerMediaConversions(Media $media = null): void
+    {
+//        $this->addMediaConversion('thumb')->width(100)->height(100);
+        $this->addMediaConversion('thumb')->width(300);
+    }
+
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
@@ -51,6 +64,18 @@ class Job extends Model
     public function forms()
     {
         return $this->hasMany(Form::class, 'job_id', 'id');
+    }
+
+    public function getPhotoAttribute()
+    {
+        $file = $this->getMedia('photo')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
     }
 
     public function scopeSearchResults($query)

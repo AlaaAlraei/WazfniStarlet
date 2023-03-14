@@ -5,25 +5,49 @@
         <div class="row justify-content-center align-content-center">
             <div class="col-md-10">
                 <div class="MainBannerGH">
-                    <div class="MainBannerItem">
-                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
-                        <h1>
-                            اعلن عن وظيفة
-                        </h1>
-                        <p>
-                            يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
-                        </p>
-                    </div>
+                    @auth
+                        @can('Seeker')
+                            <div class="MainBannerItem">
+                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
+                                <h1>
+                                    اعلن عن وظيفة
+                                </h1>
+                                <p>
+                                    يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
+                                </p>
+                            </div>
+                        @elsecan('Business')
+                            <div class="MainBannerItem">
+                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
+                                <h1>
+                                    ابحث عن وظيفة
+                                </h1>
+                                <p>
+                                    يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
+                                </p>
+                            </div>
+                        @else
+                            <div class="MainBannerItem">
+                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
+                                <h1>
+                                    اعلن عن وظيفة
+                                </h1>
+                                <p>
+                                    يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
+                                </p>
+                            </div>
 
-                    <div class="MainBannerItem">
-                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
-                        <h1>
-                            ابحث عن وظيفة
-                        </h1>
-                        <p>
-                            يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
-                        </p>
-                    </div>
+                            <div class="MainBannerItem">
+                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
+                                <h1>
+                                    ابحث عن وظيفة
+                                </h1>
+                                <p>
+                                    يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
+                                </p>
+                            </div>
+                        @endcan
+                    @endauth
                 </div>
             </div>
         </div>
