@@ -22,6 +22,14 @@ $(document).ready(function () {
         $('#TermsPageHeaderBtn').first().addClass('active-HeaderTab')
     }
 
+    $('.HomeAdsSliderGH').slick({
+        autoplay: true,
+        infinite: true,
+        arrows: false,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+
     $('.SpecialOffersSlider').slick({
         dots: true,
         arrows: false,

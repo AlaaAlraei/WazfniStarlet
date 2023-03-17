@@ -340,6 +340,41 @@
                             </form>
                         </div>
 
+                        <div class="HomeAds">
+                            <div class="HomeAdsSliderGH">
+                                <div class="HomeAdsSliderItem">
+                                    <div class="HomeAdsSliderItemInner">
+                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
+                                        <button type="button" onclick="$(this).find('a')[0].click()">
+                                            <a href="#" class="d-none" target="_blank"></a>
+                                            <i class="fas fa-eye"></i>
+                                            المزيد
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="HomeAdsSliderItem">
+                                    <div class="HomeAdsSliderItemInner">
+                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
+                                        <button type="button" onclick="$(this).find('a')[0].click()">
+                                            <a href="#" class="d-none" target="_blank"></a>
+                                            <i class="fas fa-eye"></i>
+                                            المزيد
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ContactAds">
+                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Up.png" class="ContactAdsImg">
+                                اعلن هنا
+                                <button type="button" onclick="$(this).find('a')[0].click()">
+                                    <a href="#" class="d-none" target="_blank"></a>
+                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/Whatsapp.png">
+                                    تواصل معنا
+                                </button>
+                            </p>
+                        </div>
+
                         <div class="OutSideJobs">
                             <div class="SectionHeader">
                                 <h10>

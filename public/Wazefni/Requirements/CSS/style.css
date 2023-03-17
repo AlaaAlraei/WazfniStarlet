@@ -269,7 +269,7 @@ body {
 
 .SpecialOffersSlider {
     position: unset;
-    margin-bottom: 49px;
+    margin-bottom: 0;
 }
 
 .SpecialOffersSliderItem {
@@ -277,7 +277,7 @@ body {
 
 .SpecialOffersSliderItemInner {
     display: block;
-    margin: 36px auto;
+    margin: 36px auto 0;
     width: 90%;
     background: white;
 }
@@ -2085,6 +2085,7 @@ input[type=number] {
     margin: 14px auto;
     width: 96%;
     font-size: 20px;
+    color: #6a6a6a;
 }
 
 .AuthSelector {
@@ -2307,4 +2308,215 @@ input[type=number] {
 
 .AboutPaperItem p a {
     color: #50b64d;
+}
+
+#HomeSections {
+    margin-top: 70px;
+}
+
+#AppFooter {
+    background: white;
+    /* border-top: solid 5px #391364; */
+    margin-top: 120px;
+}
+
+.FooterAppSection {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.FooterAppSectionImgHolder {
+    display: inline-block;
+    vertical-align: top;
+    width: 23%;
+}
+
+.FooterAppSectionImgHolder img {
+    display: block;
+    margin: -67px auto 0;
+    width: 100%;
+    filter: drop-shadow(-99px 30px 2px #2a2a2a2b);
+    color: #2a2a2a2b;
+}
+
+.FooterAppSectionInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 77%;
+    text-align: right;
+}
+
+.FooterAppSectionInfo h2 {
+    display: block;
+    margin: 22px auto;
+    width: 100%;
+    font-weight: bold;
+    font-size: 31px;
+    color: #51b749;
+}
+
+.FooterAppSectionInfo p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    color: #6e6e6e;
+}
+
+.FooterAppSectionButtons {
+    display: flex;
+    justify-content: start;
+    width: fit-content;
+    margin: 28px 0;
+}
+
+.FooterAppSectionButtons button {
+    display: inline-block;
+    vertical-align: top;
+    width: fit-content;
+    margin-left: 8px;
+    border: none;
+    background: none;
+}
+
+.FooterAppSectionButtons button img {
+    display: block;
+    margin: 0 auto;
+    width: 174px;
+}
+
+.HomeAdsSliderItemInner {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 1/0.5;
+    min-height: 200px;
+    position: relative;
+}
+
+.HomeAdsSliderItemInner img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    filter: brightness(101%);
+    z-index: 0;
+    cursor: grab;
+}
+
+.HomeAdsSliderItemInner button {
+    direction: rtl;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: fit-content;
+    z-index: 2;
+    background: #313131;
+    color: aliceblue;
+    padding: 7px 36px;
+    margin: 20px;
+    border: none;
+    transition: 300ms;
+    border-radius: 6px;
+    font-weight: bold;
+    /* box-shadow: 0px 0px 46px -6px white; */
+}
+
+.HomeAds {
+    display: block;
+    margin: 0 0 50px;
+    width: 90%;
+    border-top: 0;
+}
+
+.HomeAdsSliderItemInner button i {
+    margin-left: 5px;
+}
+
+.HomeAdsSliderItemInner button:hover {
+    background: #391364;
+}
+
+.ContactAds {
+    display: block;
+    margin: 14px auto;
+    width: 100%;
+    position: relative;
+    padding: 17px 6px;
+    padding-right: 49px;
+    text-align: right;
+    direction: rtl;
+    font-size: 16px;
+    font-weight: bold;
+    color: #595959;
+}
+
+.ContactAds button {
+    display: flex;
+    margin: 0;
+    position: absolute;
+    left: 0px;
+    top: 15%;
+    width: auto;
+    height: 70%;
+    overflow: hidden;
+    padding: 0px 22px;
+    padding-right: 50px;
+    color: aliceblue;
+    background: #51b749;
+    border: none;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+.ContactAds button img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    filter: invert(1);
+    padding: 9px;
+}
+
+.ContactAdsImg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 11px;
+    transform: translatey(0px);
+    -webkit-animation: float 6s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-10px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.ContactAds button:hover {
+    background: #3d9436;
+}
+
+.HomeAdsSliderGH {
+    border: solid 1px #d4d4d4;
 }
