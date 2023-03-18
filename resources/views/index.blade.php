@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="MainBannerGH">
                     @auth
-                        @can('Seeker')
+                        @can('seeker_account')
                             <div class="MainBannerItem">
                                 <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
                                 <h1>
@@ -16,7 +16,7 @@
                                     يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
                                 </p>
                             </div>
-                        @elsecan('Business')
+                        @elsecan('business_account')
                             <div class="MainBannerItem">
                                 <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
                                 <h1>
