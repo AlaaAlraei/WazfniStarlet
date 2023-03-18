@@ -51,6 +51,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('jobs/media', 'JobsController@storeMedia')->name('jobs.storeMedia');
     Route::resource('jobs', 'JobsController');
 
+    // Advertisings
+    Route::delete('advertisings/destroy', 'AdvertisingController@massDestroy')->name('advertisings.massDestroy');
+    Route::post('advertisings/media', 'AdvertisingController@storeMedia')->name('advertisings.storeMedia');
+    Route::resource('advertisings', 'AdvertisingController');
+
     // Country
     Route::delete('countries/destroy', 'CountryController@massDestroy')->name('countries.massDestroy');
     Route::resource('countries', 'CountryController');
