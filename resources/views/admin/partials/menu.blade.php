@@ -52,6 +52,16 @@
                     </ul>
                 </li>
             @endcan
+            @can('advertising_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.advertisings.index") }}" class="nav-link {{ request()->is('admin/advertisings') || request()->is('admin/advertisings/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-tags nav-icon">
+
+                        </i>
+                        {{ trans('cruds.advertising.title') }}
+                    </a>
+                </li>
+            @endcan
             @can('category_access')
                 <li class="nav-item">
                     <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
