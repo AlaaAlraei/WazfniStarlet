@@ -145,3 +145,100 @@ function ClearAuthCategory() {
     $('.AuthCtegorySelect g').text('اختيار فئة العمل')
     $('.AuthCtegorySelect i').attr('class', 'fas fa-angle-down')
 }
+
+function ShowCustomSelect(el){
+    $(el.attr('rel')).show()
+}
+
+
+function SelectThisAuthFeatures(el) {
+    if(el.hasClass('JobFeatureAdded')){
+        el.find('input').attr('checked', false)
+        el.removeClass('JobFeatureAdded')
+        $('.'+el.attr('JobFeatureNumber')).remove()
+    }else{
+        el.find('input').attr('checked', true)
+        $(el.attr('rel')).append('<u title="حذف الميزة" onclick="RemoveThisFeature($(this))"><i class="fas fa-times"></i><f></f></u>')
+        $(el.attr('rel')).find('u').last().find('f').text(el.find('span').text())
+        $(el.attr('rel')).find('u').last().attr('rel',el.attr('target'))
+        $(el.attr('rel')).find('u').last().addClass(el.attr('JobFeatureNumber'))
+        el.addClass('JobFeatureAdded')
+    }
+}
+
+function RemoveThisFeature(el){
+    $(el.attr('rel')).removeClass('JobFeatureAdded')
+    $(el.attr('rel')).find('input').attr('checked', false)
+    el.remove()
+}
+
+function SelectThisJobCreateCategory(el) {
+    if(el.hasClass('JobCategorySelected')){
+        el.parent().find('input').attr('checked', false)
+        el.removeClass('JobCategorySelected')
+        $(el.attr('rel')).find('g').text('اختيار فئة الوظيفة')
+        $(el.attr('rel')).find('i').attr('class', 'fas fa-angle-down')
+        $(el.attr('rel')).find('img').remove()
+    }else{
+        el.parent().find('.SelectAuthCategoryListItem').removeClass('JobCategorySelected')
+        el.addClass('JobCategorySelected')
+        el.parent().find('input').attr('checked', false)
+        el.find('input').attr('checked', true)
+        $(el.attr('rel')).find('g').text(el.find('span').text())
+        $(el.attr('rel')).find('i').attr('class', 'fas fa-times')
+        $(el.attr('rel')).find('g').append('<img src="">')
+        $(el.attr('rel')).find('img').attr('src',el.find('img').attr('src'))
+        $('.SelectAuthCategoryList').slideUp()
+    }
+}
+
+
+function ClearCreateJobCategory(el) {
+    $(el.attr('rel')).find('.SelectAuthCategoryListItem').removeClass('JobCategorySelected')
+    $(el.attr('rel')).find('input').attr('checked', false)
+    el.parent().find('g').text('اختيار فئة العمل')
+    el.parent().find('i').attr('class', 'fas fa-angle-down')
+    el.parent().find('img').remove()
+}
+
+
+function ClearEditInfoCategory(el) {
+    $(el.attr('rel')).find('.SelectAuthCategoryListItem').removeClass('JobCategorySelected')
+    $(el.attr('rel')).find('input').attr('checked', false)
+    el.parent().find('g').text('اختيار فئة العمل')
+    el.parent().find('i').attr('class', 'fas fa-angle-down')
+    el.parent().find('img').remove()
+}
+
+
+function SelectThisJobCategoryOnEditInfo(el) {
+    if(el.hasClass('JobCategorySelected')){
+        el.parent().find('input').attr('checked', false)
+        el.removeClass('JobCategorySelected')
+        $(el.attr('rel')).find('g').text('اختيار فئة الوظيفة')
+        $(el.attr('rel')).find('i').attr('class', 'fas fa-angle-down')
+        $(el.attr('rel')).find('img').remove()
+    }else{
+        el.parent().find('.SelectAuthCategoryListItem').removeClass('JobCategorySelected')
+        el.addClass('JobCategorySelected')
+        el.parent().find('input').attr('checked', false)
+        el.find('input').attr('checked', true)
+        $(el.attr('rel')).find('g').text(el.find('span').text())
+        $(el.attr('rel')).find('i').attr('class', 'fas fa-times')
+        $(el.attr('rel')).find('g').append('<img src="">')
+        $(el.attr('rel')).find('img').attr('src',el.find('img').attr('src'))
+        $('.SelectAuthCategoryList').slideUp()
+    }
+}
+
+function CheckAdImageHolder(el){
+    var InputValue = el.val()
+    var ImageName = InputValue.replace("C:\\fakepath\\", "");
+    if(el.val().length === 0){
+        el.parent().removeClass('AdImageSelected')
+        el.parent().find('g y').text('صورة الإعلان')
+    }else{
+        el.parent().addClass('AdImageSelected')
+        el.parent().find('g y').text(ImageName)
+    }
+}

@@ -18,6 +18,11 @@ body {
     background-color: whitesmoke;
 }
 
+img {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 
 .Preloader {
 }
@@ -1911,7 +1916,7 @@ input[type=number] {
     margin: 47px auto;
     width: 100%;
     background: white;
-    padding: 1px 0px;
+    padding: 25px 0px;
 }
 
 .JobShowPaperImgHolder {
@@ -2161,6 +2166,9 @@ input[type=number] {
     cursor: pointer;
     transition: 200ms;
     box-shadow: 0px 0px 0px #502982;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .SelectAuthCategoryListItem img {
@@ -2177,6 +2185,9 @@ input[type=number] {
     font-size: 12px;
     font-weight: bold;
     color: #502982;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .SelectAuthCategoryListInner::-webkit-scrollbar {
@@ -2191,7 +2202,7 @@ input[type=number] {
 
 
 .SelectAuthCategoryListItem:hover {
-    background: #fcfcfc;
+    /* background: #fcfcfc; */
     box-shadow: 3px 3px 1px #502982;
 }
 
@@ -2205,6 +2216,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     z-index: 1;
+    padding: 1px 70px;
 }
 
 
@@ -2338,6 +2350,9 @@ input[type=number] {
     width: 100%;
     filter: drop-shadow(-99px 30px 2px #2a2a2a2b);
     color: #2a2a2a2b;
+    /* Safari */
+    /* IE 10 and IE 11 */
+    /* Standard syntax */
 }
 
 .FooterAppSectionInfo {
@@ -2519,4 +2534,322 @@ input[type=number] {
 
 .HomeAdsSliderGH {
     border: solid 1px #d4d4d4;
+}
+
+#CreateJobPage {
+}
+
+.AddNewJobPaper {
+    display: block;
+    margin: 47px auto;
+    width: 100%;
+    background: white;
+    padding: 1px 0px;
+}
+
+.AddNewJobPaper h1 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    color: aliceblue;
+    background: #4fb847;
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 14px 19px;
+}
+
+.PromotYourAdNowSection {
+    display: block;
+    margin: 47px 0 50px;
+    width: 90%;
+    border-top: 0;
+    background: #ffffff;
+}
+
+.CreateNewAdForm {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.CreateNewAdFormRow {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 34px 33px;
+}
+
+.CreateNewAdFormRow label {
+    display: block;
+    margin: 0 auto 17px;
+    width: 99%;
+    font-size: 15px;
+    font-weight: bold;
+    color: #391364;
+    text-align: right;
+}
+
+.CreateNewAdFormInputHolder {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    position: relative;
+    background: #fdfcff;
+    border: solid 1px #ddd4e9;
+}
+
+.CreateNewAdFormInputHolder input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    padding: 0px 15px;
+    font-size: 14px;
+}
+
+.CreateNewAdFormInputHolder select {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    color: #391364;
+    padding: 1px 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.CreateNewAdFormInputHolder f {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0px 11px;
+    font-size: 17px;
+    color: #391364;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.CreateNewAdFormInputHolder s {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0px 11px;
+    font-size: 17px;
+    color: #c6bdd0;
+    z-index: 0;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.CreateNewAdFormRow label u {
+    text-decoration: none;
+    color: #7c7c7c;
+    font-size: 11px;
+    padding: 0px 5px;
+}
+
+.CreateNewAdFormInputHolder s img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 10px;
+    opacity: 0.08;
+}
+
+#JobFeatursGH {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 11px auto 0;
+}
+
+#JobFeatursGH u {
+    display: inline-block;
+    vertical-align: top;
+    width: fit-content;
+    padding: 8px 18px;
+    background: #4fb847;
+    margin: 5px 4px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    padding-left: 32px;
+    font-size: 11px;
+    border-radius: 30px;
+    color: aliceblue;
+    transition: 300ms;
+    font-weight: bold;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+#JobFeatursGH u f {
+}
+
+#JobFeatursGH u i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    padding: 0px 11px;
+}
+
+.JobFeatureAdded {
+    background: #4fb847;
+}
+
+.JobFeatureAdded:hover {
+    background: #ac4a4a;
+    box-shadow: none;
+}
+
+#JobFeatursGH u:hover {
+    background: #ac4a4a;
+}
+
+.JobFeatureAdded span {
+    color: aliceblue;
+}
+
+.JobCategorySelected {
+    background: #4fb847;
+}
+
+.JobCategorySelected span {
+    color: aliceblue;
+}
+
+.JobCategorySelected:hover {
+    background: #ac4a4a;
+    box-shadow: none;
+}
+
+.AuthCtegorySelect g img {
+    position: absolute;
+    right: 11px;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 5px;
+    pointer-events: none;
+}
+
+.CreateNewAdFormRow textarea {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    background: #fdfcff;
+    border: solid 1px #ddd4e9;
+    padding: 18px 22px;
+    font-size: 14px;
+    min-height: 180px;
+}
+
+.SubmitCreateAdButton {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 13px 0px;
+    color: aliceblue;
+    font-weight: bold;
+    background: #4fb847;
+    border: none;
+    border-radius: 5px;
+    transition: 300ms;
+}
+
+.SubmitCreateAdButton i {
+}
+
+.SubmitCreateAdButton:hover {
+    background: #474747;
+}
+
+.AddAdImage {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    background: #391364;
+    color: aliceblue;
+    font-weight: bold;
+    height: 45px;
+    border-radius: 3px;
+    transition: 300ms;
+    text-align: center;
+}
+
+.AddAdImage i {
+    margin: 0px 6px;
+}
+
+.AddAdImage:hover {
+    background: #4fb847;
+}
+
+.AdImageSelected {
+    background: #4fb847;
+}
+
+.AddAdImage g {
+    display: inline-block;
+    vertical-align: sub;
+    width: fit-content;
+}
+
+.AddAdImage g y {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-width: 310px;
+    margin: 0 auto;
+    direction: ltr;
+}
+
+.CreateNewAdFormRow h14 {
+    display: block;
+    margin: 12px auto 0;
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    color: #c98484;
+    text-align: right;
+}
+
+.CreateNewAdFormRow h14 i {
 }

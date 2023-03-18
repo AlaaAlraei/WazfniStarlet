@@ -125,70 +125,70 @@
                             (إختياري)
                         </label>
                         <div class="InputHolder">
-                            <button type="button" class="AuthCtegorySelect">
-                                <g onclick="$('.SelectAuthCategoryList').show()">اختيار فئة العمل</g>
-                                <i class="fas fa-angle-down" onclick="ClearAuthCategory()" title="حذف الفئة"></i>
+                            <button type="button" class="AuthCtegorySelect" id="SelectedCategoryOnUserEdit">
+                                <g onclick="ShowCustomSelect($(this))" rel="#EditInfoSelectCat">اختيار فئة الوظيفة</g>
+                                <i class="fas fa-angle-down" rel="#EditInfoSelectCat" onclick="ClearEditInfoCategory($(this))" title="حذف الفئة"></i>
                             </button>
                         </div>
-                        <div class="SelectAuthCategoryList">
+                        <div class="SelectAuthCategoryList" id="EditInfoSelectCat">
                             <div class="SelectAuthCategoryListInner">
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="1" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="1" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 1 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="2" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="2" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 2 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="3" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="3" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 3 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="4" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="4" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 4 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="5" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="5" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 5 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="6" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="6" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 6 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="7" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="7" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 7 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="8" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="8" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 8 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="9" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="9" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 9 </span>
                                 </div>
 
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisAuthCategory($(this))">
-                                    <input type="radio" name="AuthCategory" value="10" class="d-none">
+                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                    <input type="radio" name="CreateJobCategory" value="10" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 10 </span>
                                 </div>
