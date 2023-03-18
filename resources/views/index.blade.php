@@ -1,57 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="container-fluid" id="MainBanner">
-        <div class="row justify-content-center align-content-center">
-            <div class="col-md-10">
-                <div class="MainBannerGH">
-                    @auth
-                        @can('seeker_account')
-                            <div class="MainBannerItem">
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
-                                <h1>
-                                    اعلن عن وظيفة
-                                </h1>
-                                <p>
-                                    يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
-                                </p>
-                            </div>
-                        @elsecan('business_account')
-                            <div class="MainBannerItem">
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
-                                <h1>
-                                    ابحث عن وظيفة
-                                </h1>
-                                <p>
-                                    يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
-                                </p>
-                            </div>
-                        @else
-                            <div class="MainBannerItem">
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
-                                <h1>
-                                    اعلن عن وظيفة
-                                </h1>
-                                <p>
-                                    يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
-                                </p>
-                            </div>
 
-                            <div class="MainBannerItem">
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
-                                <h1>
-                                    ابحث عن وظيفة
-                                </h1>
-                                <p>
-                                    يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
-                                </p>
-                            </div>
-                        @endcan
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container-fluid" id="SpecialOffers">
         <div class="row justify-content-center align-content-center">
@@ -62,173 +12,38 @@
                     </h10>
                 </div>
                 <div class="SpecialOffersSlider" dir="ltr">
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
+                    @foreach($jobTops as $key => $jobTop)
+                        <div class="SpecialOffersSliderItem">
+                            <div class="SpecialOffersSliderItemInner">
+                                <div class="SpecialOffersSliderItemimgHolder">
+                                    <h5 onclick="$(this).find('a')[0].click()">
+                                        @if($jobTop->company->logo)
+                                            <img src="{{ str_replace('localhost', 'localhost:8000', $jobTop->company->logo->getUrl('thumb')) }}" class="SpecialSliderUser">
+                                        @else
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderUser">
+                                        @endif
 
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
+                                        {{ $jobTop->company->name ?? '' }}
+                                        <a class="d-none" href="{{ route('CompanyProfile', [$jobTop->company->id]) }}"></a>
+                                    </h5>
+                                    @if($jobTop->photo)
+                                        <img src="{{ str_replace('localhost', 'localhost:8000', $jobTop->photo->getUrl('thumb')) }}" class="SpecialSliderImage">
+                                    @else
+                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderImage">
+                                    @endif
+                                </div>
+                                <div class="SpecialOffersSliderItemInfo">
+                                    <h3>
+                                        {{ $jobTop->short_description }}
+                                    </h3>
+                                    <span>
+                                      <i class="fas fa-clock"></i>
+                                        <u id="TopCreatedAtFormed{{ $jobTop->id }}"></u>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="SpecialOffersSliderItem">
-                        <div class="SpecialOffersSliderItemInner">
-                            <div class="SpecialOffersSliderItemimgHolder">
-                                <h5>
-                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg" class="SpecialSliderUser">
-                                    ابو غلوس
-                                </h5>
-                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp" class="SpecialSliderImage">
-                            </div>
-                            <div class="SpecialOffersSliderItemInfo">
-                                <h3>
-                                    مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                </h3>
-                                <span>
-                            <i class="fas fa-clock"></i>
-                            قبل 3 ساعات
-                        </span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -342,27 +157,22 @@
 
                         <div class="HomeAds">
                             <div class="HomeAdsSliderGH">
-                                <div class="HomeAdsSliderItem">
-                                    <div class="HomeAdsSliderItemInner">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                        <button type="button" onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none" target="_blank"></a>
-                                            <i class="fas fa-eye"></i>
-                                            المزيد
-                                        </button>
+                                @foreach($advertisings as $key => $advertising)
+                                    <div class="HomeAdsSliderItem">
+                                        <div class="HomeAdsSliderItemInner">
+                                            @if($advertising->photo)
+                                                <img src="{{ str_replace('localhost', 'localhost:8000', $advertising->photo->getUrl('thumb')) }}">
+                                            @else
+                                                <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png">
+                                            @endif
+                                            <button type="button" onclick="$(this).find('a')[0].click()">
+                                                <a href="{{ $advertising->url ?? '' }}" class="d-none" target="_blank"></a>
+                                                <i class="fas fa-eye"></i>
+                                                المزيد
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="HomeAdsSliderItem">
-                                    <div class="HomeAdsSliderItemInner">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                        <button type="button" onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none" target="_blank"></a>
-                                            <i class="fas fa-eye"></i>
-                                            المزيد
-                                        </button>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <p class="ContactAds">
                                 <img src="{{ asset('') }}Wazefni/Requirements/IMG/Up.png" class="ContactAdsImg">
@@ -559,4 +369,63 @@
 
 @section('scripts')
 
+        <script>
+            $(document).ready(function () {
+                @foreach($jobTops as $key => $jobTop)
+                var d = new Date("{{ $jobTop->created_at }}");
+                var month = d.toLocaleString('default', {month: 'long'});
+                var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
+
+
+                var date = new Date(strDate);
+                var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                    "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+                ];
+                var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+                var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+                  $('#TopCreatedAtFormed{{ $jobTop->id }}').text(delDateString)
+                @endforeach
+
+                $('.SpecialOffersSlider').slick({
+                    dots: true,
+                    arrows: false,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 5,
+                    autoplay: true,
+                    infinite: true,
+                    slidesToScroll: 5,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                                infinite: true,
+                                dots: true
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                            }
+                        }
+                        // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+                    ]
+                });
+
+                $('.SpecialOffersSlider .slick-dots li').html('<div></div>')
+            });
+        </script>
 @endsection

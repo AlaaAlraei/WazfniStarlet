@@ -16,11 +16,19 @@
                                 <div></div>
                             </li>
                             @auth
-                                <li onclick="$(this).find('a')[0].click()" id="CreateJobUserHeaderBtn">
-                                    <a class="d-none" href="{{ route('jobs.create') }}"></a>
-                                    اعلن عن وظيفة
-                                    <div></div>
-                                </li>
+                                @can('seeker_account')
+                                    <li onclick="$(this).find('a')[0].click()" id="PreviewJobsHeaderBtn">
+                                        <a class="d-none" href="{{ route('jobs.index') }}"></a>
+                                        تصفح الوظائف
+                                        <div></div>
+                                    </li>
+                                @else
+                                    <li onclick="$(this).find('a')[0].click()" id="CreateJobUserHeaderBtn">
+                                        <a class="d-none" href="{{ route('jobs.create') }}"></a>
+                                        اعلن عن وظيفة
+                                        <div></div>
+                                    </li>
+                                @endcan
                             @else
                                 <li onclick="$('#HeaderLoginBtn').click()" id="CreateJobUserHeaderBtn">
                                     اعلن عن وظيفة

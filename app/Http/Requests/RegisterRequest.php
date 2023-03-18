@@ -30,18 +30,14 @@ class RegisterRequest extends FormRequest
                 'email',
                 'unique:users',
             ],
-            'country_key'    => [
+            'country_id'    => [
                 'required',
-                'string',
+                'integer',
             ],
             'phone'    => [
                 'required',
                 'numeric',
                 'unique:users',
-            ],
-            'privacy'    => [
-                'required',
-                'in:0,1',
             ],
             'role'    => [
                 'required',

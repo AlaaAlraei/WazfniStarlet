@@ -17,6 +17,46 @@
     <link rel="stylesheet" href="{{ asset('') }}Wazefni/Requirements/CSS/mobile.css">
 </head>
 <body dir="rtl">
+@if($errors->count() > 0)
+    <div class="RegistrationFormErrors d-none">
+        @if($errors->has('name'))
+            <error>
+                {{ $errors->first('name') }}
+            </error>
+        @endif
+        @if($errors->has('last_name'))
+            <error>
+                {{ $errors->first('last_name') }}
+            </error>
+        @endif
+        @if($errors->has('email'))
+            <error>
+                {{ $errors->first('email') }}
+            </error>
+        @endif
+        @if($errors->has('country_id'))
+            <error>
+                {{ $errors->first('country_id') }}
+            </error>
+        @endif
+        @if($errors->has('phone'))
+            <error>
+                {{ $errors->first('phone') }}
+            </error>
+        @endif
+        @if($errors->has('role'))
+            <error>
+                {{ $errors->first('role') }}
+            </error>
+        @endif
+        @if($errors->has('password'))
+            <error>
+                {{ $errors->first('password') }}
+            </error>
+        @endif
+    </div>
+@endif
+
 
 @include('partials.header')
 
@@ -33,7 +73,7 @@
     </div>
 </div>
 
-@auth()
+@auth
     <div id="EditInformation">
         <div class="LoginInner">
             <div class="LoginFade" onclick="$('#EditInformation').fadeOut(600)"></div>
@@ -305,7 +345,7 @@
                         تسجيل الدخول
                         <div></div>
                     </button>
-                    <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#RegisterForm">
+                    <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#RegisterForm" id="CraeateAccountTab">
                         إنشاء حساب
                         <div></div>
                     </button>
@@ -375,12 +415,12 @@
                     @csrf
                     <div class="LoginFormRow">
                         <div class="FormTwoBtns">
-                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
-                                <input value="2" type="radio" name="role">
+                            <button class="{{ old('role', null) == 2 ? 'class' : '' }}" type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
+                                <input {{ old('role', null) == 2 ? 'checked' : '' }} value="2" type="radio" name="role" required>
                                 صاحب عمل
                             </button>
-                            <button type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
-                                <input value="3" type="radio" name="role">
+                            <button class="{{ old('role', null) == 3 ? 'class' : '' }}" type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
+                                <input {{ old('role', null) == 3 ? 'checked' : '' }} value="3" type="radio" name="role" required>
                                 باحث عن وظيفة
                             </button>
                         </div>
@@ -401,7 +441,7 @@
                             <u>
                                 <i class="fas fa-mobile"></i>
                             </u>
-                            <input type="number" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required>
+                            <input type="number" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required  value="{{ old('phone', null) }}">
                             <div class="MobileNumberSelectCountry">
                                 <select name="country_id" required>
                                     @foreach($countries as $key => $country)
@@ -422,7 +462,7 @@
                             <u>
                                 <i class="fas fa-envelope"></i>
                             </u>
-                            <input type="text" placeholder="example@wzfni.com" name="email" required>
+                            <input type="email" placeholder="example@wzfni.com" name="email" value="{{ old('email', null) }}" required>
                         </div>
                     </div>
                     <div class="LoginFormRow">
@@ -447,7 +487,7 @@
                             <u>
                                 <i class="fas fa-key"></i>
                             </u>
-                            <input type="password" placeholder="اكتب هنا : كلمة المرور مرة اخرى" name="password"
+                            <input type="password" placeholder="اكتب هنا : كلمة المرور مرة اخرى" name="password_confirmation"
                                    required>
                             <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
                                 <i class="fas fa-eye"></i>
@@ -462,6 +502,9 @@
                         الشروط والأحكام
                     </u>
                 </span>
+                    <div class="FormErrorsGH" id="RegErrorsGH">
+
+                    </div>
                     <div class="LoginFormRow">
                         <button type="submit">
                             إنشاء حساب
@@ -569,7 +612,7 @@
                         '</div>' +
                         '<div class="LatestJobsItemInfo">' +
                         '<h5 title="' + v['company']['name'] + '" onclick="$(this).find(\'a\')[0].click()">' +
-                         '<a href="{{asset("")}}Company/' + v['company']['id'] + '" class="d-none"></a>' +
+                         '<a href="/company-profile/' + v['company']['id'] + '" class="d-none"></a>' +
                          // '<a class="d-none" onclick="$(\'#HeaderLoginBtn\).click()"></a>' +
                         '<img src="' + NewName + '" class="SpecialSliderUser">' +
                         v['company']['name'] +
@@ -662,7 +705,7 @@
                 '    <u>\n' +
                 '        <i class="fas fa-building"></i>\n' +
                 '    </u>\n' +
-                '    <input name="name" type="text" placeholder="اكتب هنا : اسم الشركة المؤسسة/الشركة">\n' +
+                '    <input name="name" type="text" placeholder="اكتب هنا : اسم الشركة المؤسسة/الشركة" required>\n' +
                 '</div>')
             $('#RegBuissnes').show()
         } else {

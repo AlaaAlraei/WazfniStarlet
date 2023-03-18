@@ -9,7 +9,7 @@ Route::get('/promote', 'PromoteController@index')->name('promote');
 Route::get('/term', 'TermController@index')->name('term');
 Route::get('/my-profile', 'ProfileController@MyProfile')->name('MyProfile');
 Route::post('/Register', 'ProfileController@Register')->name('Register');
-Route::get('/company-profile', 'ProfileController@CompanyProfile')->name('CompanyProfile');
+Route::get('/company-profile/{company}', 'ProfileController@CompanyProfile')->name('CompanyProfile');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin');
 Route::get('search', 'HomeController@search')->name('search');

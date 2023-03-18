@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertising;
 use App\Category;
 use App\Location;
 use App\Job;
@@ -21,8 +22,15 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->take(7)
             ->get();
+        $jobTops = Job::with('company')
+            ->where('top_rated', 1)
+            ->orderBy('id', 'desc')
+            ->take(20)
+            ->get();
 
-        return view('index', compact(['searchLocations', 'searchCategories', 'searchByCategory', 'jobs']));
+        $advertisings = Advertising::all();
+
+        return view('index', compact(['searchLocations', 'searchCategories', 'searchByCategory', 'jobs', 'advertisings', 'jobTops']));
     }
 
     public function search(Request $request)

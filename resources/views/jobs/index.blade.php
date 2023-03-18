@@ -291,6 +291,8 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="PreviewJobsPage">
 @endsection
 
 

@@ -591,7 +591,7 @@ img {
 }
 
 #SpecialOffers {
-    /* margin-top: 65px !important; */
+    margin-top: 50px;
 }
 
 .LatestJobsGH {
@@ -889,6 +889,7 @@ img {
     padding: 43px 43px 20px;
     cursor: pointer;
     transition: 300ms;
+    z-index: 2;
 }
 
 .MainBannerGH .MainBannerItem:last-child {
@@ -1923,19 +1924,25 @@ input[type=number] {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 416px;
+    height: auto;
     margin: 0 auto;
     width: 100%;
+    aspect-ratio: 1/0.5;
 }
 
 .JobShowPaperImgHolderInner {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    max-height: 80%;
 }
 
 .JobShowPaperImgHolderInner img {
-    display: block;
+    display: flex;
     margin: 0 auto;
     width: auto;
-    height: 80%;
+    height: auto;
     max-width: 100%;
     filter: brightness(90%);
 }
@@ -2407,7 +2414,7 @@ input[type=number] {
     margin: 0 auto;
     width: 100%;
     overflow: hidden;
-    aspect-ratio: 1/0.5;
+    aspect-ratio: 1/0.6;
     min-height: 200px;
     position: relative;
 }
@@ -2852,4 +2859,24 @@ input[type=number] {
 }
 
 .CreateNewAdFormRow h14 i {
+}
+
+
+.FormErrorsGH {
+    display: block;
+    margin: 17px auto;
+    width: 100%;
+    color: #d23b3b;
+}
+
+.FormErrorsGH error {
+    display: block;
+    margin: 3px auto;
+    width: 100%;
+    font-size: 15px;
+}
+
+
+.SpecialOffersSliderItemInner span u {
+    text-decoration: none;
 }
