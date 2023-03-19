@@ -23,10 +23,6 @@ class UpdateCategoryRequest extends FormRequest
                 'required',
                 'string',
             ],
-            'imagePC' => [
-                'nullable',
-                'image',
-            ],
         ];
     }
 }

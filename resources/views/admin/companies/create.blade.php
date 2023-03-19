@@ -9,6 +9,22 @@
     <div class="card-body">
         <form action="{{ route("admin.companies.store") }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
+                <label for="category_id">{{ trans('cruds.company.fields.category_id') }}*</label>
+                <select id="category_id" name="category_id" class="form-control" required>
+                    @foreach($categories as $id => $category)
+                        <option value="{{ $id ?? '' }}" {{ old('category_id', isset($company) && $company->category_id == $id ? 'selected' : '') }}>{{ $category }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('category_id'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('category_id') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.category_id_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('cruds.company.fields.name') }}*</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($company) ? $company->name : '') }}" required>
@@ -19,6 +35,90 @@
                 @endif
                 <p class="helper-block">
                     {{ trans('cruds.company.fields.name_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('about') ? 'has-error' : '' }}">
+                <label for="about">{{ trans('cruds.company.fields.about') }}*</label>
+                <textarea type="text" id="about" name="about" class="form-control" required>{{ old('about', isset($company) ? $company->about : '') }}</textarea>
+                @if($errors->has('about'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('about') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.about_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
+                <label for="address">{{ trans('cruds.company.fields.address') }}*</label>
+                <input type="text" id="address" name="address" class="form-control" value="{{ old('address', isset($company) ? $company->address : '') }}" required>
+                @if($errors->has('address'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('address') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.address_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('website') ? 'has-error' : '' }}">
+                <label for="website">{{ trans('cruds.company.fields.website') }}</label>
+                <input type="text" id="website" name="website" class="form-control" value="{{ old('website', isset($company) ? $company->website : '') }}">
+                @if($errors->has('website'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('website') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.website_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('linked') ? 'has-error' : '' }}">
+                <label for="linked">{{ trans('cruds.company.fields.linked') }}</label>
+                <input type="text" id="linked" name="linked" class="form-control" value="{{ old('linked', isset($company) ? $company->linked : '') }}">
+                @if($errors->has('linked'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('linked') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.linked_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('instagram') ? 'has-error' : '' }}">
+                <label for="instagram">{{ trans('cruds.company.fields.instagram') }}</label>
+                <input type="text" id="instagram" name="instagram" class="form-control" value="{{ old('instagram', isset($company) ? $company->instagram : '') }}">
+                @if($errors->has('instagram'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('instagram') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.instagram_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('twitter') ? 'has-error' : '' }}">
+                <label for="twitter">{{ trans('cruds.company.fields.twitter') }}</label>
+                <input type="text" id="twitter" name="twitter" class="form-control" value="{{ old('twitter', isset($company) ? $company->twitter : '') }}">
+                @if($errors->has('twitter'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('twitter') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.twitter_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('facebook') ? 'has-error' : '' }}">
+                <label for="facebook">{{ trans('cruds.company.fields.facebook') }}</label>
+                <input type="text" id="facebook" name="facebook" class="form-control" value="{{ old('facebook', isset($company) ? $company->facebook : '') }}">
+                @if($errors->has('facebook'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('facebook') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.company.fields.facebook_helper') }}
                 </p>
             </div>
             <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
@@ -76,7 +176,7 @@
 @if(isset($company) && $company->logo)
       var file = {!! json_encode($company->logo) !!}
           this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, '{{ $company->logo->getUrl('thumb') }}')
+      this.options.thumbnail.call(this, file, '{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}')
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1

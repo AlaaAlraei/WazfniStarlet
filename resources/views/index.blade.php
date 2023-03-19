@@ -33,7 +33,8 @@
                                     @endif
                                 </div>
                                 <div class="SpecialOffersSliderItemInfo">
-                                    <h3>
+                                    <h3 onclick="$(this).find('a')[0].click()">
+                                        <a href="{{ route('jobs.show', [$jobTop->id]) }}" class="d-none"></a>
                                         {{ $jobTop->short_description }}
                                     </h3>
                                     <span>
@@ -78,8 +79,11 @@
                                     <div class="JobCategoryItem" onclick="SelectThisCategory($(this))" url="{{ route('GetByCategoriesJobs', [$searchCategory->id]) }}">
                                         <div class="JobCategoryItemDiv">
                                             <div class="JobCategoryItemInner">
-                                                <img
-                                                    src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/$searchCategory->icon") : str_replace("public", "storage", asset("$searchCategory->icon")) }}">
+                                                @if($searchCategory->photo)
+                                                    <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $searchCategory->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $searchCategory->photo->getUrl('thumb')) }}">
+                                                @else
+                                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
+                                                @endif
                                             </div>
                                             <span rel="{{ $searchCategory->id ?? '' }}">
                                                 {{ $searchCategory->name ?? '' }}

@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Categories
     Route::delete('categories/destroy', 'CategoriesController@massDestroy')->name('categories.massDestroy');
+    Route::post('categories/media', 'CategoriesController@storeMedia')->name('categories.storeMedia');
     Route::resource('categories', 'CategoriesController');
 
     // Locations

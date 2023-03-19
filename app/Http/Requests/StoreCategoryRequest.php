@@ -23,10 +23,6 @@ class StoreCategoryRequest extends FormRequest
                 'required',
                 'string',
             ],
-            'imagePC' => [
-                'required',
-                'image',
-            ],
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyCategoryRequest;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CategoriesController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -31,15 +34,11 @@ class CategoriesController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
-        if ($request->file('iconPC'))
-        {
-            $icon=$request->file('iconPC');
-            $extensioniconDoc = $icon->getClientOriginalExtension();
-            $PathToiconDoc    = $icon->storeAs('public/Category/',uniqid(6).time() . "." . $extensioniconDoc);
-            $request['icon']  = $PathToiconDoc;
-        }
-
         $category = Category::create($request->all());
+
+        if ($request->input('photo', false)) {
+            $category->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+        }
 
         return redirect()->route('admin.categories.index');
     }
@@ -53,15 +52,15 @@ class CategoriesController extends Controller
 
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        if ($request->file('iconPC'))
-        {
-            $icon=$request->file('iconPC');
-            $extensioniconDoc = $icon->getClientOriginalExtension();
-            $PathToiconDoc    = $icon->storeAs('public/Category/',uniqid(6).time() . "." . $extensioniconDoc);
-            $request['icon']  = $PathToiconDoc;
-        }
-
         $category->update($request->all());
+
+        if ($request->input('photo', false)) {
+            if (!$category->photo || $request->input('photo') !== $category->photo->file_name) {
+                $category->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
+            }
+        } elseif ($category->photo) {
+            $category->photo->delete();
+        }
 
         return redirect()->route('admin.categories.index');
     }

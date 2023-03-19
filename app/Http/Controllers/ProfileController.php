@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\Form;
 use App\Http\Requests\RegisterRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -31,9 +33,13 @@ class ProfileController extends Controller
 
     }
 
-    public function CompanyProfile()
+    public function CompanyProfile(Company $company)
     {
-        return view('company-profile');
+        $FormCount = Form::whereHas('job', function($q) use ($company) {
+            $q->where('company_id', $company->id);
+        })->count();
+
+        return view('company-profile', compact('company', 'FormCount'));
     }
 
 }

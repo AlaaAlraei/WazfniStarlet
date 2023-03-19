@@ -2880,3 +2880,289 @@ input[type=number] {
 .SpecialOffersSliderItemInner span u {
     text-decoration: none;
 }
+
+#CompanyProfilePage {
+    margin-top: 48px;
+    margin-bottom: 52px;
+}
+
+.CompanyProfilePaper {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    background: white;
+    padding: 16px 9px;
+    position: relative;
+    padding-top: 124px;
+}
+
+.CompanyProfilePaperHeader {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #4fb847;
+    padding: 10px 11px;
+    padding-right: 135px;
+    color: aliceblue;
+    text-align: right;
+    width: 100%;
+    padding-left: 203px;
+}
+
+.CompanyProfileImgHolder {
+    position: absolute;
+    right: 17px;
+    top: -20px;
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1/1;
+    border: solid 6px #4fb847;
+    overflow: hidden;
+    border-radius: 1000px;
+}
+
+.CompanyProfileImgHolder img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+}
+
+.CompanyProfilePaperHeaderInfo {
+}
+
+.CompanyProfilePaperHeaderInfo h1 {
+    display: block;
+    margin: 21px auto;
+    width: 100%;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.CompanyProfilePaperHeaderInfo h1 i {
+    font-size: 14px;
+    margin: 0px 5px;
+}
+
+.CompanyProfilePaperHeaderInfo span {
+    display: block;
+    margin: 0 0;
+    width: fit-content;
+    padding: 6px 18px;
+    background: #00000036;
+    position: relative;
+    padding-right: 50px;
+    font-weight: bold;
+    color: aliceblue;
+    border-radius: 100px;
+    font-size: 11px;
+}
+
+.CompanyProfilePaperHeaderInfo span img {
+    position: absolute;
+    right: 7px;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 4px;
+    max-width: 40px;
+}
+
+.CompanyProfilePaperHeaderInfo p {
+}
+
+.CompanyBio {
+    display: block;
+    margin: 28px auto;
+    width: 89%;
+    text-align: right;
+    font-size: 16px;
+}
+
+.CompanyBio u {
+    display: block;
+    margin: 18px 0;
+    width: fit-content;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: #391364;
+}
+
+.CompanyProfilePaperHeaderOptions {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CompanyProfilePaperHeaderOptions .CompanyWebsiteBtn {
+    display: block;
+    margin: 11px auto;
+    width: 94%;
+    padding: 11px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    background: #353535;
+    color: aliceblue;
+    border-radius: 5px;
+    transition: 400ms;
+}
+
+.CompanyProfilePaperHeaderOptions .CompanyWebsiteBtn i {
+}
+
+.CompanySocials {
+    display: flex;
+    justify-content: start;
+    direction: ltr;
+}
+
+.CompanySocials button {
+    border: none;
+    color: #388232;
+    background: #e1e1e1;
+    width: 30px;
+    height: 30px;
+    margin: 1px 6px;
+    border-radius: 6px;
+    transition: 300ms;
+}
+
+.CompanySocials button i {
+}
+
+.CompanyProfilePaperHeaderOptionsInner {
+    padding: 1px 14px;
+}
+
+
+.CompanySocials button:hover {
+    transform: scale(1.2);
+    box-shadow: -5px -3px 0px 0px #2f8229;
+}
+
+
+.CompanyProfilePaperHeaderOptions .CompanyWebsiteBtn:hover {
+    background: #391364;
+}
+
+.CompanyJobsGHParent {
+    display: block;
+    margin: 52px auto;
+    width: 92%;
+    background: whitesmoke;
+    padding-bottom: 10px;
+}
+
+.CompanyJobsGH {
+    display: block;
+    margin: 0 auto;
+    width: 94%;
+}
+
+.SimilerCompanies {
+    display: block;
+    margin: 0 0 50px;
+    width: 90%;
+    background: white;
+    border-top: 0;
+}
+
+.SimilerCompaniesGH {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px 17px;
+}
+
+.SimilerCompaniesItem {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 16px 22px;
+    text-align: right;
+    padding-right: 105px;
+    position: relative;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.SimilerCompaniesImgHolder {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    margin: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.SimilerCompaniesImgHolder img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+}
+
+.SimilerCompaniesItemInfo {
+}
+
+.SimilerCompaniesItemInfo h2 {
+    display: block;
+    margin: 9px auto 15px;
+    width: 100%;
+    font-weight: bold;
+    color: #391364;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.SimilerCompaniesItemInfo h2:hover {
+    color: #51b749;
+    text-decoration: underline;
+}
+
+.SimilerCompaniesItemInfo p {
+    display: block;
+    margin: 11px auto;
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    padding-right: 18px;
+    color: #505050;
+}
+
+.SimilerCompaniesItemInfo p i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+}
+
+.SimilerCompaniesItemInfo p u {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0px 9px;
+}
+
+
+.SimilerCompaniesGH .SimilerCompaniesItem:last-child {
+    border-bottom: none;
+}

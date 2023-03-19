@@ -26,7 +26,15 @@ class Company extends Model implements HasMedia
 
     protected $fillable = [
         'created_by_id',
+        'category_id',
         'name',
+        'about',
+        'address',
+        'website',
+        'linked',
+        'instagram',
+        'twitter',
+        'facebook',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -40,6 +48,11 @@ class Company extends Model implements HasMedia
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function jobs()

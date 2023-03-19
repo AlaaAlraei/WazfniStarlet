@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
@@ -30,7 +31,9 @@ class CompaniesController extends Controller
     {
         abort_if(Gate::denies('company_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.companies.create');
+        $categories = Category::all()->pluck('name', 'id');
+
+        return view('admin.companies.create', compact('categories'));
     }
 
     public function store(StoreCompanyRequest $request)
@@ -49,7 +52,9 @@ class CompaniesController extends Controller
     {
         abort_if(Gate::denies('company_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.companies.edit', compact('company'));
+        $categories = Category::all()->pluck('name', 'id');
+
+        return view('admin.companies.edit', compact('company', 'categories'));
     }
 
     public function update(UpdateCompanyRequest $request, Company $company)

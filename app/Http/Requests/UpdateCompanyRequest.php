@@ -19,8 +19,21 @@ class UpdateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
+            'category_id' => [
+                'required',
+                'integer',
+            ],
             'name' => [
                 'required',
+                'string',
+            ],
+            'about' => [
+                'required',
+                'string',
+            ],
+            'address' => [
+                'required',
+                'string',
             ],
         ];
     }
