@@ -19,8 +19,13 @@ class StoreJobRequest extends FormRequest
     public function rules()
     {
         return [
+            'max_apply'        => [
+                'required',
+                'integer',
+            ],
             'title'        => [
                 'required',
+                'string',
             ],
             'company_id'   => [
                 'required',

@@ -142,6 +142,18 @@
                     {{ trans('cruds.job.fields.categories_helper') }}
                 </p>
             </div>
+            <div class="form-group {{ $errors->has('max_apply') ? 'has-error' : '' }}">
+                <label for="max_apply">{{ trans('cruds.job.fields.max_apply') }}*</label>
+                <input type="number" id="max_apply" name="max_apply" class="form-control" value="{{ old('max_apply', isset($job) ? $job->max_apply : '0') }}" required>
+                @if($errors->has('max_apply'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('max_apply') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.job.fields.max_apply_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('salary') ? 'has-error' : '' }}">
                 <label for="salary">{{ trans('cruds.job.fields.salary') }}*</label>
                 <input type="text" id="salary" name="salary" class="form-control" value="{{ old('salary', isset($job) ? $job->salary : '') }}" required>

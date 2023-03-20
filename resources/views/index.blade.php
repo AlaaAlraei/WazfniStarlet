@@ -1,8 +1,6 @@
 @extends('layouts.user')
 
 @section('content')
-
-
     <div class="container-fluid" id="SpecialOffers">
         <div class="row justify-content-center align-content-center">
             <div class="col-md-10" style="position: relative">

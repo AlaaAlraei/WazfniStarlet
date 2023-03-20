@@ -22,7 +22,7 @@
                 </p>
             </div>
             <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
-                <label for="photo">{{ trans('cruds.company.fields.photo') }}</label>
+                <label for="photo">{{ trans('cruds.job.fields.photo') }}</label>
                 <div class="needsclick dropzone" id="photo-dropzone">
 
                 </div>
@@ -32,7 +32,7 @@
                     </em>
                 @endif
                 <p class="helper-block">
-                    {{ trans('cruds.company.fields.photo_helper') }}
+                    {{ trans('cruds.job.fields.photo_helper') }}
                 </p>
             </div>
             <div class="form-group {{ $errors->has('company_id') ? 'has-error' : '' }}">
@@ -143,7 +143,7 @@
             </div>
             <div class="form-group {{ $errors->has('salary') ? 'has-error' : '' }}">
                 <label for="salary">{{ trans('cruds.job.fields.salary') }}*</label>
-                <input type="text" id="salary" name="salary" class="form-control" value="{{ old('salary', isset($job) ? $job->salary : '') }}" required>
+                <input type="number" id="salary" name="salary" class="form-control" value="{{ old('salary', isset($job) ? $job->salary : '') }}" required>
                 @if($errors->has('salary'))
                     <em class="invalid-feedback">
                         {{ $errors->first('salary') }}
@@ -151,6 +151,18 @@
                 @endif
                 <p class="helper-block">
                     {{ trans('cruds.job.fields.salary_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('max_apply') ? 'has-error' : '' }}">
+                <label for="max_apply">{{ trans('cruds.job.fields.max_apply') }}*</label>
+                <input type="number" id="max_apply" name="max_apply" class="form-control" value="{{ old('max_apply', isset($job) ? $job->max_apply : '0') }}" required>
+                @if($errors->has('max_apply'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('max_apply') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.job.fields.max_apply_helper') }}
                 </p>
             </div>
             <div class="form-group {{ $errors->has('top_rated') ? 'has-error' : '' }}">

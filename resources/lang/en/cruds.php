@@ -169,6 +169,8 @@ return [
             'categories_helper'        => '',
             'salary'                   => 'Salary',
             'salary_helper'            => '',
+            'max_apply'                => 'Max apply',
+            'max_apply_helper'         => '',
         ],
     ],
     'country'        => [

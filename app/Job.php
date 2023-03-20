@@ -25,6 +25,7 @@ class Job extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'max_apply',
         'title',
         'salary',
         'address',
