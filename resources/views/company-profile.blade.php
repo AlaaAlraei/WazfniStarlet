@@ -127,33 +127,28 @@
                                                     <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $job->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $job->photo->getUrl('thumb')) }}">
                                                 @endif
                                             </div>
-                                            <div class="LatestJobsItemInfo SpecialOfferIndicator"><h5
-                                                    title="Starlet IT Company" onclick="$(this).find('a')[0].click()"><a
-                                                        href="/company-profile/1" class="d-none"></a><img
-                                                        src="http://localhost:8000/storage/7/conversions/64091257c03bf_dsfdf-thumb.jpg"
-                                                        class="SpecialSliderUser">Starlet IT Company<u> <i
-                                                            class="fa fa-check-circle" aria-hidden="true"></i></u></h5>
+                                            <div class="LatestJobsItemInfo SpecialOfferIndicator">
                                                 <h3 onclick="$(this).find('a')[0].click()"><a
-                                                        href="http://127.0.0.1:8000/jobs/2" class="d-none"></a>Job Title
+                                                        href="/jobs/{{ $job->id ?? '' }}" class="d-none"></a>{{ $job->name ?? '' }}
                                                 </h3>
-                                                <p>مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي</p><span
+                                                <p>{{ $job->short_description ?? '' }}</p><span
                                                     title="تاريخ النشر"><i
-                                                        class="fas fa-clock"></i>اﻷربعاء 8 مارس 2023</span>
+                                                        class="fas fa-clock"></i>{{ $job->created_at ?? '' }} </span>
                                                 <div class="JobDetails">
-                                                    <h15 title="مكان الوظيفة" style="background: #a14444;"><img
-                                                            src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Location.png">al
-                                                        madina
+                                                    <h15 title="مكان الوظيفة" style="background: #a14444;">
+                                                        <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Location.png">
+                                                        {{ $job->address ?? '' }}
                                                     </h15>
                                                     <h15 title="الراتب"><img
-                                                            src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Salary.png">420<u>
+                                                            src="/Wazefni/Requirements/IMG/Salary.png">{{ $job->salary ?? '' }}<u>
                                                             دينار </u></h15>
                                                     <h15 style="background: #616161" class="NoImgJobDetail"
-                                                         title="نوع الوظيفة">Full-Time
+                                                         title="نوع الوظيفة">{{ $job->job_nature ?? '' }}
                                                     </h15>
                                                 </div>
                                                 <input type="hidden" class="IsRated1" rel="1">
-                                                <h12 title="إعلان مميز"><img
-                                                        src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/Promoted.png">
+                                                <h12 title="إعلان مميز">
+                                                    <img src="/Wazefni/Requirements/IMG/Promoted.png">
                                                 </h12>
                                             </div>
                                         </div>
@@ -170,181 +165,33 @@
                                 </h10>
                             </div>
                             <div class="SimilerCompaniesGH">
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
+                                @foreach($company->category->companies as $key => $OtherCompany)
+                                    <div class="SimilerCompaniesItem">
+                                        <div class="SimilerCompaniesImgHolder">
+                                            <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
+                                        </div>
+                                        <div class="SimilerCompaniesItemInfo">
+                                            <h2 onclick="$(this).find('a')[0].click()">
+                                                <a href="#" class="d-none"></a>
+                                                {{ $OtherCompany->name ?? '' }}
+                                            </h2>
+                                            <p>
+                                                <i class="fas fa-calendar"></i>
+                                                عضو منذ:
+                                                <u>
+                                                    {{ $OtherCompany->created_at->format('Y/m/d') ?? '' }}
+                                                </u>
+                                            </p>
+                                            <p>
+                                                <i class="fas fa-shopping-bag" style="color: #488334"></i>
+                                                وظائف متاحة:
+                                                <u>
+                                                    {{ $OtherCompany->jobs->count() ?? '' }}
+                                                </u>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="SimilerCompaniesItem">
-                                    <div class="SimilerCompaniesImgHolder">
-                                        <img src="https://www.designhill.com/resize_img.php?atyp=page_file&pth=ft_ca_ct||117||contestfile_7&flp=1554116646-12909290705ca1f02620ebf2-09367637.jpg">
-                                    </div>
-                                    <div class="SimilerCompaniesItemInfo">
-                                        <h2 onclick="$(this).find('a')[0].click()">
-                                            <a href="#" class="d-none"></a>
-                                            اسم الشركة
-                                        </h2>
-                                        <p>
-                                            <i class="fas fa-calendar"></i>
-                                            عضو منذ:
-                                            <u>
-                                                9/10/2023
-                                            </u>
-                                        </p>
-                                        <p>
-                                            <i class="fas fa-circle" style="color: #488334"></i>
-                                            وظائف متاحة:
-                                            <u>
-                                                14
-                                            </u>
-                                        </p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
