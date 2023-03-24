@@ -177,7 +177,7 @@
 @if(isset($company) && $company->logo)
       var file = {!! json_encode($company->logo) !!}
           this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, '{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}')
+      this.options.thumbnail.call(this, file, '{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}')
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1

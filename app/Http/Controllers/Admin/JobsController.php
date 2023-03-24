@@ -11,6 +11,7 @@ use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Job;
 use App\Location;
+use App\Type;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,19 +33,22 @@ class JobsController extends Controller
     {
         abort_if(Gate::denies('job_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $companies = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $types      = Type::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $locations = Location::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $companies  = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $locations  = Location::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $categories = Category::all()->pluck('name', 'id');
 
-        return view('admin.jobs.create', compact('companies', 'locations', 'categories'));
+        return view('admin.jobs.create', compact('companies', 'locations', 'categories', 'types'));
     }
 
     public function store(StoreJobRequest $request)
     {
         $job = Job::create($request->all());
         $job->categories()->sync($request->input('categories', []));
+        $job->types()->sync($request->input('types', []));
 
         if ($request->input('photo', false)) {
             $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
@@ -57,21 +61,24 @@ class JobsController extends Controller
     {
         abort_if(Gate::denies('job_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $companies = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $types      = Type::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $locations = Location::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $companies  = Company::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $locations  = Location::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $categories = Category::all()->pluck('name', 'id');
 
-        $job->load('company', 'location', 'categories');
+        $job->load('company', 'location', 'categories', 'types');
 
-        return view('admin.jobs.edit', compact('companies', 'locations', 'categories', 'job'));
+        return view('admin.jobs.edit', compact('companies', 'locations', 'categories', 'types', 'job'));
     }
 
     public function update(UpdateJobRequest $request, Job $job)
     {
         $job->update($request->all());
         $job->categories()->sync($request->input('categories', []));
+        $job->types()->sync($request->input('types', []));
 
         if ($request->input('photo', false)) {
             if (!$job->photo || $request->input('photo') !== $job->photo->file_name) {

@@ -15,45 +15,21 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('') }}Wazefni/Requirements/CSS/style.css">
     <link rel="stylesheet" href="{{ asset('') }}Wazefni/Requirements/CSS/mobile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 </head>
 <body dir="rtl">
 @if($errors->count() > 0)
-    <div class="RegistrationFormErrors d-none">
-        @if($errors->has('name'))
-            <error>
-                {{ $errors->first('name') }}
-            </error>
-        @endif
-        @if($errors->has('last_name'))
-            <error>
-                {{ $errors->first('last_name') }}
-            </error>
-        @endif
-        @if($errors->has('email'))
-            <error>
-                {{ $errors->first('email') }}
-            </error>
-        @endif
-        @if($errors->has('country_id'))
-            <error>
-                {{ $errors->first('country_id') }}
-            </error>
-        @endif
-        @if($errors->has('phone'))
-            <error>
-                {{ $errors->first('phone') }}
-            </error>
-        @endif
-        @if($errors->has('role'))
-            <error>
-                {{ $errors->first('role') }}
-            </error>
-        @endif
-        @if($errors->has('password'))
-            <error>
-                {{ $errors->first('password') }}
-            </error>
-        @endif
+    @if (Session::has('login'))
+        <div class="alert alert-danger">{{ Session::get('login') }}</div>
+    @else
+        <div class="alert alert-danger">Error Because Register</div>
+    @endif
+    <div class="alert alert-danger">
+        <ul class="list-unstyled">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
 @endif
 
@@ -540,6 +516,7 @@
 <script src="{{ asset('') }}Wazefni/Requirements/JS/numscroller-1.0.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/slick.min.js"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/javascript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 
 <script>
     function SelectThisCategory(el) {

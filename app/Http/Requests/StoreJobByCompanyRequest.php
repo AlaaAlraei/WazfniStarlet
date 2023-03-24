@@ -36,8 +36,15 @@ class StoreJobByCompanyRequest extends FormRequest
             'categories'   => [
                 'array',
             ],
+            'types.*' => [
+                'integer',
+            ],
+            'types'   => [
+                'array',
+            ],
             'salary'       => [
-                'required',
+                'nullable',
+                'numeric',
             ],
         ];
     }

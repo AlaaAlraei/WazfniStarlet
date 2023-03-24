@@ -13,7 +13,8 @@ class ClientLoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)):
-            return redirect()->to('login')
+            return redirect()->to('/')
+                ->with('login', 'Error because login')
                 ->withErrors(trans('auth.failed'));
         endif;
 

@@ -10,7 +10,7 @@
                             <div class="CompanyProfilePaperHeader">
                                 <div class="CompanyProfileImgHolder">
                                     @if(isset($company->logo))
-                                        <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}">
+                                        <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}">
                                     @else
                                         <img src="#">
                                     @endif
@@ -25,7 +25,7 @@
                                     </h1>
                                     <span>
                                         @if(isset($company->category->photo))
-                                            <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $company->category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->category->photo->getUrl('thumb')) }}">
+                                            <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $company->category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->category->photo->getUrl('thumb')) }}">
                                         @else
                                             <img src="#">
                                         @endif
@@ -125,7 +125,7 @@
                                             <div class="LatestJobsItem animate__animated animate__fadeIn">
                                                 <div class="LatestJobsItemImage">
                                                     @if($job->photo)
-                                                        <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $job->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $job->photo->getUrl('thumb')) }}">
+                                                        <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $job->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $job->photo->getUrl('thumb')) }}">
                                                     @endif
                                                 </div>
                                                 <div class="LatestJobsItemInfo SpecialOfferIndicator">
@@ -171,7 +171,7 @@
                                     @foreach($company->category->companies as $key => $OtherCompany)
                                         <div class="SimilerCompaniesItem">
                                             <div class="SimilerCompaniesImgHolder">
-                                                <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}">
+                                                <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $company->logo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $company->logo->getUrl('thumb')) }}">
                                             </div>
                                             <div class="SimilerCompaniesItemInfo">
                                                 <h2 onclick="$(this).find('a')[0].click()">

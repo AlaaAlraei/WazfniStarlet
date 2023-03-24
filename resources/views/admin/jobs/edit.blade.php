@@ -142,6 +142,22 @@
                     {{ trans('cruds.job.fields.categories_helper') }}
                 </p>
             </div>
+            <div class="form-group {{ $errors->has('types') ? 'has-error' : '' }}">
+                <label for="types">{{ trans('cruds.job.fields.types') }}</label>
+                <select name="types[]" id="types" class="form-control select2" multiple>
+                    @foreach($types as $id => $types)
+                        <option value="{{ $id }}" {{ (in_array($id, old('types', [])) || isset($job) && $job->types->contains($id)) ? 'selected' : '' }}>{{ $types }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('types'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('types') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.job.fields.types_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('max_apply') ? 'has-error' : '' }}">
                 <label for="max_apply">{{ trans('cruds.job.fields.max_apply') }}*</label>
                 <input type="number" id="max_apply" name="max_apply" class="form-control" value="{{ old('max_apply', isset($job) ? $job->max_apply : '0') }}" required>

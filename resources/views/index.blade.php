@@ -78,7 +78,7 @@
                                         <div class="JobCategoryItemDiv">
                                             <div class="JobCategoryItemInner">
                                                 @if($searchCategory->photo)
-                                                    <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $searchCategory->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $searchCategory->photo->getUrl('thumb')) }}">
+                                                    <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $searchCategory->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $searchCategory->photo->getUrl('thumb')) }}">
                                                 @else
                                                     <img src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
                                                 @endif

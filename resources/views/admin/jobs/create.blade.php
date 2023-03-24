@@ -141,6 +141,22 @@
                     {{ trans('cruds.job.fields.categories_helper') }}
                 </p>
             </div>
+            <div class="form-group {{ $errors->has('types') ? 'has-error' : '' }}">
+                <label for="types">{{ trans('cruds.job.fields.types') }}</label>
+                <select name="types[]" id="types" class="form-control select2" multiple>
+                    @foreach($types as $id => $types)
+                        <option value="{{ $id }}" {{ (in_array($id, old('types', [])) || isset($job) && $job->types->contains($id)) ? 'selected' : '' }}>{{ $types }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('types'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('types') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.job.fields.types_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('salary') ? 'has-error' : '' }}">
                 <label for="salary">{{ trans('cruds.job.fields.salary') }}*</label>
                 <input type="number" id="salary" name="salary" class="form-control" value="{{ old('salary', isset($job) ? $job->salary : '') }}" required>

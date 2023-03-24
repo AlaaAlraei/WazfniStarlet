@@ -77,7 +77,7 @@
                 @if(isset($category) && $category->photo)
                 var file = {!! json_encode($category->photo) !!}
                 this.options.addedfile.call(this, file)
-                this.options.thumbnail.call(this, file, '{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost', $_SERVER['SERVER_NAME'] , $category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $category->photo->getUrl('thumb')) }}')
+                this.options.thumbnail.call(this, file, '{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $category->photo->getUrl('thumb')) }}')
                 file.previewElement.classList.add('dz-complete')
                 $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
                 this.options.maxFiles = this.options.maxFiles - 1

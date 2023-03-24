@@ -62,6 +62,11 @@ class Job extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    public function types()
+    {
+        return $this->belongsToMany(Type::class);
+    }
+
     public function forms()
     {
         return $this->hasMany(Form::class, 'job_id', 'id');

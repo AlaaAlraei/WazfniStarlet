@@ -1,4 +1,3 @@
-
 @extends('layouts.user')
 
 @section('content')
@@ -11,13 +10,23 @@
                             <h1>
                                 إنشاء اعلان جديد
                             </h1>
-                            <form class="CreateNewAdForm">
+                            @if($errors->count() > 0)
+                                <div class="alert alert-danger">
+                                    <ul class="list-unstyled">
+                                        @foreach($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form class="CreateNewAdForm" action="{{ route("jobs.store") }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="CreateNewAdFormRow">
                                     <label>
                                         عنوان الإعلان
                                     </label>
                                     <div class="CreateNewAdFormInputHolder">
-                                        <input type="text" placeholder="اكتب هنا : عنوان الإعلان">
+                                        <input value="{{ old('title', isset($job) ? $job->title : '') }}" name="title" type="text" placeholder="اكتب هنا : عنوان الإعلان">
                                     </div>
                                 </div>
                                 <div class="CreateNewAdFormRow">
@@ -32,66 +41,17 @@
                                     </div>
                                     <div class="SelectAuthCategoryList" id="CreateAdSelectCat">
                                         <div class="SelectAuthCategoryListInner">
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="1" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 1 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="2" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 2 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="3" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 3 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="4" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 4 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="5" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 5 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="6" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 6 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="7" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 7 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="8" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 8 </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="9" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 9 </span>
-                                            </div>
-
-
-                                            <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
-                                                <input type="radio" name="CreateJobCategory" value="10" class="d-none">
-                                                <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                                <span> فئة 10 </span>
-                                            </div>
+                                            @foreach($categories as $key => $category)
+                                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
+                                                    <input type="radio" name="categories[]" value="{{ $category->id }}" {{ (in_array($category->id, old('categories', [])) || isset($job) && $job->categories->contains($category->id)) ? 'checked' : '' }} class="d-none">
+                                                    @if(isset($category->photo))
+                                                        <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $category->photo->getUrl('thumb')) }}">
+                                                    @else
+                                                        <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                                    @endif
+                                                    <span> {{ $category->name }} </span>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +63,9 @@
                                         </u>
                                     </label>
                                     <button type="button" class="AddAdImage" onclick="$(this).find('input')[0].click()">
+                                        <div class="needsclick dropzone" id="photo-dropzone">
+
+                                        </div>
                                         <input type="file" accept="image/*" class="d-none" onchange="CheckAdImageHolder($(this))">
                                         <i class="fas fa-image"></i>
                                         <g>
@@ -120,7 +83,7 @@
                                         </u>
                                     </label>
                                     <div class="CreateNewAdFormInputHolder">
-                                        <input type="number" placeholder="اكتب هنا : الحد الأقصى للمنتسبين">
+                                        <input value="{{ old('max_apply', isset($job) ? $job->max_apply : '') }}" name="max_apply" type="number" placeholder="اكتب هنا : الحد الأقصى للمنتسبين">
                                     </div>
                                     <h14>
                                         <i class="fas fa-info-circle"></i>
@@ -132,11 +95,11 @@
                                         نوع الوظيفة
                                     </label>
                                     <div class="CreateNewAdFormInputHolder">
-                                        <select>
+                                        <select name="job_nature">
                                             <option selected disabled> نوع الوظيفة </option>
-                                            <option> عمل حر </option>
-                                            <option> عقد دائم </option>
-                                            <option> عقد قصير الامد </option>
+                                            <option value="Full-Time" {{ old('job_nature', isset($job) && $job->job_nature == 'Full-Time' ? 'selected' : '') }}>Full-Time</option>
+                                            <option value="Part-Time" {{ old('job_nature', isset($job) && $job->job_nature == 'Part-Time' ? 'selected' : '') }}>Part-Time</option>
+                                            <option value="Casual" {{ old('job_nature', isset($job) && $job->job_nature == 'Casual' ? 'selected' : '') }}>Casual</option>
                                         </select>
                                         <f>
                                             <i class="fas fa-angle-down"></i>
@@ -145,13 +108,43 @@
                                 </div>
                                 <div class="CreateNewAdFormRow">
                                     <label>
+                                        الفرع
+                                    </label>
+                                    <div class="CreateNewAdFormInputHolder">
+                                        <select name="company_id" id="company" class="form-control select2" required>
+                                            @foreach($companies as $id => $company)
+                                                <option value="{{ $id }}" {{ (isset($job) && $job->company ? $job->company->id : old('company_id')) == $id ? 'selected' : '' }}>{{ $company }}</option>
+                                            @endforeach
+                                        </select>
+                                        <s>
+                                            <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                                        </s>
+                                    </div>
+                                </div>
+                                <div class="CreateNewAdFormRow">
+                                    <label>
+                                        المدينة
+                                    </label>
+                                    <div class="CreateNewAdFormInputHolder">
+                                        <select name="location_id" id="location" class="form-control select2" required>
+                                            @foreach($locations as $id => $location)
+                                                <option value="{{ $id }}" {{ (isset($job) && $job->location ? $job->location->id : old('location_id')) == $id ? 'selected' : '' }}>{{ $location }}</option>
+                                            @endforeach
+                                        </select>
+                                        <s>
+                                            <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                                        </s>
+                                    </div>
+                                </div>
+                                <div class="CreateNewAdFormRow">
+                                    <label>
                                         مكان الوظيفة
                                         <u>
-                                            ( إسم المدينة - الشارع )
+                                            ( إسم الحي - الشارع )
                                         </u>
                                     </label>
                                     <div class="CreateNewAdFormInputHolder">
-                                        <input type="text" placeholder=" اكتب هنا : مكان الوظيفة ( إسم المدينة - الشارع )">
+                                        <input value="{{ old('address', isset($job) ? $job->address : '') }}" name="address" type="text" placeholder=" اكتب هنا : مكان الوظيفة ( إسم المدينة - الشارع )">
                                         <s>
                                             <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
                                         </s>
@@ -165,7 +158,7 @@
                                         </u>
                                     </label>
                                     <div class="CreateNewAdFormInputHolder">
-                                        <input type="number" placeholder=" اكتب هنا : الراتب المقدر ( إختياري )">
+                                        <input value="{{ old('salary', isset($job) ? $job->salary : '') }}" name="salary" type="number" placeholder=" اكتب هنا : الراتب المقدر ( إختياري )">
                                         <s>
                                             <img src="{{asset("")}}Wazefni/Requirements/IMG/Salary.png">
                                         </s>
@@ -186,30 +179,12 @@
                                     </div>
                                     <div class="SelectAuthCategoryList" id="CreateAdSelectFeatures">
                                         <div class="SelectAuthCategoryListInner">
-                                            <div class="SelectAuthCategoryListItem JF1" target=".JF1" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN1">
-                                                <input type="checkbox" name="JobFeature" value="1" class="d-none">
-                                                <span> ضمان اجتماعي </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem JF2" target=".JF2" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN2">
-                                                <input type="checkbox" name="JobFeature" value="2" class="d-none">
-                                                <span> تأمين صحي </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem JF3" target=".JF3" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN3">
-                                                <input type="checkbox" name="JobFeature" value="3" class="d-none">
-                                                <span> ثالث عشر </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem JF4" target=".JF4" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN4">
-                                                <input type="checkbox" name="JobFeature" value="4" class="d-none">
-                                                <span> رابع عشر </span>
-                                            </div>
-
-                                            <div class="SelectAuthCategoryListItem JF5" target=".JF5" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN5">
-                                                <input type="checkbox" name="JobFeature" value="5" class="d-none">
-                                                <span> صندوق ادخار </span>
-                                            </div>
+                                            @foreach($types as $id => $types)
+                                                <div class="SelectAuthCategoryListItem JF1" target=".JF1" onclick="SelectThisAuthFeatures($(this))" rel="#JobFeatursGH" JobFeatureNumber="FeatureN1">
+                                                    <input type="checkbox" {{ (in_array($id, old('types', [])) || isset($job) && $job->types->contains($id)) ? 'checked' : '' }} name="JobFeature" value="{{ $id }}" class="d-none">
+                                                    <span> {{ $types }} </span>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <h4 id="JobFeatursGH"></h4>
@@ -218,7 +193,7 @@
                                     <label>
                                         تفاصيل اخرى - شرح
                                     </label>
-                                    <textarea placeholder="اكتب هنا : تفاصيل اخرى - شرح"></textarea>
+                                    <textarea name="full_description" placeholder="اكتب هنا : تفاصيل اخرى - شرح">{{ old('full_description', isset($job) ? $job->full_description : '') }}</textarea>
                                 </div>
                                 <div class="CreateNewAdFormRow w-100">
                                     <button type="submit" class="SubmitCreateAdButton">
@@ -245,5 +220,58 @@
     <input type="hidden" id="CreateJobUser">
 @endsection
 @section('scripts')
+    <script>
+        Dropzone.options.photoDropzone = {
+            url: '{{ route('jobs.storeMedia') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: '.jpeg,.jpg,.png,.gif',
+            maxFiles: 1,
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            params: {
+                size: 2,
+                width: 4096,
+                height: 4096
+            },
+            success: function (file, response) {
+                $('form').find('input[name="photo"]').remove()
+                $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                if (file.status !== 'error') {
+                    $('form').find('input[name="photo"]').remove()
+                    this.options.maxFiles = this.options.maxFiles + 1
+                }
+            },
+            init: function () {
+                @if(isset($job) && $job->photo)
+                var file = {!! json_encode($job->photo) !!}
+                this.options.addedfile.call(this, file)
+                this.options.thumbnail.call(this, file, '{{ $job->photo->getUrl('thumb') }}')
+                file.previewElement.classList.add('dz-complete')
+                $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
+                this.options.maxFiles = this.options.maxFiles - 1
+                @endif
+            },
+            error: function (file, response) {
+                if ($.type(response) === 'string') {
+                    var message = response //dropzone sends it's own error messages in string
+                } else {
+                    var message = response.errors.file
+                }
+                file.previewElement.classList.add('dz-error')
+                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                _results = []
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                    node = _ref[_i]
+                    _results.push(node.textContent = message)
+                }
 
+                return _results
+            }
+        }
+    </script>
 @endsection
