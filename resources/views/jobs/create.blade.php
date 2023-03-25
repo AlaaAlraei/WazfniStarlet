@@ -117,7 +117,7 @@
                                             @endforeach
                                         </select>
                                         <s>
-                                            <i class="fa fa-map-marker-alt" aria-hidden="true"></i>
+                                            <i class="fa fa-building" aria-hidden="true"></i>
                                         </s>
                                     </div>
                                 </div>
@@ -206,10 +206,28 @@
                     </div>
                     <div class="col-md-4">
                         <div class="PromotYourAdNowSection">
-                            <h1> PromotAd </h1>
-                            <h1> PromotAd </h1>
-                            <h1> PromotAd </h1>
-                            <h1> PromotAd </h1>
+                            <h1> هل تريد مشاهدات اعلى لإعلاناتك ؟ </h1>
+                            <p>
+                                <i class="fas fa-circle"></i>
+                                منتسبين اكثر
+                            </p>
+                            <p>
+                                <i class="fas fa-circle"></i>
+                                توظيف بسرعة اكبر
+                            </p>
+                            <p>
+                                <i class="fas fa-circle"></i>
+                                عدد مشاهدات اكبر بكثير
+                            </p>
+                            <p>
+                                <i class="fas fa-circle"></i>
+                                الظهور اكثر في نتائج البحث
+                            </p>
+
+                            <button type="button">
+                                <img src="{{asset("")}}Wazefni/Requirements/IMG/Promoted.png">
+                                ميز اعلاناك الاَن
+                            </button>
                         </div>
                     </div>
                 </div>

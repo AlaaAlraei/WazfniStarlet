@@ -74,6 +74,23 @@
                                         {{ $job->salary }} دينار
                                     </u>
                                 </p>
+                                <p style="border-bottom: none">
+                                    مميزات الوظيفة :
+                                </p>
+                                <div class="JobFeaturesGH">
+                                    <h12>
+                                        ضمان اجتماعي
+                                    </h12>
+                                    <h12>
+                                        تأمين صحي
+                                    </h12>
+                                    <h12>
+                                        مواصلات مؤمنة
+                                    </h12>
+                                    <h12>
+                                        وجبة يومية
+                                    </h12>
+                                </div>
                             </div>
 
                             <div class="JobPaperMoreDetails">
@@ -141,7 +158,7 @@
                         <div class="OutSideJobs">
                             <div class="SectionHeader">
                                 <h10>
-                                    وظائف متعلقة
+                                    وظائف مشابهة
                                 </h10>
                             </div>
                             <div class="OutSideJobsGH">
