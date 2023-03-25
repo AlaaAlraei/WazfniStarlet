@@ -32,4 +32,9 @@ class Country extends Model
         return $this->hasMany(User::class, 'country_id', 'id');
     }
 
+    public function locations()
+    {
+        return $this->hasMany(Location::class, 'country_id', 'id');
+    }
+
 }

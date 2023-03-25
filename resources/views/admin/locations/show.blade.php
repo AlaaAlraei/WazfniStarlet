@@ -26,6 +26,14 @@
                             {{ $location->name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.location.fields.country_id') }}
+                        </th>
+                        <td>
+                            {{ $location->country->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">

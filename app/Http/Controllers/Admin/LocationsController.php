@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyLocationRequest;
 use App\Http\Requests\StoreLocationRequest;
@@ -26,7 +27,9 @@ class LocationsController extends Controller
     {
         abort_if(Gate::denies('location_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.locations.create');
+        $countries  = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.locations.create', compact('countries'));
     }
 
     public function store(StoreLocationRequest $request)
@@ -40,7 +43,9 @@ class LocationsController extends Controller
     {
         abort_if(Gate::denies('location_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.locations.edit', compact('location'));
+        $countries  = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.locations.edit', compact('location', 'countries'));
     }
 
     public function update(UpdateLocationRequest $request, Location $location)

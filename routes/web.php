@@ -15,7 +15,7 @@ Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin')
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('GetAllJobs', 'JobController@GetAllJobs')->name('GetAllJobs');
 Route::get('GetByCategoriesJobs/{category}', 'JobController@GetByCategoriesJobs')->name('GetByCategoriesJobs');
-Route::post('jobs/media', 'JobsController@storeMedia')->name('jobs.storeMedia');
+Route::post('jobs/media', 'JobController@storeMedia')->name('jobs.storeMedia');
 Route::resource('jobs', 'JobController');
 Route::get('category/{category}', 'CategoryController@show')->name('categories.show');
 Route::get('location/{location}', 'LocationController@show')->name('locations.show');

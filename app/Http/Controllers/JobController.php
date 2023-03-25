@@ -31,6 +31,7 @@ class JobController extends Controller
     public function GetAllJobs()
     {
         $jobs = Job::orderBy('top_rated', 'DESC')
+            ->orderBy('id', 'DESC')
             ->with('company.jobs.company.created_by')
             ->paginate(7);
 
@@ -112,6 +113,16 @@ class JobController extends Controller
     {
         $job->load('company');
 
-        return view('jobs.show', compact('job'));
+        $similar = Job::whereHas('categories', function($q) use ($job) {
+            $q->whereHas('jobs', function($q) use ($job) {
+                $q->where('id', $job->id);
+            });
+        })
+            ->orderBy('top_rated', 'desc')
+            ->orderBy('id', 'desc')
+            ->take(7)
+            ->get();
+
+        return view('jobs.show', compact('job', 'similar'));
     }
 }

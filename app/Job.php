@@ -30,6 +30,7 @@ class Job extends Model implements HasMedia
         'salary',
         'address',
         'top_rated',
+        'promoted',
         'company_id',
         'job_nature',
         'created_at',

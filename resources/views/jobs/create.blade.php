@@ -62,6 +62,9 @@
                                             ( إختياري )
                                         </u>
                                     </label>
+{{--                                    <div class="needsclick dropzone" id="photo-dropzone">--}}
+
+{{--                                    </div>--}}
                                     <button type="button" class="AddAdImage" onclick="$(this).find('input')[0].click()">
                                         <div class="needsclick dropzone" id="photo-dropzone">
 
@@ -254,6 +257,7 @@
                 height: 4096
             },
             success: function (file, response) {
+                alert('هسا اشتغلت');
                 $('form').find('input[name="photo"]').remove()
                 $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
             },

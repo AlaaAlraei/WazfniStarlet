@@ -18,6 +18,7 @@ class Location extends Model
     ];
 
     protected $fillable = [
+        'country_id',
         'name',
         'created_at',
         'updated_at',
@@ -28,4 +29,10 @@ class Location extends Model
     {
         return $this->hasMany(Job::class, 'location_id', 'id');
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
 }

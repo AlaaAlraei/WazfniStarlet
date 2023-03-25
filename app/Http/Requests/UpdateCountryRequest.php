@@ -30,7 +30,7 @@ class UpdateCountryRequest extends FormRequest
             'country_key' => [
                 'required',
                 'integer',
-                'unique:countries',
+                'unique:countries,country_key,'.$this->country->id,
             ],
         ];
     }

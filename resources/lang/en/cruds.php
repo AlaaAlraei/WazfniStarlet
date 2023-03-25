@@ -89,6 +89,8 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
+            'country_id'        => 'Country',
+            'country_id_helper' => '',
             'name'              => 'Name',
             'name_helper'       => '',
             'created_at'        => 'Created at',
@@ -157,6 +159,8 @@ return [
             'address_helper'           => '',
             'top_rated'                => 'Top Rated',
             'top_rated_helper'         => '',
+            'promoted'                 => 'Promoted',
+            'promoted_helper'          => '',
             'created_at'               => 'Created at',
             'created_at_helper'        => '',
             'updated_at'               => 'Updated at',

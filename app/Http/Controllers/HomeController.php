@@ -27,10 +27,22 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->take(20)
             ->get();
+        $jobPromotes = Job::with('company')
+            ->where('promoted', 1)
+            ->orderBy('id', 'desc')
+            ->take(20)
+            ->get();
+        $jobOutOfJordans = Job::with('company')
+            ->whereHas('location', function($q){
+                $q->where('country_id', '>', '1');
+            })
+            ->orderBy('top_rated', 'desc')
+            ->take(7)
+            ->get();
 
         $advertisings = Advertising::all();
 
-        return view('index', compact(['searchLocations', 'searchCategories', 'searchByCategory', 'jobs', 'advertisings', 'jobTops']));
+        return view('index', compact('searchLocations', 'searchCategories', 'searchByCategory', 'jobs', 'advertisings', 'jobTops', 'jobPromotes', 'jobOutOfJordans'));
     }
 
     public function search(Request $request)

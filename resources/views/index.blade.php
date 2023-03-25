@@ -10,34 +10,34 @@
                     </h10>
                 </div>
                 <div class="SpecialOffersSlider" dir="ltr">
-                    @foreach($jobTops as $key => $jobTop)
+                    @foreach($jobPromotes as $key => $jobPromote)
                         <div class="SpecialOffersSliderItem">
                             <div class="SpecialOffersSliderItemInner">
                                 <div class="SpecialOffersSliderItemimgHolder">
                                     <h5 onclick="$(this).find('a')[0].click()">
-                                        @if($jobTop->company->logo)
-                                            <img src="{{ str_replace('localhost', 'localhost:8000', $jobTop->company->logo->getUrl('thumb')) }}" class="SpecialSliderUser">
+                                        @if($jobPromote->company->logo)
+                                            <img src="{{ str_replace('localhost', 'localhost:8000', $jobPromote->company->logo->getUrl('thumb')) }}" class="SpecialSliderUser">
                                         @else
                                             <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderUser">
                                         @endif
 
-                                        {{ $jobTop->company->name ?? '' }}
-                                        <a class="d-none" href="{{ route('CompanyProfile', [$jobTop->company->id]) }}"></a>
+                                        {{ $jobPromote->company->name ?? '' }}
+                                        <a class="d-none" href="{{ route('CompanyProfile', [$jobPromote->company->id]) }}"></a>
                                     </h5>
-                                    @if($jobTop->photo)
-                                        <img src="{{ str_replace('localhost', 'localhost:8000', $jobTop->photo->getUrl('thumb')) }}" class="SpecialSliderImage">
+                                    @if($jobPromote->photo)
+                                        <img src="{{ str_replace('localhost', 'localhost:8000', $jobPromote->photo->getUrl('thumb')) }}" class="SpecialSliderImage">
                                     @else
                                         <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderImage">
                                     @endif
                                 </div>
                                 <div class="SpecialOffersSliderItemInfo">
                                     <h3 onclick="$(this).find('a')[0].click()">
-                                        <a href="{{ route('jobs.show', [$jobTop->id]) }}" class="d-none"></a>
-                                        {{ $jobTop->short_description }}
+                                        <a href="{{ route('jobs.show', [$jobPromote->id]) }}" class="d-none"></a>
+                                        {{ $jobPromote->title }}
                                     </h3>
                                     <span>
                                       <i class="fas fa-clock"></i>
-                                        <u id="TopCreatedAtFormed{{ $jobTop->id }}"></u>
+                                        <u id="TopCreatedAtFormed{{ $jobPromote->id }}"></u>
                                     </span>
                                 </div>
                             </div>
@@ -194,164 +194,38 @@
                                 </h10>
                             </div>
                             <div class="OutSideJobsGH">
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                            <u>
-                                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </u>
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
+                                @foreach($jobOutOfJordans as $key => $jobOutOfJordan)
+                                    <div class="OutSideJobsItem">
+                                        <div class="OutSideJobsItemImg">
+                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
+                                        </div>
+                                        <div class="OutSideJobsItemInfo">
+                                            <h5 title="حساب موثق">
+                                                @if($jobOutOfJordan->company->logo)
+                                                    <img src="{{ str_replace('localhost', 'localhost:8000', $jobOutOfJordan->company->logo->getUrl('thumb')) }}" class="SpecialSliderUser">
+                                                @else
+                                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderUser">
+                                                @endif
+                                                {{ $jobOutOfJordan->company->name ?? '' }}
+                                                <u>
+                                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                                </u>
+                                            </h5>
+                                            <h3>
+                                                {{ $jobOutOfJordan->title ?? '' }} - {{ $jobOutOfJordan->location->country->name ?? '' }} - {{ $jobOutOfJordan->location->name ?? '' }}
+                                            </h3>
+                                            <span>
                                         <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
+                                        {{ $jobOutOfJordan->created_at->format('Y-m-d') ?? '' }}
                                     </span>
-                                        <h12 title="إعلان مميز">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
-                                        </h12>
+                                            @if($jobOutOfJordan->top_rated == 1)
+                                                <h12 title="إعلان مميز">
+                                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
+                                                </h12>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                            <u>
-                                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </u>
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                        <h12 title="إعلان مميز">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
-                                        </h12>
-                                    </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5 title="حساب موثق">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                            <u>
-                                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                            </u>
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                        <h12 title="إعلان مميز">
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Promoted.png">
-                                        </h12>
-                                    </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="OutSideJobsItem">
-                                    <div class="OutSideJobsItemImg">
-                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/Job.webp">
-                                    </div>
-                                    <div class="OutSideJobsItemInfo">
-                                        <h5>
-                                            <img src="{{ asset('') }}Wazefni/Requirements/IMG/User.jpg"
-                                                 class="SpecialSliderUser">
-                                            ابو غلوس
-                                            - قطر
-                                        </h5>
-                                        <h3>
-                                            مطلوب مدخل بيانات بخبرة لا تقل عن 3 سنوات في السوق المحلي
-                                        </h3>
-                                        <span>
-                                        <i class="fas fa-clock"></i>
-                                        قبل 3 ساعات
-                                    </span>
-                                    </div>
-                                </div>
+                                @endforeach
                                 <div class="SeeAllCATEGORIES">
                                     <button type="button">
                                         رؤية المزيد

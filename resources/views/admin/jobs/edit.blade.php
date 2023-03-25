@@ -185,7 +185,7 @@
             <div class="form-group {{ $errors->has('top_rated') ? 'has-error' : '' }}">
                 <label for="top_rated">{{ trans('cruds.job.fields.top_rated') }}</label>
                 <input name="top_rated" type="hidden" value="0">
-                <input value="1" type="checkbox" id="top_rated" name="top_rated" {{ old('top_rated', 0) == 1 ? 'checked' : '' }}>
+                <input value="1" type="checkbox" id="top_rated" name="top_rated" {{ old('top_rated', isset($job) && $job->top_rated == 1 ? 'checked' : '') }}>
                 @if($errors->has('top_rated'))
                     <em class="invalid-feedback">
                         {{ $errors->first('top_rated') }}
@@ -193,6 +193,19 @@
                 @endif
                 <p class="helper-block">
                     {{ trans('cruds.job.fields.top_rated_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('promoted') ? 'has-error' : '' }}">
+                <label for="promoted">{{ trans('cruds.job.fields.promoted') }}</label>
+                <input name="promoted" type="hidden" value="0">
+                <input value="1" type="checkbox" id="promoted" name="promoted" {{ old('promoted', isset($job) && $job->promoted == 1 ? 'checked' : '') }}>
+                @if($errors->has('promoted'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('promoted') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.job.fields.promoted_helper') }}
                 </p>
             </div>
             <div>
