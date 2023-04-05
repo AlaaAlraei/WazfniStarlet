@@ -227,7 +227,8 @@
                                     </div>
                                 @endforeach
                                 <div class="SeeAllCATEGORIES">
-                                    <button type="button">
+                                    <button onclick="$(this).find('a')[0].click()" type="button">
+                                        <a class="d-none" href="{{ route('jobs.index') }}?Outside=Jordan"></a>
                                         رؤية المزيد
                                     </button>
                                 </div>
