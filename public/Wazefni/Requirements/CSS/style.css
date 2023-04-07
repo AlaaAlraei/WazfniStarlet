@@ -3269,3 +3269,511 @@ input[type=number] {
     align-items: center;
     font-size: 6px;
 }
+
+.PromotedAd {
+    display: block;
+    margin: 35px auto 22px;
+    width: 100%;
+    font-weight: bold;
+    text-align: right;
+    font-size: 22px;
+    color: #391364;
+}
+
+.PromotAdPaper {
+}
+
+.PromotePlanes {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.PromotePlanesOptions {
+    display: inline-block;
+    width: fit-content;
+    margin: 0px 15px;
+    vertical-align: middle;
+}
+
+.PromotePlanesOptions button {
+    display: inline-block;
+    vertical-align: top;
+    width: fit-content;
+    padding: 12px 27px;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    color: #4db945;
+    border: solid 2px;
+    border-radius: 7px;
+    margin: 0px 8px;
+    position: relative;
+    padding-right: 46px;
+    transition: 300ms;
+}
+
+.PromotePlanesOptions .ActivePlaneOption {
+    background: #4eb74a;
+    color: aliceblue;
+    pointer-events: none;
+}
+
+.PromotePlanes .PromoteByLabel {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+    color: #391364;
+}
+
+.PromotePlanesOptions button img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 10px;
+    filter: grayscale(20%);
+    transition: 300ms;
+}
+
+.PromotePlanesOptions .ActivePlaneOption img {
+    filter: grayscale(1) brightness(15.5);
+}
+
+.PromotePlanesOptions button:hover {
+    background: white;
+    border-color: white;
+    box-shadow: 1px 1px 1px 1px #d8d8d8;
+}
+
+.PromoteAdOptionView {
+    display: none;
+    margin: 40px auto;
+    width: 100%;
+}
+
+.PromoteAdOptionViewHeader {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    text-align: right;
+    background: #391364;
+    padding: 32px 25px;
+    color: aliceblue;
+}
+
+.PromoteAdOptionViewHeader h3 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: bold;
+    padding: 10px 4px;
+    position: relative;
+    padding-right: 61px;
+}
+
+.PromoteAdOptionViewHeader h3 img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    padding: 10px;
+}
+
+.PromoteAdOptionViewHeader p {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.WzfniPlansGH {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 40px 0px;
+}
+
+.WzfniPlansItem {
+    display: inline-block;
+    width: 26%;
+    background: whitesmoke;
+    margin: 0px 3%;
+    border: solid 3px #8251b9;
+    padding: 22px 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #8251b9;
+    transition: 300ms;
+}
+
+.WzfniPlansItem img {
+    display: block;
+    margin: 20px auto;
+    width: auto;
+    height: 91px;
+}
+
+.WzfniPlansItem h2 {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.WzfniPlansItem p {
+    display: block;
+    margin: 27px auto;
+    width: 89%;
+    text-align: right;
+    font-weight: 700;
+}
+
+.WzfniPlansItem p i {
+}
+
+.WzfniPlansItem:hover {
+    transform: scale(1.04);
+    box-shadow: -15px -8px 1px 1px #e5e5e5;
+    background: white;
+    border-color: #ad81df;
+}
+
+.WzfniPlansItem span {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    background: #0000000d;
+    padding: 5px 27px;
+    border-radius: 1000px;
+    font-size: 21px;
+    font-weight: 600;
+    color: #dd9e1b;
+    font-weight: bold;
+}
+
+.WzfniPlansItem span u {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.ActivePlane {
+    background: #653a94;
+    color: aliceblue;
+    pointer-events: none;
+    border-color: #653a94;
+}
+
+.ActivePlane span {
+}
+
+
+.ActivePlane img {
+    filter: grayscale(1) brightness(3.5);
+}
+
+.PromoteAdOptionViewsGH {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.PromoteAdOptionView h14 {
+    display: block;
+    margin: 41px auto 0;
+    width: 82%;
+    text-align: right;
+    font-weight: 600;
+    font-size: 17px;
+    color: #4f4f4f;
+}
+
+
+.WzfniPlansItem span s {
+    text-decoration: none;
+}
+
+.WzfniPlaneDurationHolder {
+    display: inline-block;
+    vertical-align: middle;
+    width: 125px;
+    position: relative;
+    height: 40px;
+    background: #fdfcff;
+    border: solid 1px #ddd4e9;
+    overflow: hidden;
+    margin: 0px 14px;
+}
+
+.WzfniPlaneDurationHolder input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    text-align: center;
+    pointer-events: none;
+}
+
+.WzfniPlaneDurationHolder button {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.WzfniPlaneDurationHolder button img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 14px;
+}
+
+.PromotWzfniPlaneStepsIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin: 25px auto;
+}
+
+.PromotWzfniPlaneStepsIndicatorItem {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding: 19px 3px;
+    text-align: center;
+    margin: 0px 2%;
+    position: relative;
+    z-index: 2;
+}
+
+.PromotWzfniPlaneStepsIndicatorItem h15 {
+    display: flex;
+    margin: 0 auto;
+    width: 30px;
+    aspect-ratio: 1/1;
+    border: solid 2px;
+    border-radius: 10000px;
+    color: #8251b9;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    box-shadow: 0px 0px 0px 8px white;
+}
+
+.PromotWzfniPlaneStepsIndicatorItem .ActivePromoteStep {
+    background: #8251b9;
+    color: aliceblue;
+}
+
+.PromotWzfniPlaneStepsIndicatorLine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PromotWzfniPlaneStepsIndicatorLine div {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 1px;
+    background: #8251b970;
+    z-index: -1;
+}
+
+.WzfniPlaneNextBtn {
+    position: absolute;
+    left: 5%;
+    bottom: 35px;
+    margin: 0;
+    background: #8251b9;
+    color: aliceblue;
+    padding: 10px 52px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1000px;
+    overflow: hidden;
+    padding-right: 32px;
+    transition: 300ms;
+}
+
+.WzfniPlaneNextBtn i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0px 15px;
+    background: #0000001c;
+}
+
+.WzfniPlaneStepPage {
+    position: relative;
+    padding-bottom: 104px;
+    display: none;
+}
+
+
+.WzfniPlaneNextBtn:hover {
+    background: #502a7b;
+}
+
+.WzfniPlaneValidation {
+    display: none;
+    margin: 18px auto;
+    width: 91%;
+    text-align: right;
+    background: #ffd8d8;
+    color: #c95c5c;
+    padding: 15px 12px;
+    position: relative;
+    padding-right: 59px;
+    font-weight: 700;
+    border: solid 2px #ecc1c1;
+    border-radius: 10px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.WzfniPlaneValidation u {
+    text-decoration: none;
+}
+
+.WzfniPlaneValidation i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    padding: 1px 16px;
+    font-size: 21px;
+}
+
+.WzfniPlanePreviusBtn {
+    position: absolute;
+    right: 5%;
+    bottom: 35px;
+    margin: 0;
+    background: #b95151;
+    color: aliceblue;
+    padding: 10px 52px;
+    font-weight: bold;
+    border: none;
+    border-radius: 1000px;
+    overflow: hidden;
+    padding-left: 32px;
+    transition: 300ms;
+}
+
+.WzfniPlanePreviusBtn i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0px 15px;
+    background: #0000001c;
+}
+
+.WzfniPromoteTerms {
+    display: block;
+    margin: 0 auto;
+    width: 88%;
+    text-align: right;
+}
+
+.WzfniPromoteTerms h2 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: bold;
+    font-size: 30px;
+    color: #b95151;
+}
+
+.WzfniPromoteTerms h2 i {
+}
+
+.WzfniPromoteTerms p {
+    display: block;
+    margin: 27px auto;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    color: #391364;
+}
+
+.WzfniPromoteTerms span {
+    display: block;
+    margin: 45px auto;
+    width: 100%;
+    position: relative;
+    padding-right: 40px;
+    font-weight: 600;
+    color: #565656;
+}
+
+.WzfniPromoteTerms span u {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    width: 27px;
+    background: #391364;
+    color: aliceblue;
+    border-radius: 1000px;
+    text-decoration: none;
+}
+
+.WzfniPromoteTerms h13 {
+    display: block;
+    margin: 20px auto;
+    width: 99%;
+    position: relative;
+    padding: 1px 1px;
+    padding-right: 28px;
+    font-size: 17px;
+}
+
+.WzfniPromoteTerms h13 input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 16px;
+}

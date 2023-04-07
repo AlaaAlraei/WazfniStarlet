@@ -209,3 +209,64 @@ function CheckAdImageHolder(el){
         el.parent().find('g y').text(ImageName)
     }
 }
+
+function ChoosePlaneOption(el){
+    el.parent().find('button').removeClass('ActivePlaneOption')
+    el.addClass('ActivePlaneOption')
+    $('.PromoteAdOptionView').hide()
+    $(el.attr('rel')).show()
+}
+
+function ChooseThisPlane(el){
+    $('.WzfniPlansItem').removeClass('ActivePlane')
+    el.addClass('ActivePlane')
+}
+
+function ChangeWzfniPlanePrice(el){
+    var target = el.parent().find('input')
+    if(el.attr('action') == 'plus'){
+        target.val(parseInt(target.val())+ 1)
+    }else{
+        if(target.val() === '1'){
+
+        }else{
+            target.val(parseInt(target.val() - 1))
+        }
+    }
+    $('.WzfniPlansItem span s').click()
+    $('.WzfniPlansItem').removeClass('ActivePlane')
+}
+
+
+function GetWzfniPlanePrice(el){
+    var ThisPlanePrice = parseInt(el.attr('value'));
+    var Duration = parseInt($('#WzfniPlaneDuration').val());
+    var Total = parseInt(ThisPlanePrice * Duration);
+    el.text(Total)
+}
+
+function WzfniPlabeFirstNextBtn(el){
+    if($('.ActivePlane').length === 0){
+        $('.WzfniPlaneValidation').hide()
+        el.parent().find('.WzfniPlaneValidation u').text('يرجى إختيار خطة')
+        el.parent().find('.WzfniPlaneValidation').show()
+    }else{
+        $('.WzfniPlaneValidation').hide()
+        el.parent().find('.WzfniPlaneValidation u').text('')
+        el.parent().find('.hide').show()
+        $('.WzfniPlaneStepPage').hide()
+        $(el.attr('rel')).show()
+    }
+}
+
+function WzfniPlabeSecondNextBtn(el){
+    if($('#WzfniPromoteTermsAccept').is(":checked")){
+        $('.WzfniPlaneValidation').hide()
+        $('.WzfniPlaneStepPage').hide()
+        $(el.attr('rel')).show()
+    }else{
+        $('.WzfniPlaneValidation').hide()
+        el.parent().find('.WzfniPlaneValidation u').text('يرجى الموافقة على الشروط المذكورة اعلاه')
+        el.parent().find('.WzfniPlaneValidation').show()
+    }
+}

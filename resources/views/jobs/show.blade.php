@@ -123,7 +123,7 @@
                         <div class="PublishedBy">
                             <div class="PublishedByInner">
                                 <div class="PublishedByImgHolder" onclick="$(this).fidn('a')[0].click()">
-                                    <a href="#" class="d-none"></a>
+                                    <a href="/company-profile/{{ $job->company->id ?? '' }}" class="d-none"></a>
                                     @if($job->company->logo)
                                         <img src="{{ str_replace('localhost', 'localhost:8000', $job->company->logo->getUrl('thumb')) }}">
                                     @else
@@ -131,8 +131,8 @@
                                     @endif
 
                                 </div>
-                                <h1 onclick="$(this).fidn('a')[0].click()">
-                                    <a href="#" class="d-none"></a>
+                                <h1 onclick="$(this).find('a')[0].click()">
+                                    <a href="/company-profile/{{ $job->company->id ?? '' }}" class="d-none"></a>
                                     {{ $job->company->name ?? '' }}
                                     <i class="fas fa-check-circle"></i>
                                 </h1>
@@ -178,7 +178,8 @@
                                                 </u>
                                             </h5>
                                             <h3>
-                                                {{ $other->title ?? '' }} - {{ $other->location->country->name ?? '' }} - {{ $other->location->name ?? '' }}
+                                                {{ $other->title ?? '' }}
+                                                {{--  {{ $other->location->country->name ?? '' }} - {{ $other->location->name ?? '' }}--}}
                                             </h3>
                                             <span>
                                         <i class="fas fa-clock"></i>
