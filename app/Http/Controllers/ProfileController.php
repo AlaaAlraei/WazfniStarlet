@@ -42,4 +42,9 @@ class ProfileController extends Controller
         return view('company-profile', compact('company', 'FormCount'));
     }
 
+    public function BusinessProfile()
+    {
+        return view('BusinessProfile');
+    }
+
 }
