@@ -45,6 +45,7 @@ $(window).on('load', function () {
     setTimeout(function () {
         $('.Preloader').remove()
     }, 1000)
+    CheckAdBlockers()
 
     if($('.RegistrationFormErrors').length > 0){
         $('#RegErrorsGH').html($('.RegistrationFormErrors').html())
@@ -215,6 +216,10 @@ function ChoosePlaneOption(el){
     el.addClass('ActivePlaneOption')
     $('.PromoteAdOptionView').hide()
     $(el.attr('rel')).show()
+    $([document.documentElement, document.body]).animate({
+        scrollTop: el.parent().offset().top
+    }, 1000);
+    ClearPromotionPages()
 }
 
 function ChooseThisPlane(el){
@@ -270,3 +275,101 @@ function WzfniPlabeSecondNextBtn(el){
         el.parent().find('.WzfniPlaneValidation').show()
     }
 }
+
+
+function ChangeCreatePlanePrice(el){
+    var target = el.parent().find('input')
+    if(el.attr('action') == 'plus'){
+        target.val(parseInt(target.val())+ 1)
+    }else if(el.attr('action') == 'minus'){
+        if(target.val() != '1'){
+            target.val(parseInt(target.val() - 1))
+        }
+    }
+    GetPricingToCreatePlane()
+}
+
+
+
+function ChangeCreatePlanePriceAssociate(el){
+    var target = el.parent().find('input')
+
+    if(el.attr('action') == 'plus'){
+        target.val(parseInt(target.val())+ 1)
+    }else if(el.attr('action') == 'minus'){
+        if(target.val() != '1'){
+            target.val(parseInt(target.val() - 1))
+        }
+    }
+
+    GetPricingToCreatePlane()
+}
+
+function GetPricingToCreatePlane(){
+    var PricingDuration = parseFloat($('#CreatePlaneDuration').val())
+    var PricingAssociate = parseFloat($('#PricingAssociate').val()/2)
+    var Total = parseFloat(PricingDuration * 20 + PricingAssociate)
+    var TotalUnlimited = parseInt(PricingDuration * 20 +  100)
+    if($('#UnlimitedAsosiateBtn').hasClass('ActivePlaneFormAssociateOption')){
+        $('.CreatePlanePricing h3 s').attr('value',TotalUnlimited)
+        $('.CreatePlanePricing h3 s').text(TotalUnlimited)
+    }else{
+        $('.CreatePlanePricing h3 s').attr('value',Total)
+        $('.CreatePlanePricing h3 s').text(Total)
+    }
+}
+
+function SwitchAssociatePlaneOption(el){
+    var PricingDuration = parseInt($('#CreatePlaneDuration').val())
+    var Total = parseInt(PricingDuration * 20 + 100)
+    el.parent().find('button').removeClass('ActivePlaneFormAssociateOption')
+    el.addClass('ActivePlaneFormAssociateOption')
+    if(el.attr('rel') === 'limited'){
+        $('#AsosiateSelectionGH').removeClass('DisabledFormRow')
+        $('#AsosiateSelectionGH').find('input').val('10')
+        GetPricingToCreatePlane()
+    }else{
+        $('#AsosiateSelectionGH').addClass('DisabledFormRow')
+        $('#AsosiateSelectionGH').find('input').val('غير محدود')
+        $('.CreatePlanePricing h3 s').attr('value',Total)
+        $('.CreatePlanePricing h3 s').text(Total)
+    }
+}
+
+
+
+function CreatePlaneSecondNextBtn(el){
+    if($('#CreatePromoteTermsAccept').is(":checked")){
+        $('.WzfniPlaneValidation').hide()
+        $('.CreatePlaneStepPage').hide()
+        $(el.attr('rel')).show()
+    }else{
+        $('.WzfniPlaneValidation').hide()
+        el.parent().find('.WzfniPlaneValidation u').text('يرجى الموافقة على الشروط المذكورة اعلاه')
+        el.parent().find('.WzfniPlaneValidation').show()
+    }
+}
+
+function ClearPromotionPages(){
+    $('.WzfniPlaneStepPage,.CreatePlaneStepPage').hide()
+    $('#CreatePlaneFirstStep,#WzfniPlaneFirstStep').show()
+    $('#WzfniPlaneDuration').val(1)
+    $('.WzfniPlansItem span s').click()
+    $('.WzfniPlansItem').removeClass('ActivePlane')
+    $('.WzfniPlaneValidation').text('')
+    $('.WzfniPlaneValidation').hide()
+}
+
+function CheckAdBlockers(){
+    if($('#ad').find('img').is(':hidden')){
+        setInterval(function(){
+            if($('body').hasClass('PreventScroll')){
+
+            }else{
+                $('body').addClass('PreventScroll')
+            }
+        }, 1000)
+        $('.BlockerDetected').show()
+    }
+}
+

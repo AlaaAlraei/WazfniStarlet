@@ -3351,7 +3351,7 @@ input[type=number] {
 
 .PromoteAdOptionView {
     display: none;
-    margin: 40px auto;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -3482,8 +3482,9 @@ input[type=number] {
 .PromoteAdOptionViewsGH {
     background: white;
     display: block;
-    margin: 0 auto;
+    margin: 40px auto;
     width: 100%;
+    overflow: hidden;
 }
 
 .PromoteAdOptionView h14 {
@@ -3535,6 +3536,7 @@ input[type=number] {
     align-items: center;
     background: none;
     border: none;
+    transition: 300ms;
 }
 
 .WzfniPlaneDurationHolder button img {
@@ -3576,6 +3578,8 @@ input[type=number] {
     align-items: center;
     background: white;
     box-shadow: 0px 0px 0px 8px white;
+    user-select: none;
+    pointer-events: none;
 }
 
 .PromotWzfniPlaneStepsIndicatorItem .ActivePromoteStep {
@@ -3776,4 +3780,338 @@ input[type=number] {
     align-items: center;
     height: 100%;
     width: 16px;
+    cursor: pointer;
+}
+
+.CreatePlaneFormGH {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1px;
+}
+
+.CreatePlanePricing {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%;
+    background: #efecf2;
+    padding: 31px 6%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.CreatePlanePricing h3 {
+    font-weight: bold;
+    font-size: 36px;
+    color: #4eb74a;
+    pointer-events: none;
+    user-select: none;
+}
+
+.CreatePlanePricing h3 s {
+    text-decoration: none;
+    min-width: 80px;
+    display: inline-block;
+}
+
+.CreatePlanePricing h3 u {
+    text-decoration: none;
+    font-size: 21px;
+}
+
+.CreatePlanePricing p {
+    font-size: 15px;
+    font-weight: 700;
+    color: #535353;
+    display: block;
+    margin: 25px auto;
+}
+
+.CreatePlanePricing p u {
+    font-weight: bold;
+    text-decoration: none;
+    color: #391364;
+    margin-left: 6px;
+}
+
+.CreatePlaneFormRow label {
+    display: block;
+    margin: 19px auto 0;
+    width: 100%;
+    padding: 9px 0px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #502982;
+}
+
+.CreatePlaneFormRow .CreatePlaneFormHolder {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    position: relative;
+    background: #fdfcff;
+    border: solid 1px #ddd4e9;
+}
+
+.CreatePlaneFormRow h3 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-right: 70%;
+    background: #ddd4e9;
+    color: #391364;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.CreatePlaneFormRow .WzfniPlaneDurationHolder {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    border: none;
+    width: 50%;
+    border-left: solid 1px #ddd4e9;
+    background: #fdfcff;
+}
+
+.CreatePlaneForm {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.CreatePlaneFormRow {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 25px 2% 45px;
+    text-align: right;
+}
+
+.WzfniPlaneDurationHolder button:hover {
+    background: #ede9f2;
+}
+
+.disabled {
+    pointer-events: none !important;
+}
+
+.PlaneFormAssociateOptions {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    align-items: start;
+}
+
+.PlaneFormAssociateOptions button {
+    display: inline-block;
+    vertical-align: top;
+    width: fit-content;
+    padding: 11px 18px;
+    margin-left: 19px;
+    border: none;
+    background: #eee7f7;
+    color: #391364;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+.PlaneFormAssociateOptions button img {
+}
+
+.PlaneFormAssociateOptions .ActivePlaneFormAssociateOption {
+    background: #4eb74a;
+    color: aliceblue;
+    pointer-events: none;
+}
+
+.PlaneFormAssociateOptions .ActivePlaneFormAssociateOption img {
+}
+
+.DisabledFormRow {
+    filter: grayscale(1);
+    pointer-events: none !important;
+}
+
+.PlaneFormAssociateOptions button:hover {
+    background: #ddd4e9;
+    box-shadow: -6px -3px 1px 1px #634c801a;
+}
+
+.CreatePlaneFormHolder select {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    color: #391364;
+    padding: 1px 15px;
+    cursor: pointer;
+}
+
+
+.CreatePlaneStepPage {
+    position: relative;
+    padding-bottom: 104px;
+    display: none;
+}
+
+.CreatePlaneFormRow label u {
+    text-decoration: none;
+    font-size: 11px;
+    margin: 0px 5px;
+}
+
+.WzfniPlanePreviusBtn:hover {
+    background: #8d3939;
+}
+
+.PreventScroll {
+    overflow: hidden !important;
+}
+
+
+.BlockerDetected {
+    display: none;
+    /* pointer-events: none!important; */
+}
+
+.BlockerDetectedInner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999999;
+}
+
+.BlockerDetectedFade {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.BlockerDetectedDiv {
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+    background: white;
+    max-width: 100%;
+    text-align: center;
+    padding: 1px;
+    border-radius: 10px;
+}
+
+.BlockerDetectedDiv .BlockerLogo {
+    display: block;
+    margin: 25px auto;
+    width: auto;
+    height: 124px;
+}
+
+.BlockerDetectedDiv h3 {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: bolder;
+    color: #ed1c24;
+    font-size: 24px;
+}
+
+.BlockerDetectedDiv p {
+    display: block;
+    margin: 20px auto;
+    width: 70%;
+    font-size: 15px;
+    font-weight: 700;
+    color: #464646;
+}
+
+.BlockerDetectedDiv button {
+    display: block;
+    margin: 37px auto;
+    width: fit-content;
+    padding: 10px 14px;
+    border: solid 3px #279c38;
+    color: #279c38;
+    background: none;
+    border-radius: 10px;
+    font-weight: bold;
+    padding-right: 45px;
+    position: relative;
+    transition: 300ms;
+}
+
+.BlockerDetectedDiv button img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px;
+}
+
+.BlockerDetectedDiv button:hover {
+    background: #279c38;
+    color: aliceblue;
+}
+
+.BlockerDetectedDiv button:hover img {
+    filter: grayscale(1) brightness(3.5);
+}
+
+#ad {
+    position: fixed;
+    z-index: -50;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes ArrowUp {
+    0% {
+        top: 0;
+    }
+    50% {
+        top: 50px;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.BlockerIndicator {
+    transform: translatey(0px);
+    -webkit-animation: ArrowUp 3s ease-in-out infinite;
+    animation: ArrowUp 3s ease-in-out infinite;
+    position: fixed;
+    right: 6%;
+    top: 0;
+    margin: 10px;
+    height: 165px;
+    z-index: 2;
+    filter: brightness(120%) drop-shadow(-2px 3px 34px black);
+    pointer-events: none;
 }

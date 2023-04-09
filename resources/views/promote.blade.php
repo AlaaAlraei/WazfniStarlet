@@ -13,7 +13,9 @@
                                 </h8>
                                 <div class="LatestJobsItem animate__animated animate__fadeIn mt-0">
                                     <div class="LatestJobsItemImage">
-                                        <img src="http://127.0.0.1:8000/Wazefni/Requirements/IMG/RF.png"></div>
+                                        <img
+                                            src="https://i.insider.com/601441dd6dfbe10018e00c25?width=1136&format=jpeg">
+                                    </div>
                                     <div class="LatestJobsItemInfo">
                                         <h3 onclick="$(this).find('a')[0].click()">
                                             <a href="http://127.0.0.1:8000/jobs/12" class="d-none"></a>
@@ -65,7 +67,8 @@
                                 </h3>
 
                                 <div class="PromoteAdOptionViewsGH">
-                                    <div class="PromoteAdOptionView animate__animated animate__zoomIn" style="display:block;" id="WazifnyPlans">
+                                    <div class="PromoteAdOptionView animate__animated animate__fadeIn"
+                                         style="display:block;" id="WazifnyPlans">
                                         <div class="PromoteAdOptionViewHeader">
                                             <h3>
                                                 <img src="{{asset("")}}Wazefni/Requirements/IMG/LogoIcon.png">
@@ -79,8 +82,8 @@
                                             </p>
                                         </div>
 
-                                        <div class="WzfniPlaneStepPage" style="display: block" id="WzfniPlaneFirstStep">
-                                            <div class="PromotWzfniPlaneStepsIndicator">
+                                        <div class="WzfniPlaneStepPage animate__animated animate__fadeInLeft" style="display: block" id="WzfniPlaneFirstStep">
+                                            <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
                                                 <div class="PromotWzfniPlaneStepsIndicatorLine">
                                                     <div></div>
                                                 </div>
@@ -236,8 +239,8 @@
                                             </button>
                                         </div>
 
-                                        <div class="WzfniPlaneStepPage" id="WzfniPlaneSecondStep">
-                                            <div class="PromotWzfniPlaneStepsIndicator">
+                                        <div class="WzfniPlaneStepPage animate__animated animate__fadeInLeft" id="WzfniPlaneSecondStep">
+                                            <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
                                                 <div class="PromotWzfniPlaneStepsIndicatorLine">
                                                     <div></div>
                                                 </div>
@@ -323,8 +326,8 @@
                                             </button>
                                         </div>
 
-                                        <div class="WzfniPlaneStepPage" id="WzfniPlaneThirdStep">
-                                            <div class="PromotWzfniPlaneStepsIndicator">
+                                        <div class="WzfniPlaneStepPage animate__animated animate__fadeInLeft" id="WzfniPlaneThirdStep">
+                                            <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
                                                 <div class="PromotWzfniPlaneStepsIndicatorLine">
                                                     <div></div>
                                                 </div>
@@ -372,7 +375,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="PromoteAdOptionView animate__animated animate__zoomIn" id="CreatePlane">
+                                    <div class="PromoteAdOptionView animate__animated animate__fadeIn" id="CreatePlane">
                                         <div class="PromoteAdOptionViewHeader">
                                             <h3>
                                                 <img src="{{asset("")}}Wazefni/Requirements/IMG/AddGreen.png">
@@ -383,6 +386,247 @@
                                                 مناسبة
                                                 لمتطلباتك مهما كانت كبيرة او صغيرة لتلبية طموحك.
                                             </p>
+                                        </div>
+
+                                        <div class="CreatePlaneFormGH">
+                                            <div class="CreatePlaneStepPage animate__animated animate__fadeInLeft" id="CreatePlaneFirstStep" style="display: block">
+                                                <div class="CreatePlanePricing">
+                                                    <h3>
+                                                        <s value="25">25</s>
+                                                        <u>دينار</u>
+                                                    </h3>
+                                                    <p>
+                                                        <u> ملاحظة :</u>
+
+                                                        يتغير السعر مع تغيير مميزات ومدة الخطة
+                                                    </p>
+                                                </div>
+
+                                                <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
+                                                    <div class="PromotWzfniPlaneStepsIndicatorLine">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15 class="ActivePromoteStep">
+                                                            1
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            2
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            3
+                                                        </h15>
+                                                    </div>
+                                                </div>
+
+                                                <form class="CreatePlaneForm">
+                                                    <div class="CreatePlaneFormRow">
+                                                        <label> مدة التمييز </label>
+                                                        <div class="CreatePlaneFormHolder">
+                                                            <h3>
+                                                                <div class="WzfniPlaneDurationHolder">
+                                                                    <button type="button" style="right: 0"
+                                                                            onclick="ChangeCreatePlanePrice($(this))"
+                                                                            action="plus">
+                                                                        <img
+                                                                            src="{{asset("")}}Wazefni/Requirements/IMG/HolderPlus.png">
+                                                                    </button>
+                                                                    <input id="CreatePlaneDuration" type="number"
+                                                                           placeholder="0" value="1">
+                                                                    <button type="button" style="left: 0"
+                                                                            onclick="ChangeCreatePlanePrice($(this))"
+                                                                            action="minus">
+                                                                        <img
+                                                                            src="{{asset("")}}Wazefni/Requirements/IMG/HolderMinus.png">
+                                                                    </button>
+                                                                </div>
+                                                                يوم
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="CreatePlaneFormRow">
+                                                        <label>
+                                                            الدولة المستهدفة
+                                                            <u>(إختياري)</u>
+                                                        </label>
+                                                        <div class="CreatePlaneFormHolder">
+                                                            <select>
+                                                                <option selected>
+                                                                    يرجى إختيار الدولة
+                                                                </option>
+                                                                <option> الاردن </option>
+                                                                <option> السعودية </option>
+                                                                <option> الامارات </option>
+                                                                <option> سوريا </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="CreatePlaneFormRow">
+                                                        <label> عدد المنتسبين </label>
+                                                        <div class="PlaneFormAssociateOptions">
+                                                            <button type="button" rel="limited" class="ActivePlaneFormAssociateOption" onclick="SwitchAssociatePlaneOption($(this))">
+                                                                محدود
+                                                            </button>
+                                                            <button type="button" id="UnlimitedAsosiateBtn" rel="unlimited" onclick="SwitchAssociatePlaneOption($(this))">
+                                                                غير محدود
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="CreatePlaneFormRow" id="AsosiateSelectionGH">
+                                                        <label> عدد المنتسبين المطلوب </label>
+                                                        <div class="CreatePlaneFormHolder">
+                                                            <h3>
+                                                                <div class="WzfniPlaneDurationHolder">
+                                                                    <button type="button" style="right: 0"
+                                                                            onclick="ChangeCreatePlanePriceAssociate($(this))"
+                                                                            action="plus">
+                                                                        <img
+                                                                            src="{{asset("")}}Wazefni/Requirements/IMG/HolderPlus.png">
+                                                                    </button>
+                                                                    <input type="text" id="PricingAssociate" placeholder="0" value="10">
+                                                                    <button type="button" style="left: 0"
+                                                                            onclick="ChangeCreatePlanePriceAssociate($(this))"
+                                                                            action="minus">
+                                                                        <img
+                                                                            src="{{asset("")}}Wazefni/Requirements/IMG/HolderMinus.png">
+                                                                    </button>
+                                                                </div>
+                                                                منتسب
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                                <button type="button" onclick="$('.CreatePlaneStepPage').hide();$('#CreatePlaneSecondStep').show()" class="WzfniPlaneNextBtn">
+                                                    <i class="fas fa-angle-left"></i>
+                                                    التالي
+                                                </button>
+                                            </div>
+
+                                            <div class="CreatePlaneStepPage animate__animated animate__fadeInLeft" id="CreatePlaneSecondStep">
+                                                <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
+                                                    <div class="PromotWzfniPlaneStepsIndicatorLine">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            1
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15 class="ActivePromoteStep">
+                                                            2
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            3
+                                                        </h15>
+                                                    </div>
+                                                </div>
+                                                <div class="WzfniPromoteTerms">
+                                                    <h2>
+                                                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                                        وجب التنويه
+                                                    </h2>
+                                                    <p>
+                                                        هناك بعض القوانين يجب اتباعها في اعلاناتك المميزة , سيتم مراجعة
+                                                        اعلانك المميز من قبل فريق العمل الخاص بنا , يرجى اتباع المعايير
+                                                        التالية في هذا الإعلان :
+                                                    </p>
+                                                    <span>
+                                                    <u>1</u>
+                                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
+                                                    المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضعَ
+                                                </span>
+
+                                                    <span>
+                                                    <u>2</u>
+                                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
+                                                    المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
+                                                    الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
+                                                </span>
+
+                                                    <span>
+                                                    <u>3</u>
+                                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
+                                                </span>
+
+                                                    <span>
+                                                    <u>4</u>
+                                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
+                                                    المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
+                                                    الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ
+                                                </span>
+
+                                                    <span>
+                                                    <u>5</u>
+                                                    هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى
+                                                    المقروء لصفحة ما سيلهي القارئ عن التركيزَ
+                                                </span>
+                                                    <h13>
+                                                        <input type="checkbox" id="CreatePromoteTermsAccept">
+                                                        موافق على جميع هذه الشروط
+                                                    </h13>
+                                                </div>
+
+                                                <p class="WzfniPlaneValidation animate__animated animate__zoomIn">
+                                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                                    <u></u>
+                                                </p>
+
+                                                <button type="button" onclick="$('.CreatePlaneStepPage').hide();$('#CreatePlaneFirstStep').show()" class="WzfniPlanePreviusBtn">
+                                                    <i class="fas fa-angle-right"></i>
+                                                    السابق
+                                                </button>
+                                                <button type="button" onclick="CreatePlaneSecondNextBtn($(this))" class="WzfniPlaneNextBtn" rel="#CreatePlaneThirdStep">
+                                                    <i class="fas fa-angle-left"></i>
+                                                    التالي
+                                                </button>
+                                            </div>
+
+                                            <div class="CreatePlaneStepPage animate__animated animate__fadeInLeft" id="CreatePlaneThirdStep">
+                                                <div class="PromotWzfniPlaneStepsIndicator animate__animated animate__fadeInDown animate__delay-1s">
+                                                    <div class="PromotWzfniPlaneStepsIndicatorLine">
+                                                        <div></div>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            1
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15>
+                                                            2
+                                                        </h15>
+                                                    </div>
+                                                    <div class="PromotWzfniPlaneStepsIndicatorItem">
+                                                        <h15 class="ActivePromoteStep">
+                                                            3
+                                                        </h15>
+                                                    </div>
+                                                </div>
+
+                                                <h1> هون بتحط اي فريم بوابة الدفع </h1>
+                                                <h1> هون بتحط اي فريم بوابة الدفع </h1>
+                                                <h1> هون بتحط اي فريم بوابة الدفع </h1>
+                                                <h1> هون بتحط اي فريم بوابة الدفع </h1>
+                                                <h1> هون بتحط اي فريم بوابة الدفع </h1>
+
+                                                <button type="button" onclick="$('.CreatePlaneStepPage').hide();$('#CreatePlaneSecondStep').show()" class="WzfniPlanePreviusBtn">
+                                                    <i class="fas fa-angle-right"></i>
+                                                    السابق
+                                                </button>
+                                                <button type="submit" onclick="CreatePlaneFormSubmit($(this))" class="WzfniPlaneNextBtn">
+                                                    <i class="fas fa-angle-left"></i>
+                                                    تمييز اللإعلان
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

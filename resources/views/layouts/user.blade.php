@@ -15,7 +15,7 @@
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('') }}Wazefni/Requirements/CSS/style.css">
     <link rel="stylesheet" href="{{ asset('') }}Wazefni/Requirements/CSS/mobile.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet"/>
 </head>
 <body dir="rtl">
 @if($errors->count() > 0)
@@ -48,6 +48,11 @@
         </div>
     </div>
 </div>
+
+<div class="ads" id="ad">
+    <img src="{{asset("")}}Wazefni/Requirements/IMG/ads.jpg" height="250" width="300" alt="">
+</div>
+
 
 @auth
     <div id="EditInformation">
@@ -143,67 +148,88 @@
                         <div class="InputHolder">
                             <button type="button" class="AuthCtegorySelect" id="SelectedCategoryOnUserEdit">
                                 <g onclick="ShowCustomSelect($(this))" rel="#EditInfoSelectCat">اختيار فئة الوظيفة</g>
-                                <i class="fas fa-angle-down" rel="#EditInfoSelectCat" onclick="ClearEditInfoCategory($(this))" title="حذف الفئة"></i>
+                                <i class="fas fa-angle-down" rel="#EditInfoSelectCat"
+                                   onclick="ClearEditInfoCategory($(this))" title="حذف الفئة"></i>
                             </button>
                         </div>
                         <div class="SelectAuthCategoryList" id="EditInfoSelectCat">
                             <div class="SelectAuthCategoryListInner">
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="1" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 1 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="2" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 2 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="3" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 3 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="4" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 4 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="5" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 5 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="6" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 6 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="7" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 7 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="8" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 8 </span>
                                 </div>
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="9" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 9 </span>
                                 </div>
 
 
-                                <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCategoryOnEditInfo($(this))" rel="#SelectedCategoryOnUserEdit">
+                                <div class="SelectAuthCategoryListItem"
+                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
+                                     rel="#SelectedCategoryOnUserEdit">
                                     <input type="radio" name="CreateJobCategory" value="10" class="d-none">
                                     <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
                                     <span> فئة 10 </span>
@@ -321,7 +347,8 @@
                         تسجيل الدخول
                         <div></div>
                     </button>
-                    <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#RegisterForm" id="CraeateAccountTab">
+                    <button type="button" onclick="SwitchRegSignStatus($(this))" rel="#RegisterForm"
+                            id="CraeateAccountTab">
                         إنشاء حساب
                         <div></div>
                     </button>
@@ -387,16 +414,21 @@
                     </div>
                 </form>
 
-                <form class="LoginForm animate__animated animate__fadeInUp" id="RegisterForm" method="POST" action="{{ route('Register') }}">
+                <form class="LoginForm animate__animated animate__fadeInUp" id="RegisterForm" method="POST"
+                      action="{{ route('Register') }}">
                     @csrf
                     <div class="LoginFormRow">
                         <div class="FormTwoBtns">
-                            <button class="{{ old('role', null) == 2 ? 'class' : '' }}" type="button" onclick="RegOptionsFunc($(this))" rel="Buissnes">
-                                <input {{ old('role', null) == 2 ? 'checked' : '' }} value="2" type="radio" name="role" required>
+                            <button class="{{ old('role', null) == 2 ? 'class' : '' }}" type="button"
+                                    onclick="RegOptionsFunc($(this))" rel="Buissnes">
+                                <input {{ old('role', null) == 2 ? 'checked' : '' }} value="2" type="radio" name="role"
+                                       required>
                                 صاحب عمل
                             </button>
-                            <button class="{{ old('role', null) == 3 ? 'class' : '' }}" type="button" onclick="RegOptionsFunc($(this))" rel="Personal">
-                                <input {{ old('role', null) == 3 ? 'checked' : '' }} value="3" type="radio" name="role" required>
+                            <button class="{{ old('role', null) == 3 ? 'class' : '' }}" type="button"
+                                    onclick="RegOptionsFunc($(this))" rel="Personal">
+                                <input {{ old('role', null) == 3 ? 'checked' : '' }} value="3" type="radio" name="role"
+                                       required>
                                 باحث عن وظيفة
                             </button>
                         </div>
@@ -417,7 +449,8 @@
                             <u>
                                 <i class="fas fa-mobile"></i>
                             </u>
-                            <input type="number" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required  value="{{ old('phone', null) }}">
+                            <input type="number" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required
+                                   value="{{ old('phone', null) }}">
                             <div class="MobileNumberSelectCountry">
                                 <select name="country_id" required>
                                     @foreach($countries as $key => $country)
@@ -438,7 +471,8 @@
                             <u>
                                 <i class="fas fa-envelope"></i>
                             </u>
-                            <input type="email" placeholder="example@wzfni.com" name="email" value="{{ old('email', null) }}" required>
+                            <input type="email" placeholder="example@wzfni.com" name="email"
+                                   value="{{ old('email', null) }}" required>
                         </div>
                     </div>
                     <div class="LoginFormRow">
@@ -463,7 +497,8 @@
                             <u>
                                 <i class="fas fa-key"></i>
                             </u>
-                            <input type="password" placeholder="اكتب هنا : كلمة المرور مرة اخرى" name="password_confirmation"
+                            <input type="password" placeholder="اكتب هنا : كلمة المرور مرة اخرى"
+                                   name="password_confirmation"
                                    required>
                             <button type="button" class="SeePassword" onclick="ShowPassword($(this))">
                                 <i class="fas fa-eye"></i>
@@ -508,6 +543,26 @@
     {{ csrf_field() }}
 </form>
 @include('partials.footer')
+
+<div class="BlockerDetected">
+    <div class="BlockerDetectedInner">
+        <img src="{{ asset('') }}Wazefni/Requirements/IMG/BlockerIndicator.png" class="BlockerIndicator">
+        <div class="BlockerDetectedFade"></div>
+        <div class="BlockerDetectedDiv animate__animated animate__zoomIn">
+            <img src="{{ asset('') }}Wazefni/Requirements/IMG/Blocker.png" class="BlockerLogo">
+            <h3>
+                 أداة حظر الإعلانات
+            </h3>
+            <p>
+                لتتمكن من الإستمرار في الموقع , يرجى اغلاق اداة حظر الإعلانات من اعدادات المتصفح.
+            </p>
+            <button type="button" onclick="location.reload();">
+                <img src="{{ asset('') }}Wazefni/Requirements/IMG/Refresh.png">
+                إعادة تحميل الصفحة
+            </button>
+        </div>
+    </div>
+</div>
 
 <script src="{{ asset('') }}Wazefni/Requirements/JS/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="{{ asset('') }}Wazefni/Requirements/JS/aos.js"></script>
@@ -570,14 +625,13 @@
                     // console.log(data); // Outputs اﻷحد, 4 ديسمبر, 2016
 
 
-                    var Name    = v['company']['logo']['thumbnail'];
+                    var Name = v['company']['logo']['thumbnail'];
                     var NewName = Name.replace('localhost', 'localhost:8000')
 
                     var NewJobThumb = '{{asset("")}}Wazefni/Requirements/IMG/RF.png';
 
-                    if (v['photo'] != null)
-                    {
-                        var JobThumb    = v['photo']['thumbnail'];
+                    if (v['photo'] != null) {
+                        var JobThumb = v['photo']['thumbnail'];
                         NewJobThumb = JobThumb.replace('localhost', 'localhost:8000')
                     }
 
@@ -589,8 +643,8 @@
                         '</div>' +
                         '<div class="LatestJobsItemInfo">' +
                         '<h5 title="' + v['company']['name'] + '" onclick="$(this).find(\'a\')[0].click()">' +
-                         '<a href="/company-profile/' + v['company']['id'] + '" class="d-none"></a>' +
-                         // '<a class="d-none" onclick="$(\'#HeaderLoginBtn\).click()"></a>' +
+                        '<a href="/company-profile/' + v['company']['id'] + '" class="d-none"></a>' +
+                        // '<a class="d-none" onclick="$(\'#HeaderLoginBtn\).click()"></a>' +
                         '<img src="' + NewName + '" class="SpecialSliderUser">' +
                         v['company']['name'] +
                         '<u>' +
@@ -639,8 +693,7 @@
                         var urlWithPaginationNumber = v['url'];
                         console.log(v['url']);
                         console.log(v['label']);
-                        if(v['label'] != "&laquo; Previous" && v['label'] != "Next &raquo;")
-                        {
+                        if (v['label'] != "&laquo; Previous" && v['label'] != "Next &raquo;") {
                             $('.LatestJobsPaginationInner').append('<button type="button" onclick="SelectThisCategory($(this))" url="' + urlWithPaginationNumber + '">'
                                 + v['label'] +
                                 '</button>')
@@ -651,7 +704,7 @@
 
                 }
 
-                if($('#AuthStatus').val() === '0'){
+                if ($('#AuthStatus').val() === '0') {
                     $('.LatestJobsItem .LatestJobsItemInfo h3 a').remove()
                     $('.LatestJobsItem .LatestJobsItemInfo h3').append('<a onclick="$(\'#HeaderLoginBtn\').click()"></a>')
                 }
@@ -717,6 +770,7 @@
             $('#RegPersonal').css('display', 'flex')
         }
     }
+
     // Registration Form Role Selecter
 </script>
 @yield('scripts')
