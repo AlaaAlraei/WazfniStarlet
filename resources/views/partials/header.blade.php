@@ -68,28 +68,25 @@
                                 @endauth
                             </h2>
                         </div>
-                        <div class="HeaderFirstCountry">
-                            <select>
-                                <option selected> الأردن </option>
-                                <option> السعودية </option>
-                                <option> الإمارات </option>
-                                <option> قطر </option>
-                                <option> العراق </option>
-                                <option> الكويت </option>
-                                <option> مصر </option>
-                                <option> عمان </option>
+                        <form id="SearchByCountry" action="{{ route('SearchByCountry') }}" method="GET" class="HeaderFirstCountry">
+                            <select name="CountryID" onchange="$('#SearchByCountry').submit();">
+                                @foreach($countries as $key => $country)
+                                    <option {{ isset($_GET['CountryID']) && $_GET['CountryID'] == $country->id ? 'selected' : '' }} value="{{ $country->id ?? '' }}">
+                                        {{ $country->name ?? '' }}
+                                    </option>
+                                @endforeach
                             </select>
-                        </div>
-                        <div class="HeaderFirstSearch">
+                        </form>
+                        <form action="{{ route('SearchByTyping') }}" method="GET" class="HeaderFirstSearch">
                             <div class="HeaderSearch">
                                 <div class="HeaderSearchHolder">
-                                    <input type="text" placeholder="ابحث عن الوظائف هنا ..">
-                                    <button type="button">
+                                    <input name="Typing" type="text" placeholder="ابحث عن الوظائف هنا ..">
+                                    <button type="submit">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

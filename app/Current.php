@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Country extends Model
+class Current extends Model
 {
     use SoftDeletes;
 
-    public $table = 'countries';
+    public $table = 'currents';
 
     protected $dates = [
         'updated_at',
@@ -19,27 +19,21 @@ class Country extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'code',
-        'country_key',
+        'user_id',
+        'country_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class, 'country_id', 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function locations()
+    public function country()
     {
-        return $this->hasMany(Location::class, 'country_id', 'id');
-    }
-
-    public function currents()
-    {
-        return $this->hasMany(Current::class, 'country_id', 'id');
+        return $this->belongsTo(Country::class, 'country_id');
     }
 
 }

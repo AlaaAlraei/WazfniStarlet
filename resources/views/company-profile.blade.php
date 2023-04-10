@@ -121,11 +121,13 @@
                                 </div>
                                 <div class="CompanyJobsGH">
                                     @if(isset($company->jobs))
-                                        @foreach($company->jobs->sortByDesc('id') as $key => $job)
+                                        @foreach($company->jobs->sortByDesc('top_rated') as $key => $job)
                                             <div class="LatestJobsItem animate__animated animate__fadeIn">
                                                 <div class="LatestJobsItemImage">
                                                     @if($job->photo)
                                                         <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $job->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $job->photo->getUrl('thumb')) }}">
+                                                    @else
+                                                        <img src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
                                                     @endif
                                                 </div>
                                                 <div class="LatestJobsItemInfo SpecialOfferIndicator">
@@ -148,9 +150,11 @@
                                                         </h15>
                                                     </div>
                                                     <input type="hidden" class="IsRated1" rel="1">
-                                                    <h12 title="إعلان مميز">
-                                                        <img src="/Wazefni/Requirements/IMG/Promoted.png">
-                                                    </h12>
+                                                    @if($job->top_rated == 1)
+                                                        <h12 title="إعلان مميز">
+                                                            <img src="/Wazefni/Requirements/IMG/Promoted.png">
+                                                        </h12>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endforeach

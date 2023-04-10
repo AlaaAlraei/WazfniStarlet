@@ -27,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.main', 'App\Http\View\Composers\SidebarComposer');
         View::composer('layouts.user', 'App\Http\View\Composers\LayoutComposer');
+        View::composer('partials.header', 'App\Http\View\Composers\LayoutComposer');
     }
 }

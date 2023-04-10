@@ -16,6 +16,12 @@ Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin')
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('GetAllJobs', 'JobController@GetAllJobs')->name('GetAllJobs');
 Route::get('GetByCategoriesJobs/{category}', 'JobController@GetByCategoriesJobs')->name('GetByCategoriesJobs');
+Route::get('SearchByCountry', 'JobController@SearchByCountry')->name('SearchByCountry');
+Route::get('GetAllJobsByCountry', 'JobController@GetAllJobsByCountry')->name('GetAllJobsByCountry');
+Route::get('GetByCategoriesJobsByCountry/{category}', 'JobController@GetByCategoriesJobsByCountry')->name('GetByCategoriesJobsByCountry');
+Route::get('SearchByTyping', 'JobController@SearchByTyping')->name('SearchByTyping');
+Route::get('GetAllJobsByTyping', 'JobController@GetAllJobsByTyping')->name('GetAllJobsByTyping');
+Route::get('GetByCategoriesJobsByTyping/{category}', 'JobController@GetByCategoriesJobsByTyping')->name('GetByCategoriesJobsByTyping');
 Route::post('jobs/media', 'JobController@storeMedia')->name('jobs.storeMedia');
 Route::resource('jobs', 'JobController');
 Route::get('category/{category}', 'CategoryController@show')->name('categories.show');

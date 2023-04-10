@@ -100,6 +100,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class, 'user_id', 'id');
     }
 
+    public function currents()
+    {
+        return $this->hasMany(Current::class, 'user_id', 'id');
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
