@@ -249,18 +249,18 @@
         <script>
             $(document).ready(function () {
                 @foreach($jobTops as $key => $jobTop)
-                var d = new Date("{{ $jobTop->created_at }}");
-                var month = d.toLocaleString('default', {month: 'long'});
-                var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
+                    var d = new Date("{{ $jobTop->created_at }}");
+                    var month = d.toLocaleString('default', {month: 'long'});
+                    var strDate = d.getFullYear() + "-" + month + "-" + d.getDate();
 
 
-                var date = new Date(strDate);
-                var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
-                    "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
-                ];
-                var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
-                var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
-                  $('#TopCreatedAtFormed{{ $jobTop->id }}').text(delDateString)
+                    var date = new Date(strDate);
+                    var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                        "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+                    ];
+                    var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+                    var delDateString = days[date.getDay()] + ' ' + date.getDate() + ' ' + months[date.getMonth()] + ' ' + date.getFullYear();
+                      $('#TopCreatedAtFormed{{ $jobTop->id }}').text(delDateString)
                 @endforeach
 
                 $('.SpecialOffersSlider').slick({
