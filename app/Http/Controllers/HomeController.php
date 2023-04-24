@@ -56,9 +56,4 @@ class HomeController extends Controller
         return view('jobs.index', compact(['jobs', 'banner']));
     }
 
-    public function profile()
-    {
-        return view('profile');
-    }
-
 }

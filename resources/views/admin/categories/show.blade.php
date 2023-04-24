@@ -31,8 +31,8 @@
                             {{ trans('cruds.category.fields.icon') }}
                         </th>
                         <td>
-                            @if($searchCategory->photo)
-                                <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $searchCategory->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $searchCategory->photo->getUrl('thumb')) }}">
+                            @if($category->photo)
+                                <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $category->photo->getUrl('thumb')) }}">
                             @else
                                 <img src=" {{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/$category->icon") : str_replace("public", "storage", asset("$category->icon")) }}">
                             @endif

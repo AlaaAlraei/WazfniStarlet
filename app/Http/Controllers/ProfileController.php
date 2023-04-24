@@ -17,6 +17,11 @@ class ProfileController extends Controller
         return view('my-profile');
     }
 
+    public function profile(User $user)
+    {
+        return view('profile', compact('user'));
+    }
+
     public function Register(RegisterRequest $request)
     {
         if (Auth::user())

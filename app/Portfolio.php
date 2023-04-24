@@ -2,34 +2,41 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Category extends Model implements HasMedia
+class Portfolio extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia;
-
-    public $table = 'categories';
 
     protected $appends = [
         'photo',
     ];
 
+    public $table = 'portfolios';
+
     protected $dates = [
+        'updated_at',
+        'created_at',
+        'deleted_at',
+    ];
+
+    protected $fillable = [
+        'employee_id',
+        'title',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    protected $fillable = [
-        'name',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -47,21 +54,6 @@ class Category extends Model implements HasMedia
         }
 
         return $file;
-    }
-
-    public function jobs()
-    {
-        return $this->belongsToMany(Job::class);
-    }
-
-    public function companies()
-    {
-        return $this->hasMany(Company::class, 'category_id', 'id');
-    }
-
-    public function employees()
-    {
-        return $this->hasMany(Employee::class, 'category_id', 'id');
     }
 
 }

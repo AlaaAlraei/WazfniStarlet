@@ -110,4 +110,9 @@ class User extends Authenticatable
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function employee()
+    {
+        return $this->hasOne(Employee::class);
+    }
+
 }

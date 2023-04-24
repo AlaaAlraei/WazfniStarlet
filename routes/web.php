@@ -11,7 +11,7 @@ Route::get('/my-profile', 'ProfileController@MyProfile')->name('MyProfile');
 Route::get('/BusinessProfile', 'ProfileController@BusinessProfile')->name('BusinessProfile');
 Route::post('/Register', 'ProfileController@Register')->name('Register');
 Route::get('/company-profile/{company}', 'ProfileController@CompanyProfile')->name('CompanyProfile');
-Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/profile/{user}', 'ProfileController@profile')->name('profile');
 Route::post('/client-login', 'ClientLoginController@index')->name('clientLogin');
 Route::get('search', 'HomeController@search')->name('search');
 Route::get('GetAllJobs', 'JobController@GetAllJobs')->name('GetAllJobs');
