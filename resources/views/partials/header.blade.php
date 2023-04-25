@@ -97,19 +97,22 @@
 <div class="UserOptions">
     <div class="UserOptionsEdge"></div>
     <ul>
-        @can('user_management_access')
-            <li onclick="$(this).find('a')[0].click()">
-                <a href="{{ route('admin.home') }}" class="d-none"></a>
-                <i class="fa fa-cog" aria-hidden="true"></i>
-                شاشة التحكم
-            </li>
-        @else
-            <li onclick="$(this).find('a')[0].click()">
-                <a href="{{ route('profile') }}" class="d-none"></a>
-                <i class="fas fa-user"></i>
-                الملف الشخصي
-            </li>
-        @endcan
+        @auth
+            @can('user_management_access')
+                <li onclick="$(this).find('a')[0].click()">
+                    <a href="{{ route('admin.home') }}" class="d-none"></a>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    شاشة التحكم
+                </li>
+            @else
+                <li onclick="$(this).find('a')[0].click()">
+                    <a href="{{ route('profile', [Auth::user()->id]) }}" class="d-none"></a>
+                    <i class="fas fa-user"></i>
+                    الملف الشخصي
+                </li>
+            @endcan
+        @endauth
+
         <li>
             <i class="fas fa-crown"></i>
             ترقية حسابي

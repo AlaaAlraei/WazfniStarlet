@@ -130,6 +130,9 @@
                                                 @if(isset($portfolio->photo))
                                                     <img
                                                         src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $portfolio->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $portfolio->photo->getUrl('thumb')) }}">
+                                                @else
+                                                    <img
+                                                        src="https://www.keenesystems.com/hubfs/blog-images/ux-ui.jpg">
                                                 @endif
                                             </div>
                                             <div class="UserWorksItemFade"></div>
