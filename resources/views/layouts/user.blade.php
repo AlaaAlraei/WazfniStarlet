@@ -70,9 +70,35 @@
                     </button>
                 </div>
                 <form class="LoginForm animate__animated animate__fadeInUp" id="UserInfoForm" method="POST"
-                      action="{{ route('clientLogin') }}">
+                      action="{{ route('profile.UpdateEmployeeProfile') }}">
                     @csrf
+                    @method('PUT')
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <div class="InputHolder">
+                                    @if(Auth::user()->image)
+                                        <img width="50%" src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/".Auth::user()->image) : str_replace("public", "storage", asset("".Auth::user()->image)) }}">
+                                    @else
+                                        <img width="50%" src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
+                                    @endif
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="LoginFormRow">
+                                <label>
+                                    الصورة الشخصية
+                                </label>
+                                <div class="InputHolder">
+                                    <u>
+                                        <i class="fas fa-user"></i>
+                                    </u>
+                                    <input name="imagePC" type="file" {{ Auth::user()->image ?? 'required' }} accept="image/*">
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="LoginFormRow">
                                 <label>
@@ -82,8 +108,7 @@
                                     <u>
                                         <i class="fas fa-user"></i>
                                     </u>
-                                    <input type="text" placeholder="اكتب هنا : اسمك الاول"
-                                           value="{{ Auth::user()->name }}">
+                                    <input name="name" type="text" placeholder="اكتب هنا : اسمك الاول" value="{{ Auth::user()->name }}" required>
                                 </div>
                             </div>
                         </div>
@@ -96,8 +121,7 @@
                                     <u>
                                         <i class="fas fa-user"></i>
                                     </u>
-                                    <input type="text" placeholder="اكتب هنا : اسمك الثاني"
-                                           value="{{ Auth::user()->name }}">
+                                    <input name="last_name" type="text" placeholder="اكتب هنا : اسمك الثاني" value="{{ Auth::user()->last_name }}" required>
                                 </div>
                             </div>
                         </div>
@@ -111,30 +135,15 @@
                             <u>
                                 <i class="fas fa-mobile"></i>
                             </u>
-                            <input type="number" value="{{ Auth::user()->number }}"
-                                   placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="mobile" required="">
+                            <input type="number" value="{{ Auth::user()->phone }}" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required="">
                             <div class="MobileNumberSelectCountry">
-                                <select>
-                                    <option>
-                                        الأردن
-                                        (+962)
-                                    </option>
-                                    <option>
-                                        السعودية
-                                        (+584)
-                                    </option>
-                                    <option>
-                                        قطر
-                                        (+745)
-                                    </option>
-                                    <option>
-                                        تركيا
-                                        (+852)
-                                    </option>
-                                    <option>
-                                        الكويت
-                                        (+125)
-                                    </option>
+                                <select name="country_id" required>
+                                    @foreach($countries as $key => $country)
+                                        <option value="{{ $country->id ?? '' }}">
+                                            {{ $country->name ?? '' }}
+                                            (+{{ $country->country_key ?? '' }})
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -154,86 +163,17 @@
                         </div>
                         <div class="SelectAuthCategoryList" id="EditInfoSelectCat">
                             <div class="SelectAuthCategoryListInner">
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="1" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 1 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="2" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 2 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="3" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 3 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="4" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 4 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="5" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 5 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="6" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 6 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="7" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 7 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="8" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 8 </span>
-                                </div>
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="9" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 9 </span>
-                                </div>
-
-
-                                <div class="SelectAuthCategoryListItem"
-                                     onclick="SelectThisJobCategoryOnEditInfo($(this))"
-                                     rel="#SelectedCategoryOnUserEdit">
-                                    <input type="radio" name="CreateJobCategory" value="10" class="d-none">
-                                    <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
-                                    <span> فئة 10 </span>
-                                </div>
+                                @foreach($HeadCategories as $key => $category)
+                                    <div class="SelectAuthCategoryListItem" onclick="SelectThisJobCreateCategory($(this))" rel="#SelectedCategoryOnCreate">
+                                        <input type="radio" name="category_id" value="{{ $category->id }}" {{ old('category_id', isset(Auth::user()->employee->category_id) && Auth::user()->employee->category_id == $category->id ? $category->name : '') ? 'checked' : '' }} class="d-none">
+                                        @if(isset($category->photo))
+                                            <img src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , $category->photo->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', $category->photo->getUrl('thumb')) }}">
+                                        @else
+                                            <img src="{{asset("")}}Wazefni/Requirements/IMG/MotorcyclesHome.webp">
+                                        @endif
+                                        <span> {{ $category->name }} </span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                         <h15>
@@ -241,37 +181,6 @@
                             يقوم نظامنا الذكي بحصر المعلومات عند اختيارك فئة العمل المناسبة لك مما يسهل عملية البحث
                             ويساعد في عرض الوظائف المنسبة لنخصصك .
                         </h15>
-                    </div>
-
-                    <div class="LoginFormRow">
-                        <label>
-                            الدولة
-                        </label>
-                        <div class="InputHolder">
-                            <u>
-                                <i class="fas fa-globe"></i>
-                            </u>
-                            <select class="FullSelect">
-                                <option selected>
-                                    الأردن
-                                </option>
-                                <option>
-                                    السعودية
-                                </option>
-                                <option>
-                                    قطر
-                                </option>
-                                <option>
-                                    تركيا
-                                </option>
-                                <option>
-                                    الكويت
-                                </option>
-                            </select>
-                            <sa>
-                                <i class="fas fa-angle-down"></i>
-                            </sa>
-                        </div>
                     </div>
 
                     <div class="LoginFormRow">

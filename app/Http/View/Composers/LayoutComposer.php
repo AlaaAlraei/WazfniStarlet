@@ -19,5 +19,6 @@ class LayoutComposer
     public function compose(View $view)
     {
         $view->with('countries', Country::all());
+        $view->with('HeadCategories', Category::all());
     }
 }
