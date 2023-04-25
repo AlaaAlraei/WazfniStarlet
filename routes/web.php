@@ -27,7 +27,7 @@ Route::resource('jobs', 'JobController');
 Route::get('category/{category}', 'CategoryController@show')->name('categories.show');
 Route::get('location/{location}', 'LocationController@show')->name('locations.show');
 
-Route::put('/profile/UpdateEmployeeProfile', 'ProfileController@UpdateEmployeeProfile')->name('profile.UpdateEmployeeProfile');
+Route::put('/profile/UpdateGeneralEmployeeProfile', 'ProfileController@UpdateGeneralEmployeeProfile')->name('profile.UpdateGeneralEmployeeProfile');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');

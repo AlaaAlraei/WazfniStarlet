@@ -70,11 +70,12 @@
                     </button>
                 </div>
                 <form class="LoginForm animate__animated animate__fadeInUp" id="UserInfoForm" method="POST"
-                      action="{{ route('profile.UpdateEmployeeProfile') }}">
+                      action="{{ route('profile.UpdateGeneralEmployeeProfile') }}">
                     @csrf
                     @method('PUT')
+                    <input name="imagePC" type="file" {{ Auth::user()->image == null ? 'required' : '' }} accept="image/*">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="LoginFormRow">
                                 <div class="InputHolder">
                                     @if(Auth::user()->image)
@@ -83,19 +84,6 @@
                                         <img width="50%" src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
                                     @endif
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="LoginFormRow">
-                                <label>
-                                    الصورة الشخصية
-                                </label>
-                                <div class="InputHolder">
-                                    <u>
-                                        <i class="fas fa-user"></i>
-                                    </u>
-                                    <input name="imagePC" type="file" {{ Auth::user()->image ?? 'required' }} accept="image/*">
                                 </div>
                             </div>
                         </div>
@@ -135,7 +123,7 @@
                             <u>
                                 <i class="fas fa-mobile"></i>
                             </u>
-                            <input type="number" value="{{ Auth::user()->phone }}" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required="">
+                            <input type="text" value="{{ Auth::user()->phone }}" placeholder="رقم الهاتف ( من غير مفتاح الدولة )" name="phone" required="">
                             <div class="MobileNumberSelectCountry">
                                 <select name="country_id" required>
                                     @foreach($countries as $key => $country)

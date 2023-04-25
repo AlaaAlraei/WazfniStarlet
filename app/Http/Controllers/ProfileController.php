@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Form;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\UpdateEmployeeProfileRequest;
+use App\Http\Requests\UpdateGeneralEmployeeProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,10 +53,10 @@ class ProfileController extends Controller
         return view('BusinessProfile');
     }
 
-    public function UpdateEmployeeProfile(UpdateEmployeeProfileRequest $request)
+    public function UpdateGeneralEmployeeProfile(UpdateGeneralEmployeeProfileRequest $request)
     {
 
-//        $request->only('name','last_name','email', 'phone', 'imagePC', 'category_id', 'country_id');
+        $request->only('name','last_name','email', 'phone', 'imagePC', 'category_id', 'country_id');
 
         if ($request->file('imagePC')){
             $image=$request->file('imagePC');

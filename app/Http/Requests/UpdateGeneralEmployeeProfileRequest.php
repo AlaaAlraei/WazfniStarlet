@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class UpdateEmployeeProfileRequest extends FormRequest
+class UpdateGeneralEmployeeProfileRequest extends FormRequest
 {
     public function authorize()
     {
@@ -37,7 +37,7 @@ class UpdateEmployeeProfileRequest extends FormRequest
                 'unique:users,last_name,' . Auth::user()->id,
             ],
             'imagePC'   => [
-                'required',
+                'nullable',
 //                'image',
                 'max:500',
             ],
