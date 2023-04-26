@@ -19,7 +19,9 @@ class SubscriptionType extends Model
     ];
 
     protected $fillable = [
+        'kind',
         'title',
+        'num_job_post',
         'num_month',
         'amount',
         'created_at',
@@ -30,6 +32,11 @@ class SubscriptionType extends Model
     public function subscriptions()
     {
         return $this->hasMany(Subscription::class, 'type_id', 'id');
+    }
+
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class, 'feature_subscription_type');
     }
 
 }
