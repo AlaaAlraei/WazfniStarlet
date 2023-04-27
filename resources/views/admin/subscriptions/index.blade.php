@@ -1,35 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@can('subscription_type_create')
+@can('subscription_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.subscription_types.create") }}">
-                {{ trans('global.add') }} {{ trans('cruds.subscription_type.title_singular') }}
+            <a class="btn btn-success" href="{{ route("admin.subscriptions.create") }}">
+                {{ trans('global.add') }} {{ trans('cruds.subscription.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.subscription_type.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.subscription.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-subscription_type">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-subscription">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.id') }}
+                            {{ trans('cruds.subscription.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.title') }}
+                            {{ trans('cruds.subscription.fields.user_id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.amount') }}
+                            {{ trans('cruds.subscription.fields.expiry') }}
                         </th>
                         <th>
                             &nbsp;
@@ -37,35 +37,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($subscription_types as $key => $subscription_type)
-                        <tr data-entry-id="{{ $subscription_type->id }}">
+                    @foreach($subscriptions as $key => $subscription)
+                        <tr class="{{ date('Y-m-d', strtotime("+".$subscription->type->num_month." month")) < date('Y-m-d') ? 'bg-danger' : '' }}" data-entry-id="{{ $subscription->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $subscription_type->id ?? '' }}
+                                {{ $subscription->id ?? '' }}
                             </td>
                             <td>
-                                {{ $subscription_type->title ?? '' }}
+                                {{ $subscription->user->name ?? '' }} {{ $subscription->user->last_name ?? '' }}
                             </td>
                             <td>
-                                {{ $subscription_type->amount ?? '' }}
+                                {{ date('Y-m-d', strtotime("+".$subscription->type->num_month." month")) < date('Y-m-d') ? 'Expiry' : 'Active' }}
                             </td>
                             <td>
-                                @can('subscription_type_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.subscription_types.show', $subscription_type->id) }}">
+                                @can('subscription_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.subscriptions.show', $subscription->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('subscription_type_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.subscription_types.edit', $subscription_type->id) }}">
+                                @can('subscription_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.subscriptions.edit', $subscription->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('subscription_type_delete')
-                                    <form action="{{ route('admin.subscription_types.destroy', $subscription_type->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('subscription_delete')
+                                    <form action="{{ route('admin.subscriptions.destroy', $subscription->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -89,11 +89,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('subscription_type_delete')
+@can('subscription_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.subscription_types.massDestroy') }}",
+    url: "{{ route('admin.subscriptions.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -123,7 +123,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  $('.datatable-subscription_type:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable-subscription:not(.ajaxTable)').DataTable({ buttons: dtButtons })
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
         $($.fn.dataTable.tables(true)).DataTable()
             .columns.adjust();

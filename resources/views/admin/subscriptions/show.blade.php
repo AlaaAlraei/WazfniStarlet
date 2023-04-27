@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.subscription_type.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.subscription.title') }}
     </div>
 
     <div class="card-body">
@@ -12,36 +12,42 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.id') }}
+                            {{ trans('cruds.subscription.fields.id') }}
                         </th>
                         <td>
-                            {{ $subscription_type->id }}
+                            {{ $subscription->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.title') }}
+                            {{ trans('cruds.subscription.fields.user_id') }}
                         </th>
                         <td>
-                            {{ $subscription_type->title }}
+                            {{ $subscription->user->name ?? '' }} {{ $subscription->user->last_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.kind') }}
+                            {{ trans('cruds.subscription.fields.type_id') }}
                         </th>
                         <td>
-                            {{ $subscription_type->kind == 0 ? 'Single' : '' }}
-                            {{ $subscription_type->kind == 1 ? 'Dual' : '' }}
-                            {{ $subscription_type->kind == 2 ? 'Choose' : '' }}
+                            {{ $subscription->type->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.subscription_type.fields.kind') }}
+                            {{ trans('cruds.subscription.fields.start_date') }}
                         </th>
                         <td>
-                            {{ $subscription_type->kind }}
+                            {{ $subscription->start_date ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.subscription.fields.expiry') }}
+                        </th>
+                        <td>
+                            {{ date('Y-m-d', strtotime("+".$subscription->type->num_month." month")) < date('Y-m-d') ? 'Expiry' : 'Active' }}
                         </td>
                     </tr>
                 </tbody>

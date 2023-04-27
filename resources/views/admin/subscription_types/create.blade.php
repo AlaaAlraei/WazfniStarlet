@@ -14,6 +14,7 @@
                 <select type="text" id="kind" name="kind" class="form-control" required>
                     <option value="0" {{ old('kind', isset($subscription_type) && $subscription_type->kind == 0 ? 'selected' : '') }}>Single</option>
                     <option value="1" {{ old('kind', isset($subscription_type) && $subscription_type->kind == 1 ? 'selected' : '') }}>Dual</option>
+                    <option value="2" {{ old('kind', isset($subscription_type) && $subscription_type->kind == 2 ? 'selected' : '') }}>Choose</option>
                 </select>
                 @if($errors->has('kind'))
                     <em class="invalid-feedback">
@@ -36,7 +37,42 @@
                     {{ trans('cruds.subscription_type.fields.title_helper') }}
                 </p>
             </div>
-            herev ofvmdfkvkdfvmdsk
+            <div class="form-group {{ $errors->has('num_job_post') ? 'has-error' : '' }}">
+                <label for="num_job_post">{{ trans('cruds.subscription_type.fields.num_job_post') }}*</label>
+                <input type="number" id="num_job_post" name="num_job_post" class="form-control" value="{{ old('num_job_post', isset($subscription_type) ? $subscription_type->num_job_post : '') }}" required>
+                @if($errors->has('num_job_post'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('num_job_post') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.subscription_type.fields.num_job_post_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('num_month') ? 'has-error' : '' }}">
+                <label for="num_month">{{ trans('cruds.subscription_type.fields.num_month') }}*</label>
+                <input type="number" id="num_month" name="num_month" class="form-control" value="{{ old('num_month', isset($subscription_type) ? $subscription_type->num_month : '') }}" required>
+                @if($errors->has('num_month'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('num_month') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.subscription_type.fields.num_month_helper') }}
+                </p>
+            </div>
+            <div class="form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
+                <label for="amount">{{ trans('cruds.subscription_type.fields.amount') }}*</label>
+                <input type="number" step="0.001" id="amount" name="amount" class="form-control" value="{{ old('amount', isset($subscription_type) ? $subscription_type->amount : '') }}" required>
+                @if($errors->has('amount'))
+                    <em class="invalid-feedback">
+                        {{ $errors->first('amount') }}
+                    </em>
+                @endif
+                <p class="helper-block">
+                    {{ trans('cruds.subscription_type.fields.amount_helper') }}
+                </p>
+            </div>
             <div class="form-group {{ $errors->has('features') ? 'has-error' : '' }}">
                 <label for="features">{{ trans('cruds.subscription_type.fields.features') }}*
                     <span class="btn btn-info btn-xs select-all">{{ trans('global.select_all') }}</span>

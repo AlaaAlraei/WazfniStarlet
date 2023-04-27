@@ -122,6 +122,36 @@
                     </a>
                 </li>
             @endcan
+            @can('feature_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.features.index") }}" class="nav-link {{ request()->is('admin/features') || request()->is('admin/features/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-briefcase nav-icon">
+
+                        </i>
+                        {{ trans('cruds.feature.title') }}
+                    </a>
+                </li>
+            @endcan
+            @can('subscription_type_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.subscription_types.index") }}" class="nav-link {{ request()->is('admin/subscription_types') || request()->is('admin/subscription_types/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-briefcase nav-icon">
+
+                        </i>
+                        {{ trans('cruds.subscription_type.title') }}
+                    </a>
+                </li>
+            @endcan
+            @can('subscription_access')
+                <li class="nav-item">
+                    <a href="{{ route("admin.subscriptions.index") }}" class="nav-link {{ request()->is('admin/subscriptions') || request()->is('admin/subscriptions/*') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-briefcase nav-icon">
+
+                        </i>
+                        {{ trans('cruds.subscription.title') }}
+                    </a>
+                </li>
+            @endcan
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                     <i class="nav-icon fas fa-fw fa-sign-out-alt">

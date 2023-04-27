@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Feature;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroySubscriptionTypeRequest;
 use App\Http\Requests\StoreSubscriptionTypeRequest;
@@ -26,7 +27,9 @@ class SubscriptionTypeController extends Controller
     {
         abort_if(Gate::denies('subscription_type_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.subscription_types.create');
+        $features = Feature::all()->pluck('title', 'id');
+
+        return view('admin.subscription_types.create', compact('features'));
     }
 
     public function store(StoreSubscriptionTypeRequest $request)
@@ -40,7 +43,9 @@ class SubscriptionTypeController extends Controller
     {
         abort_if(Gate::denies('subscription_type_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.subscription_types.edit', compact('subscription_type'));
+        $features = Feature::all()->pluck('title', 'id');
+
+        return view('admin.subscription_types.edit', compact('subscription_type', 'features'));
     }
 
     public function update(UpdateSubscriptionTypeRequest $request, SubscriptionType $subscription_type)
