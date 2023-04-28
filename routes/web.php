@@ -9,6 +9,8 @@ Route::get('/promote', 'PromoteController@index')->name('promote');
 Route::get('/term', 'TermController@index')->name('term');
 Route::get('/my-profile', 'ProfileController@MyProfile')->name('MyProfile');
 Route::get('/BusinessProfile', 'ProfileController@BusinessProfile')->name('BusinessProfile');
+Route::get('/PersonalAccount', 'ProfileController@PersonalAccount')->name('PersonalAccount');
+Route::get('/BusinessAccount', 'ProfileController@BusinessAccount')->name('BusinessAccount');
 Route::post('/Register', 'ProfileController@Register')->name('Register');
 Route::get('/company-profile/{company}', 'ProfileController@CompanyProfile')->name('CompanyProfile');
 Route::get('/profile/{user}', 'ProfileController@profile')->name('profile');

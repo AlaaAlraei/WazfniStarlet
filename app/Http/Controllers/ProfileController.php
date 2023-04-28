@@ -82,4 +82,14 @@ class ProfileController extends Controller
         return redirect()->back()->with('message', 'done');
     }
 
+    public function PersonalAccount()
+    {
+        return view('PersonalAccount');
+    }
+
+    public function BusinessAccount()
+    {
+        return view('BusinessAccount');
+    }
+
 }
