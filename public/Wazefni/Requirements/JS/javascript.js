@@ -360,16 +360,6 @@ function ClearPromotionPages(){
     $('.WzfniPlaneValidation').hide()
 }
 
-function CheckAdBlockers(){
-    if($('#ad').find('img').is(':hidden')){
-        setInterval(function(){
-            if($('body').hasClass('PreventScroll')){
-
-            }else{
-                $('body').addClass('PreventScroll')
-            }
-        }, 1000)
-        $('.BlockerDetected').show()
-    }
+function AddResumeBTn(el){
+    $(el.attr('rel')).show()
 }
-

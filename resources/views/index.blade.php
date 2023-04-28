@@ -53,6 +53,32 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">
+                        <div class="row" id="AdSection">
+                            <div class="col-md-6">
+                                <div class="AdSectionItem" onclick="$(this).find('a')[0].click()">
+                                    <a href="#" target="_blank" class="d-none"></a>
+                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/GAds.png">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="AdSectionItem" onclick="$(this).find('a')[0].click()">
+                                    <a href="#" target="_blank" class="d-none"></a>
+                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/GAds.png">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="AdSectionItem" onclick="$(this).find('a')[0].click()">
+                                    <a href="#" target="_blank" class="d-none"></a>
+                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/GAds.png">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="AdSectionItem" onclick="$(this).find('a')[0].click()">
+                                    <a href="#" target="_blank" class="d-none"></a>
+                                    <img src="{{ asset('') }}Wazefni/Requirements/IMG/GAds.png">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <p class="CategoriesHeader">
@@ -304,5 +330,19 @@
 
                 $('.SpecialOffersSlider .slick-dots li').html('<div></div>')
             });
+
+            function CheckAdBlockers(){
+                if($('.HomeAds').is(':hidden')){
+                    setInterval(function(){
+                        if($('body').hasClass('PreventScroll')){
+
+                        }else{
+                            $('body').addClass('PreventScroll')
+                        }
+                    }, 1000)
+                    $('.BlockerDetected').show()
+                }
+            }
+
         </script>
 @endsection
