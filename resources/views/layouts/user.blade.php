@@ -102,6 +102,74 @@
                         </div>
                     </div>
 
+                    <div class="SocialMediaTrigger" onclick="$('.EditSocialMediaParent').slideToggle()">
+                        <span>
+                            <i class="fas fa-angle-down"></i>
+                            التواصل الاجتماعي
+                        </span>
+                    </div>
+
+                    <div class="EditSocialMediaParent">
+                        <div class="row EditSocialMedia animate__animated animate__zoomIn">
+                            <div class="col-md-6">
+                                <div class="LoginFormRow">
+                                    <label>
+                                        <i class="fab fa-facebook"></i>
+                                        فيس بوك
+                                    </label>
+                                    <div class="InputHolder">
+                                        <u>
+                                            <i class="fab fa-facebook"></i>
+                                        </u>
+                                        <input name="facebook" type="text" placeholder="اكتب هنا: رابط ملف الفيس بوك" value="{{ Auth::user()->employee->facebook ?? '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="LoginFormRow">
+                                    <label>
+                                        <i class="fab fa-instagram"></i>
+                                        انستغرام
+                                    </label>
+                                    <div class="InputHolder">
+                                        <u>
+                                            <i class="fab fa-instagram"></i>
+                                        </u>
+                                        <input name="instagram" type="text" placeholder="اكتب هنا: رابط ملف الانستغرام" value="{{ Auth::user()->employee->instagram ?? '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="LoginFormRow">
+                                    <label>
+                                        <i class="fab fa-linkedin"></i>
+                                        لينكد إن
+                                    </label>
+                                    <div class="InputHolder">
+                                        <u>
+                                            <i class="fab fa-linkedin"></i>
+                                        </u>
+                                        <input name="linkedin" type="text" placeholder="اكتب هنا: رابط ملف اللينكد إن" value="{{ Auth::user()->employee->linkedin ?? '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="LoginFormRow">
+                                    <label>
+                                        <i class="fab fa-twitter"></i>
+                                        تويتر
+                                    </label>
+                                    <div class="InputHolder">
+                                        <u>
+                                            <i class="fab fa-twitter"></i>
+                                        </u>
+                                        <input name="twitter" type="text" placeholder="اكتب هنا: رابط ملف التويتر" value="{{ Auth::user()->employee->twitter ?? '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="LoginFormRow">
                         <label>
                             رقم الموبايل

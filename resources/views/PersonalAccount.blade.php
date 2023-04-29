@@ -23,7 +23,7 @@
                                         </div>
                                     </div>
                                     <div class="ChangeProfileImage animate__animated animate__zoomIn"
-                                         onclick="$(this).find('#picture-dropzone')[0].click();">
+                                         onclick="ChangeUserProfileImage($(this))">
                                         <form id="UserImageForm" action="{{ route("profile.ChangeProfilePicture") }}"
                                               method="POST" enctype="multipart/form-data" class="d-none">
                                             @csrf
@@ -35,6 +35,8 @@
                                                 </p>
                                             </div>
                                         </form>
+
+
                                         <div class="ChangeProfileImageInner">
                                             <div class="ChangeProfileImageDiv">
                                                 <i class="fas fa-camera"></i>
@@ -68,31 +70,29 @@
                                             <i class="fas fa-file"></i>
                                             السيرة الذاتية
                                         </button>
-
-
                                         <div class="CompanySocials">
-                                            <button type="button" onclick="$(this).find('a')[0].click()">
-                                                <a href="#" class="d-none"
+                                            <button type="button" onclick="$(this).find('a')[0].click()" {{ Auth::user()->employee->facebook ?? 'disabled' }}>
+                                                <a href="{{ Auth::user()->employee->facebook ?? '' }}" class="d-none"
                                                    target="_blank"></a>
-                                                <i class="fab fa-facebook"></i>
+                                                <i class="{{ Auth::user()->employee->facebook ?? '' }} fab fa-facebook"></i>
                                             </button>
 
-                                            <button type="button" onclick="$(this).find('a')[0].click()">
-                                                <a href="#" class="d-none"
+                                            <button type="button" onclick="$(this).find('a')[0].click()" {{ Auth::user()->employee->twitter ?? 'disabled' }}>
+                                                <a href="{{ Auth::user()->employee->twitter ?? '' }}" class="d-none"
                                                    target="_blank"></a>
-                                                <i class="fab fa-twitter"></i>
+                                                <i class="{{ Auth::user()->employee->twitter ?? '' }} fab fa-twitter"></i>
                                             </button>
 
-                                            <button type="button" onclick="$(this).find('a')[0].click()">
-                                                <a href="#" class="d-none"
+                                            <button type="button" onclick="$(this).find('a')[0].click()" {{ Auth::user()->employee->instagram ?? 'disabled' }}>
+                                                <a href="{{ Auth::user()->employee->instagram ?? '' }}" class="d-none"
                                                    target="_blank"></a>
-                                                <i class="fab fa-instagram"></i>
+                                                <i class="{{ Auth::user()->employee->instagram ?? '' }} fab fa-instagram"></i>
                                             </button>
 
-                                            <button type="button" onclick="$(this).find('a')[0].click()">
-                                                <a href="#" class="d-none"
+                                            <button type="button" onclick="$(this).find('a')[0].click()" {{ Auth::user()->employee->linkedin ?? 'disabled' }}>
+                                                <a href="{{ Auth::user()->employee->linkedin ?? '' }}" class="d-none"
                                                    target="_blank"></a>
-                                                <i class="fab fa-linkedin"></i>
+                                                <i class="{{ Auth::user()->employee->linkedin ?? '' }} fab fa-linkedin"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -275,7 +275,7 @@
                 height: 4096
             },
             success: function (file, response) {
-                alert('هسا اشتغلت');
+                // alert('هسا اشتغلت');
                 $('form').find('input[name="picture"]').remove()
                 $('form').append('<input type="hidden" name="picture" value="' + response.name + '">')
                 $('#UserImage').attr('src', $('.dz-image img').attr('src'))
@@ -296,7 +296,7 @@
                 @if(Auth::check() && Auth::user()->picture)
                 var file = {!! json_encode(Auth::user()->picture) !!}
                 this.options.addedfile.call(this, file)
-                this.options.thumbnail.call(this, file, '{{ Auth::user()->picture->getUrl('thumb') }}')
+                this.options.thumbnail.call(this, file, '{{ str_replace('localhost', 'localhost:8000', Auth::user()->picture->getUrl('thumb')) }}')
                 file.previewElement.classList.add('dz-complete')
                 $('form').append('<input type="hidden" name="picture" value="' + file.file_name + '">')
                 this.options.maxFiles = this.options.maxFiles - 1

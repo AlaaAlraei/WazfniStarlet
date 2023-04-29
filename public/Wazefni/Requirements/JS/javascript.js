@@ -4,7 +4,7 @@ $(document).ready(function () {
     }
 
     $(document).mouseup(function (e) {
-        var container = $(".UserOptions,.SelectAuthCategoryList");
+        var container = $(".UserOptions,.SelectAuthCategoryList,.EditSocialMediaParent");
 
         // if the target of the click isn't the container nor a descendant of the container
         if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -365,7 +365,17 @@ function AddResumeBTn(el){
 }
 
 function ChangeUserProfileImage(el){
-    el
-    $('#UserImage').attr('src','')
-    $('#UserImage').attr('src',$('.dz-image img').attr('src'))
+    if(el.find('.dz-remove').length === 1){
+        el.find('.dz-remove')[0].click();
+    }
+    el.find('#picture-dropzone')[0].click();
+}
+
+function SelectAdImage(el){
+    el.find('#photo-dropzone')[0].click()
+}
+function RemoveImageOnCreate(el){
+    el.parent().parent().find('.dz-remove')[0].click()
+    $('.CreateAdImagePreview img').attr('src','')
+    $('.CreateAdImagePreview').slideUp()
 }

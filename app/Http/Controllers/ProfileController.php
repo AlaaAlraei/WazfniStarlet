@@ -71,6 +71,10 @@ class ProfileController extends Controller
         $user->employee->update([
             'category_id' => $request['category_id'],
             'country_id'  => $request['country_id'],
+            'facebook'    => $request['facebook'],
+            'instagram'   => $request['instagram'],
+            'linkedin'    => $request['linkedin'],
+            'twitter'     => $request['twitter'],
         ]);
 
         return redirect()->back()->with('message', 'done');

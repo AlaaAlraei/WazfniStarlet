@@ -36,6 +36,22 @@ class UpdateGeneralEmployeeProfileRequest extends FormRequest
                 'max:10',
                 'unique:users,last_name,' . Auth::user()->id,
             ],
+            'facebook'   => [
+                'nullable',
+                'string',
+            ],
+            'instagram'   => [
+                'nullable',
+                'string',
+            ],
+            'linkedin'   => [
+                'nullable',
+                'string',
+            ],
+            'twitter'   => [
+                'nullable',
+                'string',
+            ],
             'category_id'   => [
                 'required',
                 'integer',

@@ -4705,3 +4705,124 @@ input[type=number] {
     transform: scale(1.05);
     background: #47286c;
 }
+
+.EditSocialMedia {
+    display: flex;
+    background: #ece7f3;
+    padding-bottom: 25px;
+    margin: 0 auto 0;
+    border-radius: 0;
+}
+
+.EditSocialMedia .LoginFormRow {
+}
+
+.EditSocialMediaParent {
+    display: none;
+    position: relative;
+    height: 0;
+    z-index: 999;
+}
+
+.SocialMediaTrigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background: #fdfcff;
+    margin: 35px auto 0;
+    border: solid 1px #ddd4e9;
+    color: #502982;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.SocialMediaTrigger span {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.SocialMediaTrigger span i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+}
+
+
+.SocialMediaTrigger:hover {
+    background: #f7f3fd;
+}
+
+.EditSocialMediaParent label i {
+    margin: 0 6px;
+}
+
+.CompanySocials button:disabled {
+    pointer-events: none;
+    filter: grayscale(1);
+}
+
+.CreateAdImagePreview {
+    display: none;
+    margin: 0 auto;
+    width: 100%;
+    background: #f3f3f3;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+}
+
+.CreateAdImagePreview img {
+    display: block;
+    margin: 15px auto;
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    background: white;
+}
+
+.CreateAdImagePreview .ImageRemoverOncreate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: fit-content;
+    margin: 10px;
+    padding: 7px 10px;
+    border: none;
+    background: #bf5656;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: 700;
+    padding-right: 30px;
+    transition: 300ms;
+    border-radius: 5px;
+}
+
+.CreateAdImagePreview .ImageRemoverOncreate:hover {
+    transform: scale(1.05);
+    background: #5c5c5c;
+}
+
+.CreateAdImagePreview .ImageRemoverOncreate i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0px 8px;
+    background: #00000030;
+}

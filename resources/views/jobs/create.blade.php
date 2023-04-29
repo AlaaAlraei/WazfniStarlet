@@ -56,16 +56,20 @@
                                     </div>
                                 </div>
                                 <div class="CreateNewAdFormRow">
+                                    <div class="CreateAdImagePreview animate__animated animate__zoomInz">
+                                        <button type="button" class="ImageRemoverOncreate" onclick="RemoveImageOnCreate($(this))">
+                                            <i class="fas fa-times-circle"></i>
+                                            حذف الصورة
+                                        </button>
+                                        <img src="">
+                                    </div>
                                     <label>
                                         إرفاق صورة الإعلان
                                         <u>
                                             ( إختياري )
                                         </u>
                                     </label>
-{{--                                    <div class="needsclick dropzone" id="photo-dropzone">--}}
-
-{{--                                    </div>--}}
-                                    <button type="button" class="AddAdImage" onclick="$(this).find('input')[0].click()">
+                                    <button type="button" class="AddAdImage" onclick="SelectAdImage($(this))">
                                         <div class="needsclick dropzone" id="photo-dropzone">
 
                                         </div>
@@ -257,9 +261,11 @@
                 height: 4096
             },
             success: function (file, response) {
-                // alert('هسا اشتغلت');
+                alert('هسا اشتغلت');
                 $('form').find('input[name="photo"]').remove()
                 $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
+                $('.CreateAdImagePreview img').attr('src',$('.dz-image img').attr('src'))
+                $('.CreateAdImagePreview').show()
             },
             removedfile: function (file) {
                 file.previewElement.remove()
