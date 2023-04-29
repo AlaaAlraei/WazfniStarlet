@@ -125,108 +125,32 @@
                                                 يرجى إختيار الخطة المناسبة لتمييز هذا الإعلان :
                                             </h14>
                                             <div class="WzfniPlansGH">
-                                                <div class="WzfniPlansItem" onclick="ChooseThisPlane($(this))">
-                                                    <img src="https://cdn-icons-png.flaticon.com/128/4342/4342688.png">
-                                                    <h2>
-                                                        إفتراضي
-                                                    </h2>
-                                                    <span>
-                                                <s onclick="GetWzfniPlanePrice($(this))" value="10">10</s>
-                                                <u>دينار</u>
-                                            </span>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الاولى
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الثانية
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة الثالثة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة الرابعة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة الخامسة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة السادسة
-                                                    </p>
-                                                </div>
-                                                <div class="WzfniPlansItem" onclick="ChooseThisPlane($(this))">
-                                                    <img src="https://cdn-icons-png.flaticon.com/128/4342/4342658.png">
-                                                    <h2>
-                                                        متوسط
-                                                    </h2>
-                                                    <span>
-                                                     <s onclick="GetWzfniPlanePrice($(this))" value="20">20</s>
-                                                     <u>دينار</u>
-                                                </span>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الاولى
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الثانية
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الثالثة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الرابعة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة الخامسة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-times-circle" style="color: #b94545;"></i>
-                                                        الميزة السادسة
-                                                    </p>
-                                                </div>
-                                                <div class="WzfniPlansItem" onclick="ChooseThisPlane($(this))">
-                                                    <img src="https://cdn-icons-png.flaticon.com/128/4342/4342692.png">
-                                                    <h2>
-                                                        ذهبي
-                                                    </h2>
-                                                    <span>
-                                                     <s onclick="GetWzfniPlanePrice($(this))" value="50">50</s>
-                                                     <u>دينار</u>
-                                                </span>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الاولى
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الثانية
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الثالثة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الرابعة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة الخامسة
-                                                    </p>
-                                                    <p>
-                                                        <i class="fas fa-check-circle" style="color: #4db945;"></i>
-                                                        الميزة السادسة
-                                                    </p>
-                                                </div>
+                                                @foreach($subscription_types as $key => $subscription_type)
+                                                    <div rel="{{ $subscription_type->id ?? '' }}" class="WzfniPlansItem" onclick="ChooseThisPlane($(this))">
+                                                        <img src="{{ str_replace('localhost', 'localhost:8000', $subscription_type->picture->getUrl('thumb')) }}">
+                                                        <h2>
+                                                            {{ $subscription_type->title ?? '' }}
+                                                        </h2>
+                                                        <span>
+                                                            <s onclick="GetWzfniPlanePrice($(this))" value="{{ $subscription_type->amount ?? '' }}">{{ $subscription_type->amount ?? '' }}</s>
+                                                            <u>دينار</u>
+                                                        </span>
+                                                        @foreach($features as $key => $feature)
+                                                            @if($subscription_type->features->contains($feature->id))
+                                                                <p>
+                                                                    <i class="fas fa-check-circle" style="color: #4db945;"></i>
+                                                                    {{ $feature->title ?? '' }}
+                                                                </p>
+                                                            @else
+                                                                <p>
+                                                                    <i class="fas fa-times-circle" style="color: #b94545;"></i>
+                                                                    {{ $feature->title ?? '' }}
+                                                                </p>
+                                                            @endif
+
+                                                        @endforeach
+                                                    </div>
+                                                @endforeach
                                             </div>
                                             <p class="WzfniPlaneValidation animate__animated animate__zoomIn">
                                                 <i class="fa fa-times-circle" aria-hidden="true"></i>

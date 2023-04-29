@@ -30,8 +30,8 @@
                                         <img src="{{ asset('') }}Wazefni/Requirements/IMG/RF.png" class="SpecialSliderImage">
                                     @endif
                                 </div>
-                                <div class="SpecialOffersSliderItemInfo">
-                                    <h3 onclick="$(this).find('a')[0].click()">
+                                <div class="SpecialOffersSliderItemInfo" onclick="$(this).find('a')[0].click()">
+                                    <h3>
                                         <a href="{{ route('jobs.show', [$jobPromote->id]) }}" class="d-none"></a>
                                         {{ $jobPromote->title }}
                                     </h3>
@@ -50,6 +50,32 @@
 
     <div class="container-fluid" id="HomeSections">
         <div class="row justify-content-center align-content-center">
+            <div class="col-md-10">
+                <div class="MainBannerGH">
+                    <div class="MainBannerItem" onclick="$(this).find('a')[0].click()">
+                        <a href="#" class="d-none"></a>
+                        <img src="{{asset("")}}Wazefni/Requirements/IMG/Workers.png" class="MainBannerItemIcon">
+                        <h1>
+                            اعلن عن وظيفة
+                        </h1>
+                        <p>
+                            يتيح لك موقع وظفني الفرصة للعثور على كادر العمل المناسب للشواغر المتاحة في مشاريعك الخاصة وفي جميع الفئات الممكنة.
+                        </p>
+                    </div>
+
+                    <div class="MainBannerItem" onclick="$(this).find('a')[0].click()">
+                        <a href="#" class="d-none"></a>
+                        <img src="{{asset("")}}Wazefni/Requirements/IMG/Search.png" class="MainBannerItemIcon">
+                        <h1>
+                            ابحث عن وظيفة
+                        </h1>
+                        <p>
+                            يتيح لك موقع وظفني الفرصة للعثور على الوظيفة المناسبة لك مهما كان تخصصك مع الكثير من الفئات المتاحة التي تشمل جميع انواع الوظائف الممكنة داخل الوطن وخارجه.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-8">

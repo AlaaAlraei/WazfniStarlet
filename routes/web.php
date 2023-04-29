@@ -30,6 +30,10 @@ Route::get('category/{category}', 'CategoryController@show')->name('categories.s
 Route::get('location/{location}', 'LocationController@show')->name('locations.show');
 
 Route::put('/profile/UpdateGeneralEmployeeProfile', 'ProfileController@UpdateGeneralEmployeeProfile')->name('profile.UpdateGeneralEmployeeProfile');
+Route::put('/profile/ChangeProfilePicture', 'ProfileController@ChangeProfilePicture')->name('profile.ChangeProfilePicture');
+Route::post('profile/media', 'ProfileController@storeMedia')->name('profile.storeMedia');
+Route::put('/profile/UpdateBioEmployeeProfile', 'ProfileController@UpdateBioEmployeeProfile')->name('profile.UpdateBioEmployeeProfile');
+Route::put('/profile/UpdateResumeEmployeeProfile', 'ProfileController@UpdateResumeEmployeeProfile')->name('profile.UpdateResumeEmployeeProfile');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -83,6 +87,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // SubscriptionTypes
     Route::delete('subscription_types/destroy', 'SubscriptionTypeController@massDestroy')->name('subscription_types.massDestroy');
+    Route::post('subscription_types/media', 'SubscriptionTypeController@storeMedia')->name('subscription_types.storeMedia');
     Route::resource('subscription_types', 'SubscriptionTypeController');
 
     // Features

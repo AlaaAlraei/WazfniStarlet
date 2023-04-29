@@ -44,6 +44,18 @@
                             {{ $subscription_type->kind }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.subscription_type.fields.picture') }}
+                        </th>
+                        <td>
+                            @if($subscription_type->picture)
+                                <a href="{{ str_replace('localhost', 'localhost:8000', $subscription_type->picture->getUrl()) }}" target="_blank">
+                                    <img src="{{ str_replace('localhost', 'localhost:8000', $subscription_type->picture->getUrl('thumb')) }}" width="50px" height="50px">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">

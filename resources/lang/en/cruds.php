@@ -279,6 +279,8 @@ return [
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => '',
+            'picture'                  => 'Picture',
+            'picture_helper'           => '',
             'kind'                     => 'Kind',
             'kind_helper'              => '',
             'title'                    => 'Title',

@@ -36,11 +36,6 @@ class UpdateGeneralEmployeeProfileRequest extends FormRequest
                 'max:10',
                 'unique:users,last_name,' . Auth::user()->id,
             ],
-            'imagePC'   => [
-                'nullable',
-//                'image',
-                'max:500',
-            ],
             'category_id'   => [
                 'required',
                 'integer',

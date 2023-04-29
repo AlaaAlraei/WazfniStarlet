@@ -9,10 +9,31 @@
                         <div class="CompanyProfilePaper">
                             <div class="CompanyProfilePaperHeader">
                                 <div class="CompanyProfileImgHolder MyUserImage">
-                                    <img src="https://lh6.googleusercontent.com/-UYKv4Oo4AL4/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3reOcBoiruxfuiRHs8VAoE-HvgnBDw/mo/photo.jpg?sz=256">
-                                    <div class="ChangeProfileImage animate__animated animate__zoomIn" onclick="$(this).find('input')[0].click()">
-                                        <form id="ProfileImageForm" class="d-none">
-                                            <input type="file" accept="image/*" onchange="$('#ProfileImageForm').submit()">
+                                    @if(Auth::check() && isset(Auth::user()->picture))
+                                        <img id="UserImage"
+                                             src="{{ str_replace('localhost', 'localhost:8000', Auth::user()->picture->getUrl('thumb')) }}">
+                                    @else
+                                        <img id="UserImage"
+                                             src="{{asset("")}}Wazefni/Requirements/IMG/DefultUser.jpg">
+                                    @endif
+
+                                    <div class="UserImageLoader">
+                                        <div class="UserImageLoaderInner">
+                                            <img src="{{asset("")}}Wazefni/Requirements/IMG/Loader.gif">
+                                        </div>
+                                    </div>
+                                    <div class="ChangeProfileImage animate__animated animate__zoomIn"
+                                         onclick="$(this).find('#picture-dropzone')[0].click();">
+                                        <form id="UserImageForm" action="{{ route("profile.ChangeProfilePicture") }}"
+                                              method="POST" enctype="multipart/form-data" class="d-none">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="form-group {{ $errors->has('picture') ? 'has-error' : '' }}">
+                                                <div class="needsclick dropzone" id="picture-dropzone">
+                                                </div>
+                                                <p class="helper-block">
+                                                </p>
+                                            </div>
                                         </form>
                                         <div class="ChangeProfileImageInner">
                                             <div class="ChangeProfileImageDiv">
@@ -24,49 +45,55 @@
                                 </div>
                                 <div class="CompanyProfilePaperHeaderInfo">
                                     <h1 class="EditProfileBtnParent">
-                                        محمد الترك
-                                        <u class="EditProfileBtn" onclick="EditProfilePop($(this))" rel="#EditInformation">
+                                        {{ Auth::user()->name ?? '' }} {{ Auth::user()->last_name ?? '' }}
+                                        <u class="EditProfileBtn" onclick="EditProfilePop($(this))"
+                                           rel="#EditInformation">
                                             <i class="fas fa-pen"></i>
                                         </u>
                                     </h1>
                                     <span>
-                                        <img src="dfg">
-                                            بنشرجي
+                                        @if(isset(Auth::user()->employee->category->photo))
+                                            <img
+                                                src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? str_replace('localhost/storage', $_SERVER['SERVER_NAME'].'/system/storage/app/public' , Auth::user()->employee->category->getUrl('thumb')) : str_replace('localhost', 'localhost:8000', Auth::user()->employee->category->photo->getUrl('thumb')) }}">
+                                        @else
+                                            <img src="{{asset("")}}Wazefni/Requirements/IMG/RF.png">
+                                        @endif
+                                        {{ Auth::user()->employee->category->name ?? '' }}
                                     </span>
                                 </div>
                                 <div class="CompanyProfilePaperHeaderOptions">
                                     <div class="CompanyProfilePaperHeaderOptionsInner">
-                                                <button type="button" onclick="AddResumeBTn($(this))" rel="#UploadResumeView"
-                                                    class="CompanyWebsiteBtn">
-                                                <i class="fas fa-file"></i>
-                                                السيرة الذاتية
-                                            </button>
+                                        <button type="button" onclick="AddResumeBTn($(this))" rel="#UploadResumeView"
+                                                class="CompanyWebsiteBtn">
+                                            <i class="fas fa-file"></i>
+                                            السيرة الذاتية
+                                        </button>
 
 
                                         <div class="CompanySocials">
-                                                <button type="button" onclick="$(this).find('a')[0].click()">
-                                                    <a href="#" class="d-none"
-                                                       target="_blank"></a>
-                                                    <i class="fab fa-facebook"></i>
-                                                </button>
+                                            <button type="button" onclick="$(this).find('a')[0].click()">
+                                                <a href="#" class="d-none"
+                                                   target="_blank"></a>
+                                                <i class="fab fa-facebook"></i>
+                                            </button>
 
-                                                <button type="button" onclick="$(this).find('a')[0].click()">
-                                                    <a href="#" class="d-none"
-                                                       target="_blank"></a>
-                                                    <i class="fab fa-twitter"></i>
-                                                </button>
+                                            <button type="button" onclick="$(this).find('a')[0].click()">
+                                                <a href="#" class="d-none"
+                                                   target="_blank"></a>
+                                                <i class="fab fa-twitter"></i>
+                                            </button>
 
-                                                <button type="button" onclick="$(this).find('a')[0].click()">
-                                                    <a href="#" class="d-none"
-                                                       target="_blank"></a>
-                                                    <i class="fab fa-instagram"></i>
-                                                </button>
+                                            <button type="button" onclick="$(this).find('a')[0].click()">
+                                                <a href="#" class="d-none"
+                                                   target="_blank"></a>
+                                                <i class="fab fa-instagram"></i>
+                                            </button>
 
-                                                <button type="button" onclick="$(this).find('a')[0].click()">
-                                                    <a href="#" class="d-none"
-                                                       target="_blank"></a>
-                                                    <i class="fab fa-linkedin"></i>
-                                                </button>
+                                            <button type="button" onclick="$(this).find('a')[0].click()">
+                                                <a href="#" class="d-none"
+                                                   target="_blank"></a>
+                                                <i class="fab fa-linkedin"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -74,15 +101,33 @@
 
                             <p class="CompanyBio">
                                 <u>نبذة</u>
-                                <span class="NoBio" onclick="$('#BioForm').slideToggle()">
-                                    <i class="fas fa-pen"></i>
-                                    اكتب هنا : نبذة عن نفسك/اعمالك/هواباتك إلخ
-                                </span>
+                                @if(Auth::check() && Auth::user()->employee->bio == null)
+                                    <span class="NoBio" onclick="$('#BioForm').slideToggle()">
+                                        <i class="fas fa-pen"></i>
+                                        اكتب هنا : نبذة عن نفسك/اعمالك/هواباتك إلخ
+                                    </span>
+                                @else
+                                    {{ Auth::user()->employee->bio }}
+                                    <g class="EditBioBtn animate__animated animate__zoomIn" title="تعديل نبذة"
+                                       onclick="$('#BioForm').slideToggle()">
+                                        <i class="fas fa-pen"></i>
+                                    </g>
+                                @endif
+
                             </p>
 
-                            <form id="BioForm">
+                            <form id="BioForm" action="{{ route("profile.UpdateBioEmployeeProfile") }}" method="POST"
+                                  enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="BioFormInner">
-                                    <textarea placeholder="اكتب هنا : نبذة عن نفسك/اعمالك/هواباتك إلخ"></textarea>
+                                    @if(Auth::check() && Auth::user()->employee->bio == null)
+                                        <textarea name="bio"
+                                                  placeholder="اكتب هنا : نبذة عن نفسك/اعمالك/هواباتك إلخ"></textarea>
+                                    @else
+                                        <textarea name="bio"
+                                                  placeholder="اكتب هنا : نبذة عن نفسك/اعمالك/هواباتك إلخ">{{ Auth::user()->employee->bio }}</textarea>
+                                    @endif
                                     <button type="submit">
                                         <i class="fas fa-floppy-o"></i>
                                         حفظ
@@ -97,7 +142,8 @@
                                 <p>
                                     رقم الهاتف :
                                     <u dir="ltr">
-                                        654654654654654
+                                        +{{ Auth::user()->employee->country->country_key ?? '' }}
+                                        -{{ Auth::user()->phone ?? '' }}
                                         <i class="fas fa-mobile-alt"></i>
                                     </u>
                                 </p>
@@ -105,30 +151,30 @@
                                     الميلاد :
                                     <u>
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        120 قبل الهجرة
+                                        {{ date(Auth::user()->employee->birthday, strtotime('d F Y')) }}
                                     </u>
                                 </p>
                                 <p>
                                     الدولة :
                                     <u>
                                         <i class="fa fa-map-marker-alt" aria-hidden="true" style="color: #b52e2e;"></i>
-                                        الاردن للاسف
+                                        {{ Auth::user()->employee->country->name ?? '' }}
                                     </u>
                                 </p>
                                 <p>
                                     التخصص :
                                     <u>
-                                        بنشرجي
+                                        {{ Auth::user()->employee->category->name ?? '' }}
                                     </u>
                                 </p>
                             </div>
 
-                            <div class="CompanyJobsGHParent">
+                            <div class="CompanyprofileGHParent">
                                 <div class="SectionHeader">
                                     <h10>
                                         نبذة عن اعمال
                                         <u>
-                                            محمد
+                                            {{ Auth::user()->name ?? '' }}
                                         </u>
                                     </h10>
                                 </div>
@@ -162,18 +208,46 @@
         <div class="UploadResumeViewInner">
             <div class="UploadResumeViewFade" onclick="$('#UploadResumeView').fadeOut(600)"></div>
             <div class="UploadResumeViewDiv animate__animated animate__zoomIn">
-                <form id="ResumeForm">
+                <form id="ResumeForm" action="{{ route("profile.UpdateResumeEmployeeProfile") }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <h1>
                         السيرة الذاتية
                     </h1>
-                    <p>
-                        قم برفع السيرة الذاتية لكي تسهل عملية التواصل معك من قبل الشركات الباحثة على الموظفين وللظهور بنتائج البحث بشكل اكبر.
-                    </p>
-                    <button type="button" onclick="$(this).find('input')[0].click()">
-                        <input type="file" accept="application/pdf" class="d-none" onchange="$('#ResumeForm').submit()">
-                        <i class="fas fa-file-upload"></i>
-                        اختيار الملف
-                    </button>
+
+                    @if(Auth::check() && Auth::user()->employee->resume)
+                        <p>
+                            هناك العديد من المعايير يفضل اتباعها في السيرة الذاتية كذكر المعلومات باختصار ووضوح وذكر
+                            جميع الخبرات السابقة والمهارات المكتسبة من خلالها , اتباع هذه المعايير قد يسرع من عملية
+                            ايجادك للوظيفة المناسبة لمهاراتك وخبرتك.
+                        </p>
+                        <div class="ResumeUploaded">
+                            <button type="button" onclick="$(this).find('input')[0].click()">
+                                <input class="d-none" name="resumePC" type="file" accept="application/pdf" onchange="$('#ResumeForm').submit()">
+                                <i class="fas fa-pen"></i>
+                                تغيير الملف
+                            </button>
+                            <g onclick="$(this).find('a')[0].click()">
+                                <a href="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/".Auth::user()->employee->resume) : str_replace("public", "storage", asset("".Auth::user()->employee->resume)) }}" target="_blank" class="d-none"></a>
+                                <i class="fas fa-eye"></i>
+                                معاينة الملف
+                            </g>
+                        </div>
+                    @else
+                        {{--  ما في سي في --}}
+                        <p>
+                            قم برفع السيرة الذاتية لكي تسهل عملية التواصل معك من قبل الشركات الباحثة على الموظفين
+                            وللظهور بنتائج البحث بشكل اكبر.
+                        </p>
+                        <button type="button" onclick="$(this).find('input')[0].click()">
+                            <input name="resumePC" type="file" accept="application/pdf" class="d-none"
+                                   onchange="$('#ResumeForm').submit()">
+                            <i class="fas fa-file-upload"></i>
+                            رفع الملف
+                        </button>
+                    @endif
+
+
                     <span>
                         يجب ان يكون الملف بصيغة ال PDF
                         <br>
@@ -185,7 +259,67 @@
     </div>
 @endsection
 @section('scripts')
+    <script>
+        Dropzone.options.pictureDropzone = {
+            url: '{{ route('profile.storeMedia') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: '.jpeg,.jpg,.png,.gif',
+            maxFiles: 1,
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            params: {
+                size: 2,
+                width: 4096,
+                height: 4096
+            },
+            success: function (file, response) {
+                alert('هسا اشتغلت');
+                $('form').find('input[name="picture"]').remove()
+                $('form').append('<input type="hidden" name="picture" value="' + response.name + '">')
+                $('#UserImage').attr('src', $('.dz-image img').attr('src'))
+                $('.UserImageLoader').show()
+                $('.ChangeProfileImageInner').remove()
+                setTimeout(function () {
+                    $('#UserImageForm').submit();
+                }, 1000)
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                if (file.status !== 'error') {
+                    $('form').find('input[name="picture"]').remove()
+                    this.options.maxFiles = this.options.maxFiles + 1
+                }
+            },
+            init: function () {
+                @if(Auth::check() && Auth::user()->picture)
+                var file = {!! json_encode(Auth::user()->picture) !!}
+                this.options.addedfile.call(this, file)
+                this.options.thumbnail.call(this, file, '{{ Auth::user()->picture->getUrl('thumb') }}')
+                file.previewElement.classList.add('dz-complete')
+                $('form').append('<input type="hidden" name="picture" value="' + file.file_name + '">')
+                this.options.maxFiles = this.options.maxFiles - 1
+                @endif
+            },
+            error: function (file, response) {
+                if ($.type(response) === 'string') {
+                    var message = response //dropzone sends it's own error messages in string
+                } else {
+                    var message = response.errors.file
+                }
+                file.previewElement.classList.add('dz-error')
+                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                _results = []
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                    node = _ref[_i]
+                    _results.push(node.textContent = message)
+                }
 
+                return _results
+            }
+        }
+    </script>
 @endsection
 
 

@@ -24,7 +24,7 @@ class UpdateSubscriptionTypeRequest extends FormRequest
                 'string',
             ],
             'num_month' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:1',
             ],

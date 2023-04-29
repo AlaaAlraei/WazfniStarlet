@@ -5,12 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class SubscriptionType extends Model
+class SubscriptionType extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use SoftDeletes, InteractsWithMedia;
 
     public $table = 'subscription_types';
+
+    protected $appends = [
+        'picture',
+    ];
 
     protected $dates = [
         'updated_at',
@@ -37,6 +44,23 @@ class SubscriptionType extends Model
     public function features()
     {
         return $this->belongsToMany(Feature::class, 'feature_subscription_type');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->width(50)->height(50);
+    }
+
+    public function getPictureAttribute()
+    {
+        $file = $this->getMedia('picture')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
     }
 
 }

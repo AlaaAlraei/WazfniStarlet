@@ -372,6 +372,7 @@ img {
     width: 89%;
     padding: 17px 7px;
     direction: rtl;
+    cursor: pointer;
 }
 
 .SpecialOffersSliderItemInner h3:hover {
@@ -924,9 +925,10 @@ img {
 }
 
 .MainBannerItem:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     filter: brightness(110%);
     box-shadow: -20px -16px 0px 0px #0000000f;
+    z-index: 8888;
 }
 
 .HeaderUserIndicator {
@@ -2991,6 +2993,7 @@ input[type=number] {
     width: 89%;
     text-align: right;
     font-size: 16px;
+    position: relative;
 }
 
 .CompanyBio u {
@@ -4611,4 +4614,94 @@ input[type=number] {
     background: #353535;
     text-shadow: none;
     transform: scale(1.05);
+}
+
+.UserImageLoader {
+    display: none;
+}
+
+.UserImageLoaderInner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00000091;
+}
+
+.UserImageLoaderInner img {
+    display: block;
+    margin: 0 auto;
+    width: 44px;
+    height: unset;
+    aspect-ratio: unset;
+    min-height: unset;
+    position: relative;
+}
+
+.EditBioBtn {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #505050;
+    width: 22px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.EditBioBtn i {
+    pointer-events: none;
+}
+
+.CompanyBio:hover .EditBioBtn {
+    display: flex;
+}
+
+.EditBioBtn:hover {
+    background: #4fb847;
+    transform: scale(1.05);
+}
+
+.ResumeUploaded {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin: 21px auto;
+    width: fit-content;
+}
+
+.UploadResumeViewDiv form .ResumeUploaded button {
+    display: inline-block;
+    margin: 0 11px;
+}
+
+.ResumeUploaded g {
+    width: fit-content;
+    background: #5e3d85;
+    border: none;
+    padding: 14px 43px;
+    position: relative;
+    color: aliceblue;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+.ResumeUploaded g i {
+}
+
+.ResumeUploaded g:hover {
+    transform: scale(1.05);
+    background: #47286c;
 }

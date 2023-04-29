@@ -363,3 +363,9 @@ function ClearPromotionPages(){
 function AddResumeBTn(el){
     $(el.attr('rel')).show()
 }
+
+function ChangeUserProfileImage(el){
+    el
+    $('#UserImage').attr('src','')
+    $('#UserImage').attr('src',$('.dz-image img').attr('src'))
+}

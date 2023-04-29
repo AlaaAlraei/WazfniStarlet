@@ -257,7 +257,7 @@
                 height: 4096
             },
             success: function (file, response) {
-                alert('هسا اشتغلت');
+                // alert('هسا اشتغلت');
                 $('form').find('input[name="photo"]').remove()
                 $('form').append('<input type="hidden" name="photo" value="' + response.name + '">')
             },

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Feature;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroySubscriptionTypeRequest;
 use App\Http\Requests\StoreSubscriptionTypeRequest;
 use App\Http\Requests\UpdateSubscriptionTypeRequest;
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SubscriptionTypeController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('subscription_type_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -36,6 +39,12 @@ class SubscriptionTypeController extends Controller
     {
         $subscription_type = SubscriptionType::create($request->all());
 
+        $subscription_type->features()->sync($request->input('features', []));
+
+        if ($request->input('picture', false)) {
+            $subscription_type->addMedia(storage_path('tmp/uploads/' . $request->input('picture')))->toMediaCollection('picture');
+        }
+
         return redirect()->route('admin.subscription_types.index');
     }
 
@@ -51,6 +60,16 @@ class SubscriptionTypeController extends Controller
     public function update(UpdateSubscriptionTypeRequest $request, SubscriptionType $subscription_type)
     {
         $subscription_type->update($request->all());
+
+        $subscription_type->features()->sync($request->input('features', []));
+
+        if ($request->input('picture', false)) {
+            if (!$subscription_type->picture || $request->input('picture') !== $subscription_type->picture->file_name) {
+                $subscription_type->addMedia(storage_path('tmp/uploads/' . $request->input('picture')))->toMediaCollection('picture');
+            }
+        } elseif ($subscription_type->picture) {
+            $subscription_type->picture->delete();
+        }
 
         return redirect()->route('admin.subscription_types.index');
     }

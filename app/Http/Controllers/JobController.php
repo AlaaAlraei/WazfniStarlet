@@ -345,7 +345,7 @@ class JobController extends Controller
             $job->addMedia(storage_path('tmp/uploads/' . $request->input('photo')))->toMediaCollection('photo');
         }
 
-        return view('jobs.show', compact('job'));
+        return redirect()->route('jobs.show', [$job->id]);
     }
 
     public function edit(Job $job)

@@ -10,12 +10,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use SoftDeletes, Notifiable, HasApiTokens;
+    use SoftDeletes, Notifiable, HasApiTokens, InteractsWithMedia;
 
     public $table = 'users';
+
+    protected $appends = [
+        'picture',
+    ];
 
     protected $hidden = [
         'password',
@@ -31,7 +38,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         'country_id',
-        'image',
+        'phone',
         'privacy',
         'name',
         'last_name',
@@ -114,6 +121,23 @@ class User extends Authenticatable
     public function employee()
     {
         return $this->hasOne(Employee::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->width(50)->height(50);
+    }
+
+    public function getPictureAttribute()
+    {
+        $file = $this->getMedia('picture')->last();
+
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+        }
+
+        return $file;
     }
 
 }

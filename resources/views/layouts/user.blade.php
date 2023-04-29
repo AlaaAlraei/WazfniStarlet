@@ -73,20 +73,7 @@
                       action="{{ route('profile.UpdateGeneralEmployeeProfile') }}">
                     @csrf
                     @method('PUT')
-                    <input name="imagePC" type="file" {{ Auth::user()->image == null ? 'required' : '' }} accept="image/*">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="LoginFormRow">
-                                <div class="InputHolder">
-                                    @if(Auth::user()->image)
-                                        <img width="50%" src="{{ $_SERVER['REMOTE_ADDR'] != "127.0.0.1" ? asset("system/storage/app/".Auth::user()->image) : str_replace("public", "storage", asset("".Auth::user()->image)) }}">
-                                    @else
-                                        <img width="50%" src="{{ asset('') }}Wazefni/Requirements/IMG/LogoIcon.png" style="filter: grayscale(1);padding: 11px;">
-                                    @endif
-
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="LoginFormRow">
                                 <label>
